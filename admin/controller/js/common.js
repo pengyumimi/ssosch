@@ -1,0 +1,1 @@
+$(".username").html(username);//write username
