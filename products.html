@@ -679,7 +679,33 @@
 	<script src="js/zjkly_main.js"></script>
 
 	<script>
+
+		function parseUrl(){
+                var url=location.href;
+                var i=url.indexOf('?');
+                if(i==-1)return;
+                var querystr=url.substr(i+1);
+                var arr1=querystr.split('&');
+                var arr2=new Object();
+                for  (i in arr1){
+                    var ta=arr1[i].split('=');
+                    arr2[ta[0]]=ta[1];
+                }
+                return arr2;
+            }
+		 var v = parseUrl();//解析所有参数
+		 if (v)
+		 {
+			 var _index = v['id'];
+		 }else{
+			 var _index = 0;
+		 }
+		
+		//$(".pages").hide();
+		//$(".pages:eq(1)").show();
+		$(".rightB").trigger("click");
 		$(document).ready(function() {
+			
 			banner_l(".thumbs li",".slide-item");
 			banner_l(".thumbs1 li",".slide-item1");
 			banner_l(".thumbs2 li",".slide-item2");
@@ -687,8 +713,12 @@
 			banner_l(".thumbs4 li",".slide-item4");
 			var float=$(".float");
 			var divs=$(".box .pages");
-			var num1=0;
+			var num1=_index;
 			var num2=0;
+			
+			leftjl = 1200 * _index;
+			divs.eq(_index).css("left",leftjl).animate({left:0}).show();
+			//divs.eq(_index).animate({left:-1200});
 
 			$(".leftB").click(function(){
 				divs.finish();
@@ -715,6 +745,7 @@
 			
 		});
 		
+
 	</script>
 </body>
 </html>
