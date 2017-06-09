@@ -151,7 +151,7 @@
 											</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody class="hdp_list">
 										<tr>
 											<td style="text-align:center"><input class="vid" type="hidden" value="1"/><input class="form-control short t_center inline_block" type="text" value="1" name="paixu"/></td>
 											<td><img class="adminimg_s imgs" src="../img/banner/banner_1.gif" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td>
@@ -720,7 +720,26 @@
 				}
 			});
 		}
-		
+		//幻灯片列表渲染
+		function hdplist(){
+			$.ajax({
+				url: "controller/hdp_list.php",
+				data: "",
+				type: "POST",
+				dataType: 'json',
+				success: function(data) {
+					console.log(data);
+					if(data) {
+						$(".hdp_list").html('');
+						for(var key in data){
+						_html = '<tr><td style=" text-align:center"><input class="vid" type="hidden" value="'+data[key].id+'"/><input class="form-control short t_center inline_block" type="text" value="'+data[key].paixu+'" name="paixu"/></td><td><img class="adminimg_s imgs" src="'+data[key].img_src+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="'+data[key].link+'" name="link"/></td><td><button type="submit" class="btn btn-primary" onclick="saveedithdp(this)">修改</button><button type="button" class="btn btn-default del_btn" id="'+data[key].id+'">删除</button></td></tr>';
+						$(".hdp_list").append(_html);
+						}
+					}
+				}
+			});
+		}
+		hdplist();
 		//编辑幻灯片保存
 		function saveedithdp(_this){
 			var selecter = $(_this).parents("tr");
@@ -739,7 +758,7 @@
 				success: function(data) {
 					console.log(data);
 					if(data.result == '1') {
-						alert(" ");
+						alert("保存成功");
 					}
 				}
 			});
@@ -754,19 +773,22 @@
 		function savenewhdp(_this){
 			var _this = $(_this);
 			var paixu = _this.parents("tr").find("input[name='paixu']").val();
-			var link = _this.parents("tr").find("input[name='link']").val();
+			var _link = _this.parents("tr").find("input[name='link']").val();
 			var img_src = _this.parents("tr").find("img[name='img']").attr("src");
+			alert(paixu);
 			$.ajax({
 				url: "controller/hdp_add.php",
 				data: {
-					"paixu":paixu,"link":link,"img_src":img_src
+					"paixu":paixu,"link":_link,"img_src":img_src
 				},
 				type: "POST",
 				dataType: 'json',
 				success: function(data) {
 					console.log(data);
 					if(data.result == '1') {
-						alert("保存成功");
+						alert(data.msg);
+					}else{
+						alert(data.msg);
 					}
 				}
 			});
