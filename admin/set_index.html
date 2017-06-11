@@ -618,6 +618,25 @@
 		</div>
 	</div>
 	<div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+            
+            
+    <!-- 删除提示模态框（Modal） -->
+<div class="modal fade myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">您正在进行删除操作，删除后无法恢复，是否删除？</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cancelmodal" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary del_ok">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+            
 	<!--/图片剪裁-->
 	
 	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -631,7 +650,6 @@
 	<script src="cropper/html2canvas.min.js"></script>
 	<!--/图片剪裁-->
 	<script>
-
 		$('#calendar').datepicker({
 		});
 		//var username = sessionStorage.obj;
@@ -670,12 +688,12 @@
 			var Size = target[0].files[0].size / 1024;
 			if(Size > filemaxsize) {
 				alert('图片过大，请重新选择!');
-				$(".avatar-wrapper").childre().remove;
+				$(".avatar-wrapper").empty();
 				return false;
-			}
-			if(!this.files[0].type.match(/image.*/)) {
-				alert('请选择正确的图片!')
-			} else {
+			}else if(!this.files[0].type.match(/image.*/)) {
+				alert('请选择正确的图片!');
+                return false;
+			}else {
 				var filename = document.querySelector("#avatar-name");
 				var texts = document.querySelector("#avatarInput").value;
 				var teststr = texts; //你这里的路径写错了
@@ -704,17 +722,21 @@
 		
 		//
 		function imagesAjax(src) {
-			var data = {};
-			data.img = src;
+			//var data = {};
+			//data.img = src;
+            alert(src);
 			$.ajax({
 				url: "controller/upload-logo.php",
-				data: data,
+				data: {
+                    imgsrc:src
+                },
 				type: "POST",
 				dataType: 'json',
 				success: function(re) {
 					console.log(re);
 					if(re.status == '1') {
 						$(_thisimg).attr('src',src);
+                        
 						//location.reload();
 					}
 				}
@@ -732,7 +754,7 @@
 					if(data) {
 						$(".hdp_list").html('');
 						for(var key in data){
-						_html = '<tr><td style=" text-align:center"><input class="vid" type="hidden" value="'+data[key].id+'"/><input class="form-control short t_center inline_block" type="text" value="'+data[key].paixu+'" name="paixu"/></td><td><img class="adminimg_s imgs" src="'+data[key].img_src+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="'+data[key].link+'" name="link"/></td><td><button type="submit" class="btn btn-primary" onclick="saveedithdp(this)">修改</button><button type="button" class="btn btn-default del_btn" id="'+data[key].id+'">删除</button></td></tr>';
+						_html = '<tr><td style=" text-align:center"><input class="vid" type="hidden" value="'+data[key].id+'"/><input class="form-control short t_center inline_block" type="text" value="'+data[key].paixu+'" name="paixu"/></td><td><img class="adminimg_s imgs" src="'+data[key].img_src+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="'+data[key].link+'" name="link"/></td><td><button type="submit" class="btn btn-primary" onclick="saveedithdp(this)">修改</button><button type="button" class="btn btn-default" id="'+data[key].id+'" data-toggle="modal" data-target=".myModal" onclick="goid(this);">删除</button></td></tr>';
 						$(".hdp_list").append(_html);
 						}
 					}
@@ -758,7 +780,10 @@
 				success: function(data) {
 					console.log(data);
 					if(data.result == '1') {
-						alert("保存成功");
+						$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
+	                    function() {
+	                        setTimeout("hdplist()", 200);
+	                    });
 					}
 				}
 			});
@@ -766,7 +791,7 @@
 
 		//新增幻灯片
 		$("#addhd_btn").click(function(){
-			html = '<tr><td style="text-align:center"><input class="form-control short t_center inline_block" type="text" value="" name="paixu"/></td><td><img class="adminimg_s imgs" src="../img/banner/banner_4.gif" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="" name="link"/></td><td><button type="submit" class="btn btn-primary" onclick="savenewhdp(this)">保存</button><button type="reset" class="btn btn-default">删除</button></td></tr>';
+			html = '<tr><td style="text-align:center"><input class="form-control short t_center inline_block" type="text" value="" name="paixu"/></td><td><img class="adminimg_s imgs" src="../img/img.jpg" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="" name="link"/></td><td><button type="submit" class="btn btn-primary" onclick="savenewhdp(this)">保存</button><button type="button" class="btn btn-default" onclick="btn_cancel(this)">取消</button></td></tr>';
 			$(this).parents(".panel").find("tbody").append(html);
 		});
 		//保存幻灯片
@@ -775,7 +800,6 @@
 			var paixu = _this.parents("tr").find("input[name='paixu']").val();
 			var _link = _this.parents("tr").find("input[name='link']").val();
 			var img_src = _this.parents("tr").find("img[name='img']").attr("src");
-			alert(paixu);
 			$.ajax({
 				url: "controller/hdp_add.php",
 				data: {
@@ -786,13 +810,23 @@
 				success: function(data) {
 					console.log(data);
 					if(data.result == '1') {
-						alert(data.msg);
+						$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
+	                    function() {
+	                        setTimeout("hdplist()", 200);
+	                    });
 					}else{
 						alert(data.msg);
 					}
 				}
 			});
-		}
+		};
+        
+        //幻灯删除
+        function goid(_this){
+            var delid = $(_this).attr("id");
+            deletelist("controller/hdp_del.php",".del_ok",delid);
+        };
+        
 	</script>
 	<!--/图片剪裁-->
 	<div class="tip">

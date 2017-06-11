@@ -1,29 +1,26 @@
 $(".username").html(username);//write username
 
 //删除操作
+
 function deletelist(ajaxurl,selecter,data_name){
-	$(".del_btn").click(function() {
-	    _id = $(this).attr("id");
 	    $(selecter).click(function() {
 	        $.ajax({
 	            type: "post",
 	            url: ajaxurl,
 	            data: {
-	                roleid: _id
+	                delid: data_name
 	            },
 	            dataType: "json",
 	            success: function(msg) {
 	                console.log(msg);
 	                if (msg.result === 1) {
-	                    $('.tip').html("<span>" + msg.msg + "</span>").fadeIn(0).delay(800).fadeOut("slow",
-	                    function() {
-	                        $(".close-1-tip").trigger("click");
-	                        setTimeout("refresh()", 800);
-	                    });
+                        $('.myModal').modal('hide');
+                        hdplist();
+	                    alert("成功删除");
 	                } else if (msg.result === 0) {
 	                    $('.tip').html("<span>" + msg.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
 	                    function() {
-	                        setTimeout("refresh()", 800);
+	                        //setTimeout("refresh()", 800);
 	                    });
 	                } else {
 	                    $('.tip').html(msg.msg).fadeIn(0).delay(1000).fadeOut("slow");
@@ -31,5 +28,9 @@ function deletelist(ajaxurl,selecter,data_name){
 	            }
 	        });
 	    });
-	});
 }
+
+//取消操作
+function btn_cancel(_this){
+    $(_this).parents("tr").remove();
+};
