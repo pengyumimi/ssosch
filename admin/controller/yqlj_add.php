@@ -3,12 +3,12 @@
 	header("Content-Type: text/html;charset=utf-8"); 
 	//session_start();//登录状态
 
-	$vid = $_POST["vid"];
 	$paixu = $_POST["paixu"];
-	$title = $_POST["title"];
+	$link = $_POST["link"];
 	$img_src = $_POST["img_src"];
+    $title = $_POST["title"];
 
-	if($paixu == "" || $title == "" || $img_src == "")
+if($paixu == "" || $link == "" || $img_src == "" || $title == "")   
 	{
 		echo json_encode(array("msg"=>"请输入完整信息！", "result"=>"0"));
 	}
@@ -16,8 +16,7 @@
 	{
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		$mysqli->query("set names utf8");//**设置字符集***
-		$sql = "update web_indexpro set paixu='{$paixu}',title='{$title}',img_src='{$img_src}' where id='{$vid}'";
-		
+		$sql = "insert into web_yqlj(paixu,link,img_src,title)values('{$paixu}','{$link}','{$img_src}','{$title}')";
 		$result = $mysqli->query($sql);
 
 		if ($result) {
@@ -26,7 +25,7 @@
 				'message' => sprintf('Welcome %s',$username),
 			));
 			*/
-			echo json_encode(array("msg"=>"修改成功", "result"=>"1"));
+			echo json_encode(array("msg"=>"添加成功", "result"=>"1"));
 		}else{  
 			echo json_encode(array("msg"=>"操作未成功，请稍后再试", "result"=>"2"));
 		};

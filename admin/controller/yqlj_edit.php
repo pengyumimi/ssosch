@@ -5,10 +5,11 @@
 
 	$vid = $_POST["vid"];
 	$paixu = $_POST["paixu"];
-	$title = $_POST["title"];
+	$link = $_POST["link"];
+    $title = $_POST["title"];
 	$img_src = $_POST["img_src"];
 
-	if($paixu == "" || $title == "" || $img_src == "")
+	if($paixu == "" || $link == "" || $img_src == "" || $title == "")   
 	{
 		echo json_encode(array("msg"=>"请输入完整信息！", "result"=>"0"));
 	}
@@ -16,7 +17,7 @@
 	{
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		$mysqli->query("set names utf8");//**设置字符集***
-		$sql = "update web_indexpro set paixu='{$paixu}',title='{$title}',img_src='{$img_src}' where id='{$vid}'";
+		$sql = "update web_yqlj set paixu='{$paixu}',link='{$link}',img_src='{$img_src}',title='{$title}' where id='{$vid}'";
 		
 		$result = $mysqli->query($sql);
 
@@ -29,7 +30,7 @@
 			echo json_encode(array("msg"=>"修改成功", "result"=>"1"));
 		}else{  
 			echo json_encode(array("msg"=>"操作未成功，请稍后再试", "result"=>"2"));
-		};
+		}
 
 		$mysqli->close();//面向对象关闭数据库！
 	}
