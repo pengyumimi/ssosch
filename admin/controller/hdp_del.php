@@ -18,11 +18,6 @@
 		$result = $mysqli->query($sql);
 
 		if ($result) {
-			/*输出变量的方法
-			echo json_encode(array(
-				'message' => sprintf('Welcome %s',$username),
-			));
-			*/
 			echo json_encode(array("msg"=>"删除成功", "result"=>"1"));
 		}else{  
 			echo json_encode(array("msg"=>"操作未成功，请稍后再试", "result"=>"2"));

@@ -2,7 +2,7 @@ $(".username").html(username);//write username
 
 //删除操作
 
-function deletelist(ajaxurl,selecter,data_name){
+function deletelista(ajaxurl,selecter,data_name){
 	    $(selecter).click(function() {
 	        $.ajax({
 	            type: "post",
@@ -11,19 +11,19 @@ function deletelist(ajaxurl,selecter,data_name){
 	                delid: data_name
 	            },
 	            dataType: "json",
-	            success: function(msg) {
-	                console.log(msg);
-	                if (msg.result === 1) {
+	            success: function(data) {
+	                console.log(data);
+	                if (data.result == 1) {
                         $('.myModal').modal('hide');
-                        hdplist();
-	                    alert("成功删除");
-	                } else if (msg.result === 0) {
-	                    $('.tip').html("<span>" + msg.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
+                        hdplist();//重新渲染列表
+                        $('.tip').html(data.msg).fadeIn(0).delay(300).fadeOut("slow");
+                    } else if (data.result == 0) {
+	                    $('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
 	                    function() {
 	                        //setTimeout("refresh()", 800);
 	                    });
 	                } else {
-	                    $('.tip').html(msg.msg).fadeIn(0).delay(1000).fadeOut("slow");
+	                    $('.tip').html(data.msg).fadeIn(0).delay(1000).fadeOut("slow");
 	                }
 	            }
 	        });
