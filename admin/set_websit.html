@@ -80,11 +80,34 @@
 					<div class="panel-heading">常规设置</div>
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form role="form">
 							
-								<div class="form-group">
-									<label>400电话设置</label>
-									<input name="set400" class="form-control" placeholder="输入您的400电话">
+							     <div class="form-group websitset">
+									<label>网站信息设置</label>
+								</div>
+								<div class="form-group lxrsetlist">
+									<label>网站联系人设置</label>
+                                    <div id="lxr1">
+<!--
+									<input name="name" class="form-control data_show" placeholder="显示称呼">
+									<input name="job" class="form-control data_show" placeholder="职业">
+									<input name="tel" class="form-control data_show" placeholder="tel">
+									<input name="phone" class="form-control data_show" placeholder="phone">
+									<input name="email" class="form-control data_show" placeholder="邮箱">
+									<input name="qq" class="form-control data_show" placeholder="qq">
+                                    <button type="submit" class="btn btn-primary">修改</button>
+-->
+                                    </div>
+								</div>
+                            
+                                <div class="form-group hzlist">
+
+                                    <label>关于我们商务合作和媒体采访设置</label>
+<!--                                    <div class="hz">
+                                        <input name="title" class="form-control data_show" placeholder="输入主题">
+                                        <textarea class="form-control swhz" rows="3" placeholder="输入主题内容"></textarea>
+                                        <button type="submit" class="btn btn-primary">修改</button>
+                                    </div>
+-->
 								</div>
 																
 								<div class="form-group">
@@ -193,7 +216,7 @@
 								<button type="submit" class="btn btn-primary">Submit Button</button>
 								<button type="reset" class="btn btn-default">Reset Button</button>
 							</div>
-						</form>
+						
 					</div>
 				</div>
 			</div><!-- /.col-->
@@ -208,6 +231,7 @@
 	<script src="js/easypiechart.js"></script>
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/ajaxapi/ajaxedit.js"></script>
 	<script>
 		!function ($) {
 			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
@@ -221,8 +245,12 @@
 		})
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-		})
-	</script>	
+		});
+	</script>
+
+    <div class="tip">
+	<span></span>
+	</div>
 </body>
 
 </html>

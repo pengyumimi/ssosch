@@ -876,3 +876,20 @@ h1.page-header {
 }
 
 .tip{position:fixed;display:none;width:180px;height:80px;background:rgba(0,0,0,.8);color:#fff;font:normal 16px/80px 'Microsoft Yahei';top:0;bottom:0;left:0;right:0;margin:auto;text-align:center;border-radius:5px;display:none;z-index:99999;}
+
+.lxrsetlist input,.hzlist input,.hzlist textarea,.web_set input{
+    margin: 2px 0 5px 0;
+}
+.lxrsetlist .lxr,.hzlist .hz,.web_set{
+    padding: 15px;
+    background: #eee;
+    margin: 0 0 20px 0;
+    border-radius: 4px;
+}
+.name_item{
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    line-height: 1.4em;
+    color: #666;
+}
