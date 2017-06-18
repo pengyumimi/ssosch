@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="controller/js/checklogin.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0"><!--默认以百分百比例打开-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!--默认用ie8的最高内核进行渲染，如果有谷歌的gcf，则用谷歌的内核渲染-->
+<meta name="renderer" content="webkit"><!--默认用360极速模式渲染-->
+<title>SSOSCH-后台管理系统</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<!--图片剪裁-->
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+<link rel="stylesheet" href="cropper/cropper.min.css">
+<link rel="stylesheet" href="cropper/sitelogo.css">
+<!--/图片剪裁-->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>SSOSCH</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span class="username" id="username"> User </span><span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li><a href="index.html"><span class="glyphicon glyphicon-dashboard"></span> 网站管理</a></li>
+			<li><a href="set_index.html"><span class="glyphicon glyphicon-th"></span> 首页设置</a></li>
+            <li><a href="set_websit.html"><span class="glyphicon glyphicon-th"></span> 网站信息设置</a></li>
+			<li class="active"><a href="set_products.html"><span class="glyphicon glyphicon-stats"></span> 产品页设置</a></li>
+			<li><a href="set_cases.html"><span class="glyphicon glyphicon-list-alt"></span> 案例页设置</a></li>
+			<li><a href="set_about.html"><span class="glyphicon glyphicon-pencil"></span> 关于我们设置</a></li>
+			<li role="presentation" class="divider"></li>
+			<li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login Page</a></li>
+		</ul>
+		<div class="attribution">技术问题联系QQ:295879185;TEL:18632363993</div>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li class="active">产品设置</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">产品设置</h1>
+			</div>
+		</div><!--/.row-->
+				
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">产品设置</div>
+					<div class="panel-body">
+						<div class="col-md-9">
+							
+				            <div class="form-group productset">
+								<label>网站信息设置</label>
+                                <div class="products_list"></div>
+				            </div>
+                            <div class="form-group lxrsetlist">
+                                <label>网站联系人设置</label>
+                                <div id="lxr1">
+<!--
+                                <input name="name" class="form-control data_show" placeholder="显示称呼">
+                                <input name="job" class="form-control data_show" placeholder="职业">
+                                <input name="tel" class="form-control data_show" placeholder="tel">
+                                <input name="phone" class="form-control data_show" placeholder="phone">
+                                <input name="email" class="form-control data_show" placeholder="邮箱">
+                                <input name="qq" class="form-control data_show" placeholder="qq">
+                                <button type="submit" class="btn btn-primary">修改</button>
+-->
+                                </div>
+                            </div>                            
+                            <div class="form-group hzlist">
+                                <label>关于我们商务合作和媒体采访设置</label>
+<!--                                    <div class="hz">
+                                    <input name="title" class="form-control data_show" placeholder="输入主题">
+                                    <textarea class="form-control swhz" rows="3" placeholder="输入主题内容"></textarea>
+                                    <button type="submit" class="btn btn-primary">修改</button>
+                                </div>
+-->
+                            </div>
+								
+				        </div>
+					</div>
+				</div>
+			</div><!-- /.col-->
+		</div><!-- /.row -->
+	
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="controller/js/common.js"></script>
+    <script src="js/ajaxapi/products_ajaxedit.js"></script><!--数据渲染-->
+	<!--图片剪裁-->
+	<script src="cropper/cropper.js"></script>
+	<script src="cropper/sitelogo.js"></script>
+	<script src="cropper/html2canvas.js"></script>
+	<script src="cropper/canvas2image.js"></script>
+	<!--/图片剪裁-->
+	<script>
+		$('#calendar').datepicker({
+		});
+		//var username = sessionStorage.obj;
+
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>
+	
+	<!--图片剪裁-->
+	<script type="text/javascript">
+		/*$(".imgs").on("click",function(){
+			_thisimg = $(this);
+			proportion = $(this).attr("proportion");//设置切图比例
+			return proportion;
+		});*/
+		function imgset(_this){
+			_thisimg = $(_this);
+			proportion = $(_this).attr("proportion");//设置切图比例
+			return proportion;
+		};
+		//验证大小格式 
+		$('#avatarInput').on('change', function(e) {
+			var filemaxsize = 1024 * 3;//3M
+			var target = $(e.target);
+			var Size = target[0].files[0].size / 1024;
+			if(Size > filemaxsize) {
+				alert('图片过大，请重新选择!');
+				$(".avatar-wrapper").empty();
+				return false;
+			}else if(!this.files[0].type.match(/image.*/)) {
+				alert('请选择正确的图片!');
+                return false;
+			}else {
+				var filename = document.querySelector("#avatar-name");
+				var texts = document.querySelector("#avatarInput").value;
+				var teststr = texts; //你这里的路径写错了
+				testend = teststr.match(/[^\\]+\.[^\(]+/i); //直接完整文件名的
+				filename.innerHTML = testend;
+			}
+		
+		});
+
+		$(".avatar-save").on("click", function() {
+			var img_lg = document.getElementById('imageHead');
+            var canvas = document.createElement("canvas");
+            var w = $("#imageHead").width();
+            var h = $("#imageHead").height();
+            canvas.style.width = w + "px";
+            canvas.style.height = h + "px";
+            var context = canvas.getContext("2d");
+			//然后将画布缩放，将图像放大两倍画到画布上
+            context.scale(10,10);
+			// 截图示框内的内容
+			html2canvas(img_lg, {
+				allowTaint: true,
+				taintTest: false,
+				onrendered: function(canvas) {
+					canvas.id = "mycanvas";
+					//生成base64图片数据
+					var dataUrl = canvas.toDataURL("image/jpeg");
+					var newImg = document.createElement("img");
+//                    newImg.width = w * 10;
+//                    newImg.height = h * 10;
+					newImg.src = dataUrl;
+					imagesAjax(dataUrl);//执行接口函数
+				},
+			});
+		});
+
+		//图片没有出来版
+//        $(".avatar-save").on("click", function() {
+//			var shareContent = document.getElementById("imageHead");//需要截图的包裹的（原生的）DOM 对象
+//			var width = shareContent.offsetWidth; //获取dom 宽度
+//			var height = shareContent.offsetHeight; //获取dom 高度
+//			var canvas = document.createElement("canvas"); //创建一个canvas节点
+//			var scale = 10; //定义任意放大倍数 支持小数
+//			canvas.width = width * scale; //定义canvas 宽度 * 缩放
+//			canvas.height = height * scale; //定义canvas高度 *缩放
+//			canvas.getContext("2d").scale(scale,scale); //获取context,设置scale
+//			var opts = {
+//				scale:scale, // 添加的scale 参数
+//				canvas:canvas, //自定义 canvas
+//				logging: true, //日志开关
+//				width:width, //dom 原始宽度
+//				height:height //dom 原始高度
+//			};
+//
+//			html2canvas(shareContent, opts).then(function (canvas) {
+//				//如果想要生成图片 引入canvas2Image.js 下载地址：
+//				//https://github.com/hongru/canvas2image/blob/master/canvas2image.js
+//				var img = Canvas2Image.convertToImage(canvas, canvas.width, canvas.height);
+//				var imgsrc = $(img).attr("src");
+//				//document.write(imgsrc);
+//                imagesAjax(imgsrc);//执行接口函数
+//				console.log(img);
+//			});
+
+			//原始版本
+//            html2canvas(shareContent, {
+//                allowTaint: true,
+//                taintTest: false,
+//                onrendered: function(canvas) {
+//                    canvas.id = "mycanvas";
+//                    //生成base64图片数据
+//                    var dataUrl = canvas.toDataURL("image/jpeg");
+//                    var newImg = document.createElement("img");
+//                    newImg.src = dataUrl;
+//                    imagesAjax(dataUrl);//执行接口函数
+//                }
+//            });
+//        });
+
+		
+		//base64图片提交接口
+		function imagesAjax(src) {
+			//var data = {};
+			//data.img = src;
+            //alert(src);
+
+			$.ajax({
+				url: "controller/upload-logo.php",
+				data: {
+                    imgsrc:src
+                },
+				type: "POST",
+				dataType: 'json',
+				success: function(re) {
+					console.log(re);
+					if(re.status == '1') {
+						$(_thisimg).attr('src',src);
+                        
+						//location.reload();
+					}
+				}
+			});
+		};
+		
+
+	</script>
+	<!--/图片剪裁-->
+	<div class="tip">
+	<span></span>
+	</div>
+</body>
+
+</html>
