@@ -10,14 +10,14 @@ function products_list(selecter,url){
             if(data) {
                 $(selecter).html('');
                 for(var key in data){
-                    var _html = '<div class="lxr"><input name="id" type="hidden" value="'+data[key].id+'"><div class="name_item">产品主题</div><input name="name" class="form-control data_show" placeholder="产品主题" value="'+data[key].title+'"><div class="name_item">图一</div><img class="adminimg_s imgs" src="'+data[key].img_src1+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"><div class="name_item">图二</div><input name="tel" class="form-control data_show" placeholder="图二" value="'+data[key].img_src2+'"><div class="name_item">PHONE</div><input name="phone" class="form-control data_show" placeholder="phone" value="'+data[key].img_src3+'"><div class="name_item">产品说明</div><textarea name="email" rows="10" class="form-control data_show" placeholder="产品说明" value="">'+data[key].txt+'</textarea><button type="submit" class="btn btn-primary" onclick="edit(this)">修改</button></div>';
+                    var _html = '<div class="products_list"><input name="id" type="hidden" value="'+data[key].id+'"><div class="name_item">产品主题</div><input name="name" class="form-control data_show" placeholder="产品主题" value="'+data[key].title+'"><div class="name_item"><p>图一</p><img class="adminimg_s imgs" src="'+data[key].img_src1+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图二</p><img class="adminimg_s imgs" src="'+data[key].img_src2+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图三</p><img class="adminimg_s imgs" src="'+data[key].img_src3+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图四</p><img class="adminimg_s imgs" src="'+data[key].img_src4+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图五</p><img class="adminimg_s imgs" src="'+data[key].img_src5+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item" style="display:block">产品说明</div><textarea name="email" rows="10" class="form-control data_show" placeholder="产品说明" value="">'+data[key].txt+'</textarea><button type="submit" class="btn btn-primary" onclick="edit(this)">修改</button></div>';
                     $(selecter).append(_html);
                 }
             }
         }
     });
 };
-products_list("#lxr1","controller/products_list.php");
+products_list(".productset","controller/products_list.php");
 
 //编辑联系人
 function edit(_this){

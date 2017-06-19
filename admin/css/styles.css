@@ -880,7 +880,7 @@ h1.page-header {
 .lxrsetlist input,.hzlist input,.hzlist textarea,.web_set input{
     margin: 2px 0 5px 0;
 }
-.lxrsetlist .lxr,.hzlist .hz,.web_set{
+.lxrsetlist .lxr,.hzlist .hz,.web_set,.products_list{
     padding: 15px;
     background: #eee;
     margin: 0 0 20px 0;
