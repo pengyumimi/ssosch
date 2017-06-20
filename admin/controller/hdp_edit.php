@@ -16,7 +16,7 @@
 	{
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		$mysqli->query("set names utf8");//**设置字符集***
-		$sql = "update hdp set paixu='{$paixu}',link='{$link}',img_src='{$img_src}' where id='{$vid}'";
+		$sql = "update web_hdp set paixu='{$paixu}',link='{$link}',img_src='{$img_src}' where id='{$vid}'";
 		
 		$result = $mysqli->query($sql);
 

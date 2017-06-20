@@ -3,11 +3,16 @@
 	header("Content-Type: text/html;charset=utf-8"); 
 	//session_start();//登录状态
 
-	$paixu = $_POST["paixu"];
-	$link = $_POST["link"];
-	$img_src = $_POST["img_src"];
+	$id = $_POST["id"];
+	$title = $_POST["title"];
+	$img_src1 = $_POST["img_src1"];
+	$img_src2 = $_POST["img_src2"];
+	$img_src3 = $_POST["img_src3"];
+	$img_src4 = $_POST["img_src4"];
+	$img_src5 = $_POST["img_src5"];
+	$txt = $_POST["txt"];
 
-	if($paixu == "" || $link == "" || $img_src == "")   
+	if($id == "")   
 	{
 		echo json_encode(array("msg"=>"请输入完整信息！", "result"=>"0"));
 	}
@@ -15,19 +20,15 @@
 	{
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		$mysqli->query("set names utf8");//**设置字符集***
-		$sql = "insert into web_hdp(paixu,link,img_src)values('{$paixu}','{$link}','{$img_src}')";
+		$sql = "update web_products set title='{$title}',img_src1='{$img_src1}',img_src1='{$img_src1}',img_src2='{$img_src2}',img_src3='{$img_src3}',img_src4='{$img_src4}',img_src5='{$img_src5}',txt='{$txt}' where id='{$id}'";
+		
 		$result = $mysqli->query($sql);
 
 		if ($result) {
-			/*输出变量的方法
-			echo json_encode(array(
-				'message' => sprintf('Welcome %s',$username),
-			));
-			*/
-			echo json_encode(array("msg"=>"添加成功", "result"=>"1"));
+			echo json_encode(array("msg"=>"修改成功", "result"=>"1"));
 		}else{  
 			echo json_encode(array("msg"=>"操作未成功，请稍后再试", "result"=>"2"));
-		};
+		}
 
 		$mysqli->close();//面向对象关闭数据库！
 	}

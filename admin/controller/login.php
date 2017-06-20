@@ -13,7 +13,7 @@
 	{
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		//$mysqli =new MySQLi("localhost","root","","ssosch");
-		$sql = "select * from user where (name = '$user') and (password = '$psw')";
+		$sql = "select * from web_user where (name = '$user') and (password = '$psw')";
 		$result = $mysqli->query($sql);
 		if ($result->num_rows > 0) {
 			while ($attr = $result->fetch_row()){ //将数据以索引方式储存在数组中

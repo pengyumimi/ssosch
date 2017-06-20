@@ -6,7 +6,7 @@
 	$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 	$mysqli->query("set names utf8");//**设置字符集***
 	
-	$sql = "select * from hdp";
+	$sql = "select * from web_hdp";
 	$result = $mysqli->query($sql);
 
 	if ($result) {

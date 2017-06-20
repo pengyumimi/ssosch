@@ -10,7 +10,7 @@
 	
 	if($list == 1){
 		
-		$sql = "SELECT COUNT(DISTINCT phone) FROM `contact` WHERE 1 = 1";
+		$sql = "SELECT COUNT(DISTINCT phone) FROM `web_contact` WHERE 1 = 1";
 		$result = $mysqli->query($sql);
 
 		if ($result) {

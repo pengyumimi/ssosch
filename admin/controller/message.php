@@ -10,7 +10,7 @@
 	
 	if($list == 1){
 		
-		$sql = "select * from contact where date(inputdate) = curdate()";
+		$sql = "select * from web_contact where date(inputdate) = curdate()";
 		$result = $mysqli->query($sql);
 
 		if ($result) {

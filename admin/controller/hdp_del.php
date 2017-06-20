@@ -14,7 +14,7 @@
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		$mysqli->query("set names utf8");//**设置字符集***
 		//$sql = "insert into hdp(paixu,link,img_src)values('{$paixu}','{$link}','{$img_src}')";        
-        $sql = "delete from hdp where id = '{$delid}'";
+        $sql = "delete from web_hdp where id = '{$delid}'";
 		$result = $mysqli->query($sql);
 
 		if ($result) {

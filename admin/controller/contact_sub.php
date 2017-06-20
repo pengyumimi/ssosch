@@ -16,7 +16,7 @@
 	{
 		$mysqli = mysqli_connect($mysql_server_name,$mysql_username,$mysql_password,$mysql_database);
 		$mysqli->query("set names utf8");//**设置字符集***
-		$sql = "insert into contact(username,phone,email,message)values('{$username}','{$phone}','{$email}','{$message}')";
+		$sql = "insert into web_contact(username,phone,email,message)values('{$username}','{$phone}','{$email}','{$message}')";
 		$result = $mysqli->query($sql);
 
 		if ($result) {
