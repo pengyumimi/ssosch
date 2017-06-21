@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="common/css/common.css">
 	<link rel="stylesheet" href="css/ssosch_main.css">
 	<script src="common/js/jquery-1.9.1.min.js"></script>
-    <script src="js/ajaxapi.js"></script>
 <style>
 .index{background: #fafafa;}
 </style>
@@ -152,72 +151,66 @@
 	<script src="js/zjkly_main.js"></script>
 
 	<script>
+		$(document).ready(function() {
 			$("[href='#']").click(function(){
 				alert("网站正在开发当中，敬请期待！");
 			});
-            function hdpjs(){
-                var all_img = $(".banner .bigpic li");
-                //$('.test').html(all_img[0]);
-                var num = $(".banner .bigpic li").length; //获取焦点图的个数
-                var fwidth = $(".banner .bigpic li").width(); //获取每个焦点图的宽度
+			var all_img = $(".banner .bigpic li");
+			//$('.test').html(all_img[0]);
+			var num = $(".banner .bigpic li").length; //获取焦点图的个数
+			var fwidth = $(".banner .bigpic li").width(); //获取每个焦点图的宽度
 
-                function z_index(){
-                    for(i=0;i<num;i++){
-                        $(all_img[i]).css("z-index",num-i);
-                    };
-                };
-                z_index();
-                function active_but(msg){
-                    //console.log(msg);
-                    $('.s_pic li').click(function(){
-                        var but = $(this).index();
-                        $('.s_pic li .s_img').removeClass("intro_img");
-                        $(this).children().children(".s_img").addClass("intro_img");
-                        z_index();
-                        var z_index_max = num + 1;  //设置点击后的z-index
-                        $(all_img[but]).css("z-index",""+z_index_max+"");  //设置点击后z-index的值
-                        //$(all_img).animate({opacity:'0'},"fast");//这里做了个简单的jquery显隐效果
-                        //$(all_img[but]).animate({opacity:'1'},"slow");
-                        $(all_img).removeClass('fadeInLeft animated');//如果需要复杂效果可以用animate框架
-                        $(all_img[but]).addClass('fadeInLeft animated');
-                    });
-                    $(".s_pic li:eq("+msg+")").trigger('click');
-                };
-                active_but(0);
-            }
-            hdpjs();
+			function z_index(){
+				for(i=0;i<num;i++){
+					$(all_img[i]).css("z-index",num-i);
+				};
+			};
+			z_index();
+			function active_but(msg){
+				//console.log(msg);
+				$('.s_pic li').click(function(){
+					var but = $(this).index();
+					$('.s_pic li .s_img').removeClass("intro_img");
+					$(this).children().children(".s_img").addClass("intro_img");
+					z_index();
+					var z_index_max = num + 1;  //设置点击后的z-index
+					$(all_img[but]).css("z-index",""+z_index_max+"");  //设置点击后z-index的值
+					//$(all_img).animate({opacity:'0'},"fast");//这里做了个简单的jquery显隐效果
+					//$(all_img[but]).animate({opacity:'1'},"slow");
+					$(all_img).removeClass('fadeInLeft animated');//如果需要复杂效果可以用animate框架
+					$(all_img[but]).addClass('fadeInLeft animated');
+				});
+				$(".s_pic li:eq("+msg+")").trigger('click');
+			};
+			active_but(0);
+		});
 
-        function autoplay(){
-            //自动播放
-            var sec = 6000; //时间切换间隔
-            var list_n = $('.s_pic li');
-            var num_img = $(".banner .bigpic li").length; //获取焦点图的个数
-            //默认播放幻灯片循环体
-            var j = 0;
-            this._click = function (){
-                if(j==num_img){
-                    j=0;
-                };
-                $(list_n[j]).trigger('click');
-                //console.log(j);
-                j++;
-            };
-            //_click();
+		//自动播放
+		var sec = 6000; //时间切换间隔
+		var list_n = $('.s_pic li');
+		var num_img = $(".banner .bigpic li").length; //获取焦点图的个数
+		//默认播放幻灯片循环体
+		var j = 0;
+		function _click(msg){
+			if(j==num_img){
+				j=0;
+			};
+			$(list_n[j]).trigger('click');
+			//console.log(j);
+			j++;
+		};
+		_click();
 
-            //执行固定时间播放
-            var int = self.setInterval("_click()",sec);
-            //鼠标移出缩略图开始幻灯播放
-            $('.s_pic').mouseleave(function(){
-                int = self.setInterval("_click()",sec);
-            });
-            //鼠标移入缩略图暂停幻灯播放
-            $('.s_pic').mouseover(function(){
-                window.clearInterval(int);
-            });
-        };
-        new autoplay()._click();
-            
-        
+		//执行固定时间播放
+		var int = self.setInterval("_click()",sec);
+		//鼠标移出缩略图开始幻灯播放
+		$('.s_pic').mouseleave(function(){
+			int = self.setInterval("_click()",sec);
+		});
+		//鼠标移入缩略图暂停幻灯播放
+		$('.s_pic').mouseover(function(){
+			window.clearInterval(int);
+		});
 
 	</script>
 	<script>
