@@ -1,5 +1,13 @@
 $(".username").html(username);//write username
-
+//设置
+$(".glyphicon-cog").parent().parent().on("click",function(){
+	alert("暂时未开放设置功能");
+});
+//退出
+$(".glyphicon-log-out").parent().parent().on("click",function(){
+	sessionStorage.removeItem('username')
+	window.location.href = "/admin";  
+});
 //删除操作
 
 function deletelista(ajaxurl,selecter,data_name){
