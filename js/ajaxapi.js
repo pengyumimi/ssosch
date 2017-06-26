@@ -13,9 +13,8 @@
 					for(var key in data){
                         _html = '<li><a value="'+data[key].id+'" href="'+data[key].link+'"><img class="b_img" src="'+data[key].img_src+'" alt=""/></a></li>';
                         _htmlslt = '<li><a href="javascript:void(0);"><img class="s_img intro_img" src="'+data[key].img_src+'"/></a></li>';
-					//_html = '<tr><td style=" text-align:center"><input class="vid" type="hidden" value="'+data[key].id+'"/><input class="form-control short t_center inline_block" type="text" value="'+data[key].paixu+'" name="paixu"/></td><td><img class="adminimg_s imgs" src="'+data[key].img_src+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="'+data[key].link+'" name="link"/></td><td><button type="submit" class="btn btn-primary" onclick="saveedithdp(this)">修改</button><button type="button" class="btn btn-default" id="'+data[key].id+'" data-toggle="modal" data-target=".myModal" onclick="goid(this);">删除</button></td></tr>';
-					$(".s_pic").append(_htmlslt);
-					$(".bigpic").append(_html);
+					   $(".s_pic").append(_htmlslt);
+					   $(".bigpic").append(_html);
                         hdpjs();
                         autoplay();
                         new autoplay()._click();
@@ -24,7 +23,7 @@
 			}
 		});
 	};
-	hdplist();
+	
 
 	//首页产品列表渲染
 	function indexpro_list(){
@@ -46,7 +45,111 @@
 			}
 		});
 	};
-//indexpro_list()
+//indexpro_list();
+
+//网站信息设置
+function webset(){
+    $.ajax({
+        url: "admin/controller/webset.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+                $(".s_pic").html('');
+            }
+        }
+    });
+};
+webset();
+
+//合作伙伴
+function hzhb_list(){
+    $.ajax({
+        url: "admin/controller/hzhb_list.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+                $(".links").html('');
+                for (var key in data){
+                    var _html = '<a href="'+data[key].link+'"><img title="'+data[key].title+'" src="'+data[key].img_src+'"/></a>';
+                    $(".links").append(_html);
+                };
+            }
+        }
+    });
+};
+hzhb_list();
+
+//联系人
+function yqlj_list(){
+    $.ajax({
+        url: "admin/controller/yqlj_list.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+                $(".yqlinks").html('');
+                for (var key in data){
+                    var _html = '<a href="'+data[key].link+'"><img title="'+data[key].title+'" src="'+data[key].img_src+'"/></a>';
+                    $(".yqlinks").append(_html);
+                };
+            }
+        }
+    });
+};
+yqlj_list();
+
+//友情链接
+function lxr_list(){
+    $.ajax({
+        url: "admin/controller/lxr_list.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+                $(".foot_text ul").html('');
+                for (var key in data){
+                    var _html = '<li>'+data[key].job+'：'+data[key].name+'，tel：'+data[key].tel+'</br>phone：'+data[key].phone+' </br>邮箱：'+data[key].email+' </br>QQ:'+data[key].qq+' </li>';
+                    $(".foot_text ul").append(_html);
+                };
+            }
+        }
+    });
+};
+lxr_list();
+
+//网站信息设置
+function webset(){
+    $.ajax({
+        url: "admin/controller/webset.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+				for (var key in data){
+					document.title=data[key].title;
+					document.keywords=data[key].keywords;
+					document.description=data[key].description;
+                //$(".foot_text ul").html(data[key].job);
+				};
+            }
+        }
+    });
+};
+webset();
+
+
 	//编辑幻灯片保存
 //	function saveedithdp(_this){
 //		var selecter = $(_this).parents("tr");

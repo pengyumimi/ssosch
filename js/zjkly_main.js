@@ -1,4 +1,4 @@
-//吸顶导航
+//鍚搁《瀵艰埅
 function top_nav(){
 	var elem=document.querySelector("header");
 	var headroom = new Headroom(elem, {
@@ -14,7 +14,7 @@ function top_nav(){
 }
 top_nav();
 
-//下拉导航效果
+//涓嬫媺瀵艰埅鏁堟灉
 //
 $(".nav_l li").hover(
 	function() {
@@ -26,3 +26,4 @@ $(".nav_l li").hover(
 		$(this).find("ul").slideUp(300);
 	}
 );
+
