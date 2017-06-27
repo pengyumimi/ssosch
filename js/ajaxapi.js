@@ -124,7 +124,7 @@ function webset(){
 					document.title=data[key].title;
 					document.keywords=data[key].keywords;
 					document.description=data[key].description;
-                    $(".about_items .item_3 li:eq(0) p").html(data[key].adress);
+                    $(".about_items .item_3 li:eq(0) p").html(data[key].address);
                     $(".about_items .item_3 li:eq(1) p").html(data[key].tel);
                     $(".about_items .item_3 li:eq(2) p").html(data[key].email);
                     $(".about_items .item_3 li:eq(3) p").html(data[key].url);
@@ -135,6 +135,24 @@ function webset(){
 };
 webset();
 
+//媒体采访和商务合作
+function swhz(){
+    $.ajax({
+        url: "admin/controller/swhz_edit.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+				for (var key in data){
+                    $(".about_items .item_1 p").html(data[key].txt);
+				};
+            }
+        }
+    });
+};
+//swhz();
 
 	//编辑幻灯片保存
 //	function saveedithdp(_this){
