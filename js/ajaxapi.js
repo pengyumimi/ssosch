@@ -47,23 +47,6 @@
 	};
 //indexpro_list();
 
-//网站信息设置
-function webset(){
-    $.ajax({
-        url: "admin/controller/webset.php",
-        data: "",
-        type: "POST",
-        dataType: 'json',
-        success: function(data) {
-            console.log(data);
-            if(data) {
-                $(".s_pic").html('');
-            }
-        }
-    });
-};
-webset();
-
 //合作伙伴
 function hzhb_list(){
     $.ajax({
@@ -85,7 +68,7 @@ function hzhb_list(){
 };
 hzhb_list();
 
-//联系人
+//友情链接
 function yqlj_list(){
     $.ajax({
         url: "admin/controller/yqlj_list.php",
@@ -97,7 +80,7 @@ function yqlj_list(){
             if(data) {
                 $(".yqlinks").html('');
                 for (var key in data){
-                    var _html = '<a href="'+data[key].link+'"><img title="'+data[key].title+'" src="'+data[key].img_src+'"/></a>';
+                    var _html = '<a href="'+data[key].link+'"><img title="'+data[key].title+'" src="'+data[key].img_src+'"/><span>'+data[key].title+'</span></a>';
                     $(".yqlinks").append(_html);
                 };
             }
@@ -106,7 +89,7 @@ function yqlj_list(){
 };
 yqlj_list();
 
-//友情链接
+//联系人
 function lxr_list(){
     $.ajax({
         url: "admin/controller/lxr_list.php",
@@ -141,7 +124,10 @@ function webset(){
 					document.title=data[key].title;
 					document.keywords=data[key].keywords;
 					document.description=data[key].description;
-                //$(".foot_text ul").html(data[key].job);
+                    $(".about_items .item_3 li:eq(0) p").html(data[key].adress);
+                    $(".about_items .item_3 li:eq(1) p").html(data[key].tel);
+                    $(".about_items .item_3 li:eq(2) p").html(data[key].email);
+                    $(".about_items .item_3 li:eq(3) p").html(data[key].url);
 				};
             }
         }
