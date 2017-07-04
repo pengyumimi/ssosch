@@ -205,6 +205,10 @@ body{
 	background: url("../img/contact_b.png") no-repeat center center;
     background-size: 468px 409px;
 }
+.dt_banner img{
+    width: 100%;
+    min-width: 1200px;
+}
 .item_1,.item_2{
 	width: 588px;
 	height: 190px;
@@ -403,6 +407,26 @@ body{
 
 /* 响应式控制 */
 
+@media (max-width: 1366px){
+
+	/* 产品页 */
+	.left_arrow{
+		left: 20px;
+		opacity: 1;
+	}
+	.right_arrow{
+		right: 20px;
+		opacity: 1;
+	}
+	.products_tabs:hover .left_arrow,.products_tabs:hover .right_arrow{
+		opacity: 0.5;
+	}
+	.slide-item,.slide-item1,.slide-item2{min-width:710px;width:710px;height: 500px;position:absolute;left:0;top:0;display:none}
+	.slide-cont{position:absolute;left:780px;top:0;width:420px;}
+	/* /产品页 */
+
+}
+
 /* 小屏幕（手机，小于等于 991px */
 @media (max-width: 991px){
 
@@ -478,6 +502,52 @@ body{
 		margin: 0 20px;
 	}
 	/* 首页 */
+    /* 关于我们 */
+    .item_1,.item_2{
+        float: none;
+        width: auto;
+        margin: 15px;
+        text-align: left;
+    }
+    .item_1 p,.item_2 p{
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .dt_banner img {
+        width: 100%;
+        min-width: auto;
+    }
+	/* /关于我们 */
+    /* 产品页 */
+    .products_tabs {
+        height: auto !important;
+    }
+    .box {
+        height: 900px !important;
+        overflow: auto !important;
+    }
+    .allitems {
+        min-width: 710px;
+        width: 710px;
+        height: 500px;
+        right: 0;
+        margin: auto;
+    }
+    .imgsslt {
+        right: 0;
+        margin: auto !important;
+        width: 710px;
+        height: 104px;
+    }
+    .slide-cont {
+        left: 0 !important;
+        right: 0 !important;
+        margin: auto !important;
+        top: 500px !important;
+        width: 100% !important;
+    }
+	/* /产品页 */
 
 }
 
@@ -537,31 +607,57 @@ body{
 	/* 首页 */
 
 	/* 产品页 */
-
+    .products_tabs {
+        height: auto !important;
+    }
+    .box {
+        height: 900px !important;
+        overflow: auto !important;
+    }
+    .allitems {
+        min-width: 710px;
+        width: 710px;
+        height: 500px;
+        right: 0;
+        margin: auto;
+    }
+    .imgsslt {
+        right: 0;
+        margin: auto !important;
+        width: 710px;
+        height: 104px;
+    }
+    .slide-cont {
+        left: 0 !important;
+        right: 0 !important;
+        margin: auto !important;
+        top: 500px !important;
+        width: 100% !important;
+    }
 	/* /产品页 */
+    
+    /* 关于我们 */
+    .item_1,.item_2{
+        float: none;
+        width: auto;
+        margin: 15px;
+        text-align: left;
+    }
+    .item_1 p,.item_2 p{
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+     .dt_banner img {
+        width: 100%;
+        min-width: auto;
+    }
+	/* /关于我们 */
 
 }
 
 
-@media (max-width: 1366px){
 
-	/* 产品页 */
-	.left_arrow{
-		left: 20px;
-		opacity: 1;
-	}
-	.right_arrow{
-		right: 20px;
-		opacity: 1;
-	}
-	.products_tabs:hover .left_arrow,.products_tabs:hover .right_arrow{
-		opacity: 0.5;
-	}
-	.slide-item,.slide-item1,.slide-item2{min-width:710px;width:710px;height: 500px;position:absolute;left:0;top:0;display:none}
-	.slide-cont{position:absolute;left:780px;top:0;width:420px;}
-	/* /产品页 */
-
-}
 
 /* /响应式控制 */
 
