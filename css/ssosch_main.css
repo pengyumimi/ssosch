@@ -49,6 +49,18 @@ body{
 	border: 2px solid #23247E;
 	border-radius: 2px;
 }
+
+.phone_navBtn {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: url(../img/nav_btn.png) no-repeat center center;
+    background-size: 100% auto;
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    z-index: 10;
+}
 /* /非media响应式宽屏banner */
 
 /* 产品图列表 */
@@ -514,9 +526,17 @@ body{
         padding-left: 0;
         padding-right: 0;
     }
-    .dt_banner img {
+     .dt_banner img {
         width: 100%;
         min-width: auto;
+    }
+    .about_items {
+        height: auto;
+    }
+    .item_3 ul li {
+        width: 50%;
+        height: 180px;
+        padding: 10px 20px 20px;
     }
 	/* /关于我们 */
     /* 产品页 */
@@ -651,6 +671,14 @@ body{
      .dt_banner img {
         width: 100%;
         min-width: auto;
+    }
+    .about_items {
+        height: auto;
+    }
+    .item_3 ul li {
+        width: 50%;
+        height: 180px;
+        padding: 10px 20px 20px;
     }
 	/* /关于我们 */
 

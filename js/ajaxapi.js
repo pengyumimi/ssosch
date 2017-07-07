@@ -124,10 +124,10 @@ function webset(){
 					document.title=data[key].title;
 					document.keywords=data[key].keywords;
 					document.description=data[key].description;
-                    $(".about_items .item_3 li:eq(0) p").html(data[key].address);
-                    $(".about_items .item_3 li:eq(1) p").html(data[key].tel);
-                    $(".about_items .item_3 li:eq(2) p").html(data[key].email);
-                    $(".about_items .item_3 li:eq(3) p").html(data[key].url);
+                    $(".ajax_address").html(data[key].address);
+                    $(".ajax_tel").html(data[key].tel);
+                    $(".ajax_email").html(data[key].email);
+                    $(".ajax_url").html(data[key].url);
 				};
             }
         }
