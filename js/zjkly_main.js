@@ -27,6 +27,6 @@ $(".nav_l li").hover(
 	}
 );
 
-$("#topnav-toggle").on("click",function(){
+$(".phone_navBtn").on("click",function(){
     $(".topnav_box").toggleClass("hidden-xs hidden-sm hidden-md");
 });

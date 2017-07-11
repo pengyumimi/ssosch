@@ -50,17 +50,7 @@ body{
 	border-radius: 2px;
 }
 
-.phone_navBtn {
-    display: block;
-    width: 26px;
-    height: 26px;
-    background: url(../img/nav_btn.png) no-repeat center center;
-    background-size: 100% auto;
-    position: absolute;
-    right: 20px;
-    top: 17px;
-    z-index: 10;
-}
+
 /* /非media响应式宽屏banner */
 
 /* 产品图列表 */
@@ -445,6 +435,7 @@ body{
 	/* 首页 */
 	nav{
 		width: auto;
+		padding: 0 15px;
 	}
 
 	.nav_l{
@@ -453,6 +444,9 @@ body{
 
 	section {
 		width: auto;
+	}
+	.head_ssosch{
+		padding-left: 15px;
 	}
 
 	.banner{
@@ -568,6 +562,9 @@ body{
         width: 100% !important;
     }
 	/* /产品页 */
+	
+
+
 
 }
 
@@ -681,11 +678,61 @@ body{
         padding: 10px 20px 20px;
     }
 	/* /关于我们 */
-
+	
 }
 
+@media (max-width: 991px){
+	
+	/*手机上导航*/
+	.phone_navBtn {
+		display: block;
+		width: 26px;
+		height: 26px;
+		background: url(../img/nav_btn.png) no-repeat center center;
+		background-size: 100% auto;
+		position: absolute;
+		right: 15px;
+		top: 7px;
+		z-index: 10;
+		cursor: pointer;
+	}
+	.topnav_box {
+		top: 40px;
+		left: 0;
+		right: 0;
+		width: 100%;
+		position: absolute;
+		background: #443c3c;
+		margin: auto;
+		float: none;
+		height: auto;
+	}
+	.topnav {
+		overflow: auto;
+		height: auto;
+		text-align: center;
+	}
+	.topnav li {
+		text-align: center;
+		padding: 0;
+		display: inline-block;
+		vertical-align: middle;
+		position: relative;
+		height: 100%;
+		font-size: 16px;
+		border: none;
+	}
+	.topnav a {
+		display: block;
+		font-size: 16px;
+		font-weight: 300;
+		cursor: pointer;
+		padding: 0 10px;
+		color: #fff;
+	}
+	/* /手机上导航*/
 
-
+}
 
 /* /响应式控制 */
 
