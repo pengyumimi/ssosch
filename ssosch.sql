@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-06-20 08:46:03
+-- Generation Time: 2017-07-17 14:00:01
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
   `message` varchar(500) DEFAULT NULL,
   `inputdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- 转存表中的数据 `web_contact`
@@ -46,7 +46,8 @@ INSERT INTO `web_contact` (`id`, `username`, `phone`, `email`, `message`, `input
 (5, '李琳', '15588221231', 'liling@qq.com', '这样的网站给人一种赏心悦目的感觉啊', '2017-05-08 06:35:13'),
 (6, '王文波', '15222112311', 'wangwenbin@xinlang.com', '我来此一游', '2017-05-08 06:37:52'),
 (7, '张晓婷', '18611223288', 'xiaoting@sin.com', '当时我就蒙蔽了', '2017-05-08 06:41:58'),
-(8, '王玉', '15592231122', 'wangyu@ssosch.com', '其实我是来看下冷水机的', '2017-05-08 06:55:17');
+(8, '王玉', '15592231122', 'wangyu@ssosch.com', '其实我是来看下冷水机的', '2017-05-08 06:55:17'),
+(10, 'dddf', '18632363993', '231232@qq.com', 'ddf', '2017-07-10 03:10:59');
 
 -- --------------------------------------------------------
 
@@ -236,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `web_set` (
 --
 
 INSERT INTO `web_set` (`id`, `address`, `tel`, `phone`, `email`, `url`, `qq`, `title`, `description`, `keywords`, `inputdate`) VALUES
-(1, '北京市通州区张家湾垡头村', '010-65407746', '13311115810', 'ssoschbeijing@sina.com', 'www.ssosch.com', '601916409', '弗立兹官方网站', '弗立兹德国工业技术专业生产冷水设备', '弗立兹官网,弗立兹,冷水机,冷水设备', '2017-06-16 01:35:06');
+(1, '北京市通州区张家湾垡头村', '010-65407746', '13311115810', 'ssoschbeijing@sina.com', 'www.ssosch.com', '601916409', '弗立兹官方网站', '弗立兹德国工业技术专业生产冷水设备', '弗立兹官网,弗立兹,冷水机,冷水设备', '2017-07-07 10:12:37');
 
 -- --------------------------------------------------------
 
