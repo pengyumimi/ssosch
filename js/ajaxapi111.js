@@ -36,26 +36,16 @@
 				console.log(data);
 				if(data) {
 					$(".indexPimg").html('');
-          _html1 = '<div class="indexPp"><a href="products.html?id=0"><img src="'+data[0].img_src+'"/><h3>'+data[0].title+'</h3</a></div>';
-          _html2 = '<div class="indexPp"><a href="products.html?id=3"><img src="'+data[1].img_src+'"/><h3>'+data[1].title+'</h3</a></div>';
-          _html3 = '<div class="indexPp"><a href="products.html?id=2"><img src="'+data[2].img_src+'"/><h3>'+data[2].title+'</h3</a></div>';
-          _html4 = '<div class="indexPp"><a href="products.html?id=1"><img src="'+data[3].img_src+'"/><h3>'+data[3].title+'</h3</a></div>';
-          _html5 = '<div class="indexPp"><a href="products.html?id=4"><img src="'+data[4].img_src+'"/><h3>'+data[4].title+'</h3</a></div>';
-          $(".Pimg1").append(_html1);
-          $(".Pimg1").append(_html2);
-          $(".Pimg2").append(_html3);
-          $(".Pimg2").append(_html4);
-          $(".Pimg2").append(_html5);
-          //for(var key in data){
-           //             _html = '<div class="indexPp"><a href="'+data[key].link+'"><img src="'+data[key].img_src+'"/><h3>'+data[key].title+'</h3</a></div>'
-					//	//_html = '<tr><td style=" text-align:center"><input class="vid" type="hidden" value="'+data[key].id+'"/><input class="form-control short t_center inline_block" type="text" value="'+data[key].paixu+'" name="paixu"/></td><td><img class="adminimg_s imgs" src="'+data[key].img_src+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="'+data[key].title+'" name="title"/></td><td><button type="submit" class="btn btn-primary" onclick="saveeditindexpro(this)">修改</button></td></tr>';
-					//	$(".indexPimg").append(_html);
-					//}
+					for(var key in data){
+                        _html = '<div class="indexPp"><a href="'+data[key].link+'"><img src="'+data[key].img_src+'"/><h3>'+data[key].title+'</h3</a></div>'
+						//_html = '<tr><td style=" text-align:center"><input class="vid" type="hidden" value="'+data[key].id+'"/><input class="form-control short t_center inline_block" type="text" value="'+data[key].paixu+'" name="paixu"/></td><td><img class="adminimg_s imgs" src="'+data[key].img_src+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></td><td><input class="form-control inline_block" type="text" value="'+data[key].title+'" name="title"/></td><td><button type="submit" class="btn btn-primary" onclick="saveeditindexpro(this)">修改</button></td></tr>';
+						$(".indexPimg").append(_html);
+					}
 				}
 			}
 		});
 	};
-indexpro_list();
+//indexpro_list();
 
 //合作伙伴
 function hzhb_list(){
