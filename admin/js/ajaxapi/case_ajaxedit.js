@@ -24,8 +24,6 @@ function products_list(selecter,url){
                         //console.log(imglist+"<br>");
                         $("#imgitem"+listid+"").append(imglist);
                     }
-                    //var _html = '<div class="caseitem"><input name="id" type="hidden" value="'+data[key].id+'"><div class="name_item">产品主题</div><input name="title" class="form-control data_show" placeholder="产品主题" value="'+data[key].title+'"><div class="name_item"><p>图一</p><img class="adminimg_s imgs" src="'+data[key].img_src1+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图二</p><img class="adminimg_s imgs" src="'+data[key].img_src2+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图三</p><img class="adminimg_s imgs" src="'+data[key].img_src3+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图四</p><img class="adminimg_s imgs" src="'+data[key].img_src4+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item"><p>图五</p><img class="adminimg_s imgs" src="'+data[key].img_src5+'" proportion="16/9" data-toggle="modal" data-target=".avatar-modal" name="img" onclick="imgset(this)"></div><div class="name_item" style="display:block">产品说明</div><textarea name="txt" class="form-control data_show" placeholder="产品说明" value="">'+data[key].txt+'</textarea><button type="submit" class="btn btn-primary" onclick="edit(this)">修改</button></div>';
-
                 }
             }
         }
@@ -63,7 +61,7 @@ function edit(_this){
 };
 
 function delthisimg(_id,_index,_url){
-    _id = _id.substring(7);
+    _id = _id.substring(7);//截取到真实id
 	var data={delid:_id,index:_index}
 	$.ajax({
         url: _url,
@@ -71,8 +69,19 @@ function delthisimg(_id,_index,_url){
         type: "POST",
         dataType: 'json',
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             if(data.result == '1') {
+                var imgsrcs = data.msg[0].imgs_src;
+                //console.log(typeof(imgsrcs));
+                var result=imgsrcs.split(",");
+                var imgarray=[];
+                for(var i=0;i<result.length;i++){
+                    imgarray[i] = result[i];//赋值到数组
+                };
+                imgarray.splice(_index,1);//删除数组中相应的项
+                var imgsrcstr = imgarray.join(",");//新数组合并为字符串
+                console.log(imgsrcstr);
+                update(_id,imgsrcstr,"controller/case_del_update.php");//执行更新操作
                 //$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
                 //function() { setTimeout('products_list(".productset","controller/products_list.php");', 200);
                 //});
@@ -80,6 +89,24 @@ function delthisimg(_id,_index,_url){
         }
     });
 }
+
+function update(_id,_imgs_src,_url){
+
+    var data={delid:_id,imgs_src:_imgs_src};
+    $.ajax({
+        url: _url,
+        data: data,
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data.result == 1){
+                products_list(".caseset","controller/case_list.php");
+            }
+        }
+    });
+}
+
 
 //删除当前图片
 function removethis(obj){

@@ -164,6 +164,40 @@ function swhz(){
 };
 //swhz();
 
+
+//友情链接
+function case_list(){
+    $.ajax({
+        url: "admin/controller/case_list.php",
+        data: "",
+        type: "POST",
+        dataType: 'json',
+        success: function(data) {
+            console.log(data);
+            if(data) {
+                $(".case_imgs").html('');
+                for(var key in data){
+                    var title = data[key].title;
+                    var txt = data[key].txt;
+                    var listid = data[key].id;
+                    var imgs_src = data[key].imgs_src;
+                    var imgs_src = imgs_src.split(",");
+                    _html = '<div class="row m_bottom_30" id="imgitem'+listid+'"><div class="col-md-12"><ul class="case_list"></ul></div></div>';
+                    $(".case_imgs").append(_html);
+                    //console.log(_html);
+
+                    for(var img in imgs_src){
+                        var imglist = '<li class="col-p20"><img class="thumbnail img-responsive" src="'+imgs_src[img]+'"/></li>';
+                        //console.log(imglist+"<br>");
+                        $("#imgitem"+listid+"").find(".case_list").append(imglist);
+                    }
+                }
+            }
+        }
+    });
+};
+
+
 	//编辑幻灯片保存
 //	function saveedithdp(_this){
 //		var selecter = $(_this).parents("tr");
