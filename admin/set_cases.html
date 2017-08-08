@@ -23,8 +23,10 @@
     .name_item{display: inline-block;margin:10px;vertical-align: middle}
 	textarea{height: 26em !important;}
 	.caselist{list-style:none;overflow:hidden;margin: 0;padding: 10px 5px;background:#f3f0f0;}
-	.caselist li{list-style:none;float:left;width:160px;height:100px;margin:10px;}
+	.caselist li{position:relative;list-style:none;float:left;width:160px;height:100px;margin:10px;}
 	.caselist li img{width:100%;height:100%;}
+	.caselist li .fa {position: absolute;top: -15px;right: -10px;font-size: 24px;color: #ff5a5a;font-weight: 300;display: none;cursor: pointer;}
+	.caselist li:hover .fa{display:block}
 </style>
 </head>
 
