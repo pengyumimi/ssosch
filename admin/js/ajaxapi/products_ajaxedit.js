@@ -30,7 +30,7 @@ function edit(_this){
 	var _imgs4 = selecter.children().children(".imgs:eq(3)").attr("src");
 	var _imgs5 = selecter.children().children(".imgs:eq(4)").attr("src");
     var _txt = selecter.children("textarea[name=txt]").val();
-	alert(_imgs1);
+	//alert(_imgs1);
     var data={ id:_id,title:_title,img_src1:_imgs1,img_src2:_imgs2,img_src3:_imgs3,img_src4:_imgs4,img_src5:_imgs5,txt:_txt };
     $.ajax({
         url: "controller/products_edit.php",

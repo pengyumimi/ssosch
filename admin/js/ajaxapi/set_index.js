@@ -36,10 +36,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("hdplist()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}
 			}
 		});
@@ -65,10 +62,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("hdplist()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}else{
 					alert(data.msg);
 				}
@@ -119,10 +113,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("indexpro_list()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}
 			}
 		});
@@ -150,10 +141,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("hzhb_list()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}else{
 					alert(data.msg);
 				}
@@ -199,10 +187,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("hdplist()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}
 			}
 		});
@@ -236,10 +221,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("yqlj_list()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}else{
 					alert(data.msg);
 				}
@@ -285,10 +267,7 @@
 			success: function(data) {
 				console.log(data);
 				if(data.result == '1') {
-					$('.tip').html("<span>" + data.msg + "</span>").fadeIn(0).delay(1500).fadeOut("slow",
-					function() {
-						setTimeout("hdplist()", 200);
-					});
+                    $('.tip').html(data.msg).stop(true,false).fadeIn(0).delay(1000).fadeOut("slow");
 				}
 			}
 		});
