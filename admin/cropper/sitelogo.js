@@ -200,16 +200,18 @@
 					aspectRatio: proportion,//设置比例变量 16/9
 					preview: this.$avatarPreview.selector,
 					strict: false,
-//					crop: function(data) {
-//						var json = [
-//							'{"x":' + data.x,
-//							'"y":' + data.y,
-//							'"height":' + data.height,
-//							'"width":' + data.width,
-//							'"rotate":' + data.rotate + '}'
-//						].join();
-//						_this.$avatarData.val(json);
-//					}
+                    background: true,
+                    autoCropArea: 0.8,
+					crop: function(data) {
+						var json = [
+							'{"x":' + data.x,
+							'"y":' + data.y,
+							'"height":' + data.height,
+							'"width":' + data.width,
+							'"rotate":' + data.rotate + '}'
+						].join();
+						_this.$avatarData.val(json);
+					}
 				});
 
 				this.active = true;

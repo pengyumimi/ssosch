@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac7fee89-8879-4ca4-8a6e-fed7330d131b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/upload/0207574.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/upload/04084069.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js" afterPath="$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/js/ajaxapi/products_ajaxedit.js" afterPath="$PROJECT_DIR$/admin/js/ajaxapi/products_ajaxedit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/js/ajaxapi/set_index.js" afterPath="$PROJECT_DIR$/admin/js/ajaxapi/set_index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/set_cases.html" afterPath="$PROJECT_DIR$/admin/set_cases.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admin/cropper/sitelogo.js" afterPath="$PROJECT_DIR$/admin/cropper/sitelogo.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,26 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1330">
-              <caret line="70" column="28" lean-forward="false" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="products.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/products.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,21 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="set_products.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/set_products.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="174" column="39" lean-forward="false" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="products_ajaxedit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/products_ajaxedit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+            <state relative-caret-position="395">
+              <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
               <folding>
                 <marker date="1502263869194" expanded="true" signature="1565:1578" ph="..." />
               </folding>
@@ -84,8 +49,8 @@
       <file leaf-file-name="set_index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/set_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="628" column="28" lean-forward="false" selection-start-line="628" selection-start-column="28" selection-end-line="628" selection-end-column="28" />
+            <state relative-caret-position="345">
+              <caret line="625" column="30" lean-forward="false" selection-start-line="625" selection-start-column="30" selection-end-line="625" selection-end-column="30" />
               <folding>
                 <element signature="n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -93,12 +58,34 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="cropper.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/cropper/cropper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2755">
+              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/cropper/upload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="26" />
+            <state relative-caret-position="262">
+              <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="html2canvas.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/admin/cropper/html2canvas.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-20852">
+              <caret line="745" column="0" lean-forward="false" selection-start-line="745" selection-start-column="0" selection-end-line="745" selection-end-column="0" />
+              <folding>
+                <element signature="e#22616#27492#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,8 +93,8 @@
       <file leaf-file-name="set_index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/set_index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="64" column="100" lean-forward="true" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="100" />
+            <state relative-caret-position="291">
+              <caret line="64" column="100" lean-forward="false" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="100" />
               <folding>
                 <marker date="1502248655643" expanded="true" signature="281:299" ph="..." />
                 <marker date="1502248655643" expanded="true" signature="1789:1806" ph="..." />
@@ -124,18 +111,30 @@
       <file leaf-file-name="set_cases.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/set_cases.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="47" lean-forward="false" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+            <state relative-caret-position="103">
+              <caret line="213" column="35" lean-forward="false" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="case_ajaxedit.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sitelogo.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/cropper/sitelogo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="627">
+              <caret line="96" column="47" lean-forward="true" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+              <folding>
+                <marker date="1502270144094" expanded="true" signature="7273:7280" ph="×" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="case_ajaxedit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="113" column="33" lean-forward="true" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+            <state relative-caret-position="201">
+              <caret line="113" column="33" lean-forward="false" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
               <folding>
                 <element signature="n#!!block;n#edit#0" expanded="false" />
                 <marker date="1502268979999" expanded="true" signature="626:646" ph="..." />
@@ -152,13 +151,19 @@
     <findStrings>
       <find>relative</find>
       <find>182px</find>
-      <find>getCroppedCanvas</find>
       <find>imgsrc</find>
       <find>imgsnum</find>
       <find>_thisimg</find>
       <find>alert</find>
-      <find>tip</find>
       <find>imgnum</find>
+      <find>cropper</find>
+      <find>真实</find>
+      <find>width</find>
+      <find>getCroppedCanvas</find>
+      <find>tip</find>
+      <find>canvas</find>
+      <find>182</find>
+      <find>rebeccapurple</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -190,6 +195,7 @@
         <option value="$PROJECT_DIR$/admin/set_cases.html" />
         <option value="$PROJECT_DIR$/admin/js/ajaxapi/products_ajaxedit.js" />
         <option value="$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js" />
+        <option value="$PROJECT_DIR$/admin/cropper/sitelogo.js" />
       </list>
     </option>
   </component>
@@ -248,13 +254,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssosch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ssosch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cropper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../WI-website/wi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -343,12 +367,12 @@
       <workItem from="1497338230965" duration="15524000" />
       <workItem from="1497408484609" duration="240000" />
       <workItem from="1502193230471" duration="1012000" />
-      <workItem from="1502245235151" duration="15320000" />
+      <workItem from="1502245235151" duration="19197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32096000" />
+    <option name="totallyTimeSpent" value="35973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -396,32 +420,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/admin/set_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10184">
-          <caret line="628" column="28" lean-forward="false" selection-start-line="628" selection-start-column="28" selection-end-line="628" selection-end-column="28" />
-          <folding>
-            <element signature="n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cropper/upload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="46" column="40" lean-forward="false" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/set_cases.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3515">
-          <caret line="185" column="0" lean-forward="true" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -586,13 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cropper/cropper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2657" column="20" lean-forward="false" selection-start-line="2657" selection-start-column="4" selection-end-line="2657" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/cropper/sitelogo.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -607,13 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cropper/html2canvas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="938" column="5" lean-forward="false" selection-start-line="938" selection-start-column="5" selection-end-line="938" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/controller/hdp_del.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -625,13 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/controller/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -678,26 +655,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/ajaxapi.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1330">
-          <caret line="70" column="28" lean-forward="false" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -709,14 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cropper/sitelogo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/controller/upload-logo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -725,20 +678,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/controller/case_list.php" />
-    <entry file="file://$PROJECT_DIR$/admin/set_index.html">
+    <entry file="file://$PROJECT_DIR$/admin/set_products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="628" column="28" lean-forward="false" selection-start-line="628" selection-start-column="28" selection-end-line="628" selection-end-column="28" />
+        <state relative-caret-position="209">
+          <caret line="174" column="39" lean-forward="false" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/products_ajaxedit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="36" column="19" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
           <folding>
-            <element signature="n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1502263869194" expanded="true" signature="1565:1578" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/cropper/upload.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="48" column="26" lean-forward="false" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="26" />
+        <state relative-caret-position="19">
+          <caret line="70" column="28" lean-forward="false" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="55" lean-forward="false" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -751,28 +720,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/set_products.html">
+    <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="174" column="39" lean-forward="false" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
+        <state relative-caret-position="201">
+          <caret line="113" column="33" lean-forward="false" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!block;n#edit#0" expanded="false" />
+            <marker date="1502268979999" expanded="true" signature="626:646" ph="..." />
+            <marker date="1502268979999" expanded="true" signature="707:722" ph="..." />
+            <marker date="1502268979999" expanded="true" signature="930:942" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/controller/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/products_ajaxedit.js">
+    <entry file="file://$PROJECT_DIR$/admin/js/bootstrap-datepicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+        <state relative-caret-position="-30">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1502263869194" expanded="true" signature="1565:1578" ph="..." />
+            <element signature="n#!!doc" expanded="false" />
+            <marker date="1496717338108" expanded="true" signature="17352:17358" ph=" " />
+            <marker date="1496717338108" expanded="true" signature="45055:45062" ph="«" />
+            <marker date="1496717338108" expanded="true" signature="45155:45162" ph="»" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cropper/html2canvas.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cropper/sitelogo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="96" column="47" lean-forward="true" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+          <folding>
+            <marker date="1502270144094" expanded="true" signature="7273:7280" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/set_cases.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="213" column="35" lean-forward="false" selection-start-line="213" selection-start-column="35" selection-end-line="213" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/set_index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="64" column="100" lean-forward="true" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="100" />
+        <state relative-caret-position="291">
+          <caret line="64" column="100" lean-forward="false" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="100" />
           <folding>
             <marker date="1502248655643" expanded="true" signature="281:299" ph="..." />
             <marker date="1502248655643" expanded="true" signature="1789:1806" ph="..." />
@@ -785,23 +798,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/set_cases.html">
+    <entry file="file://$PROJECT_DIR$/admin/set_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="47" lean-forward="false" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+        <state relative-caret-position="345">
+          <caret line="625" column="30" lean-forward="false" selection-start-line="625" selection-start-column="30" selection-end-line="625" selection-end-column="30" />
+          <folding>
+            <element signature="n#div#3;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cropper/cropper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2755">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/js/ajaxapi/case_ajaxedit.js">
+    <entry file="file://$PROJECT_DIR$/admin/cropper/html2canvas.minbak.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="113" column="33" lean-forward="true" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+        <state relative-caret-position="2705">
+          <caret line="7" column="1870" lean-forward="false" selection-start-line="7" selection-start-column="1870" selection-end-line="7" selection-end-column="1870" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cropper/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="29" column="19" lean-forward="false" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/cropper/html2canvas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20852">
+          <caret line="745" column="0" lean-forward="false" selection-start-line="745" selection-start-column="0" selection-end-line="745" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#edit#0" expanded="false" />
-            <marker date="1502268979999" expanded="true" signature="626:646" ph="..." />
-            <marker date="1502268979999" expanded="true" signature="707:722" ph="..." />
-            <marker date="1502268979999" expanded="true" signature="930:942" ph="..." />
+            <element signature="e#22616#27492#0" expanded="false" />
           </folding>
         </state>
       </provider>
