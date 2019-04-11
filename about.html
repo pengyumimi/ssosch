@@ -166,26 +166,47 @@
 	<script src="js/ajaxapi.js"></script>
 	<script>
 		$(document).ready(function() {
+		    var mapJson = [
+				{_getLng:"116.721332",_getLat:"39.794823",_hotelname:"北京弗立兹",_hoteltell:"010-65407746"},
+				{_getLng:"116.279811",_getLat:"39.938985",_hotelname:"西木学堂",_hoteltell:"010-52902109"},
+			];
+		    console.log(mapJson[0]._getLng);
+
 			//地图接口115.292824,40.980855
-		var _getLng = "116.721332";//经度,
-		var _getLat = "39.794823";//纬度
-		var _hotelname = "北京弗立兹";//酒店名
-		var _hoteltell = "010-65407746";//电话号
-	    var map = new AMap.Map('container', {
-	        resizeEnable: true,
-	        zoom:10,//缩放级别
-	        center: [_getLng,_getLat],//所在点标注位置
-	    });
-	    //地图设置标注点显示
-        var marker = new AMap.Marker({  
-            position: map.getCenter()  
-        });
-        marker.setMap(map);
-        marker.setTitle("北京弗立兹");//设置鼠标划过点标记显示的文字提示
-        marker.setLabel({  
-            offset: new AMap.Pixel(20,-30),//显示位置偏移量
-            content: "<div class='map_bz'>"+_hotelname+"</br><span class='c_r'>联系电话："+_hoteltell+"</span></div>",//标注提示框显示内容
-        });
+			/*var _getLng = "116.721332";//经度,
+			var _getLat = "39.794823";//纬度
+			var _hotelname = "北京弗立兹";//酒店名
+			var _hoteltell = "010-65407746";//电话号*/
+			for(var i=0;i<mapJson.length;i++){
+                var map = new AMap.Map('container', {
+                    resizeEnable: true,
+                    zoom:10,//缩放级别
+                    center: [mapJson[i]._getLng,mapJson[i]._getLat],//所在点标注位置
+                });
+                //地图设置标注点显示
+                var marker = new AMap.Marker({
+                    position: map.getCenter()
+                });
+                marker.setMap(map);
+                marker.setTitle(mapJson[i]._hotelname);//设置鼠标划过点标记显示的文字提示
+                marker.setLabel({
+                    offset: new AMap.Pixel(20,-30),//显示位置偏移量
+                    content: "<div class='map_bz'>"+mapJson[i]._hotelname+"</br><span class='c_r'>联系电话："+mapJson[i]._hoteltell+"</span></div>",//标注提示框显示内容
+                });
+			}
+
+
+			//地图设置标注点显示
+			/*var marker2 = new AMap.Marker({
+				position: map.getCenter()
+			});
+			marker2.setMap(map);
+			marker2.setTitle("北京弗立兹");//设置鼠标划过点标记显示的文字提示
+			marker2.setLabel({
+				offset: new AMap.Pixel(20,-30),//显示位置偏移量
+				content: "<div class='map_bz'>"+_hotelname+"</br><span class='c_r'>联系电话1："+_hoteltell+"</span></div>",//标注提示框显示内容
+			});*/
+
 		});
 	</script>
 </body>

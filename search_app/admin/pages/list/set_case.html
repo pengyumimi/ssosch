@@ -1,0 +1,456 @@
+
+<div ng-controller="caseController">
+	<div class="row">
+		<ol class="breadcrumb">
+			<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+			<li class="active">保函系统设置</li>
+		</ol>
+	</div><!--/.row-->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">保函系统列表</h1>
+		</div>
+	</div><!--/.row-->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">保函系统列表设置<button type="submit" class="btn btn-primary right" ng-click="modal_add()">新增</button></div>
+				<div class="panel-body">
+					<div class="bootstrap-table">
+						<div class="fixed-table-toolbar"></div>
+						<div class="fixed-table-container">
+							<div class="fixed-table-body">
+								<div class="fixed-table-loading" style="top: 37px; display: none;">
+									Loading, please wait…
+								</div>
+
+								<!--对接datatable-->
+								<div class="wi-tablebox table-responsive">
+									<form class="form-inline">
+
+										<table id="dataTable" class="table table-striped wi-table">
+											<thead>
+											<tr>
+												<th>序号</th>
+												<th>保函名称</th>
+												<th style="text-align:center;width:6em">图片缩略图</th>
+												<th style="text-align:center;width:6em">更新时间</th>
+												<th style="text-align:center;width:10em">操作</th>
+											</tr>
+											</thead>
+
+										</table>
+									</form>
+								</div>
+								<!--对接datatable-->
+							</div>
+							<div class="fixed-table-pagination"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+    appModule.controller('caseController', ['$scope', '$http', '$uibModal', 'apiService', 'DTOptionsBuilder', '$compile', function($scope, $http, $uibModal, apiService,DTOptionsBuilder,$compile) {
+
+        $scope.list = [];
+        $scope.Num = 1;
+        $scope.maxNum = 20;
+        $scope.pid = 5;//保函系统id
+        $scope.type = {
+            get: 1,
+            add: 2,
+            edit: 3,
+            del: 4
+        };
+
+        // 列表渲染
+        $scope.getList = function () {
+            var _url = "controller/case.php?type="+$scope.type.get;
+            apiService.queryAPI(_url, '', function (data) {
+                if (data) {
+                    console.log(data);
+                    var dataList = data.data;
+                    if(dataList.length > 0){
+                        $scope.list = dataList;
+                        //datatables数据渲染
+                        var dataListItemsIndex = 1;
+                        var options = getDefaultTableOption({
+                            "data": $scope.list,
+                            "columns": [
+                                {data: 'paixu'},
+                                {data: 'title'},
+                                {data: 'img_src'},
+                                {data: 'inputdate'},
+                                {data: 'id'}
+                            ],
+                            "aoColumnDefs": [
+                                {
+                                    "aTargets": [0,3],
+                                    "mRender": function (data) {
+                                        if (data) {
+                                            return data;
+                                        } else {
+                                            return data = '--';
+                                        }
+                                    }
+                                },
+                                {
+                                    "aTargets": [1],
+                                    "mRender": function (data) {
+                                        if (data) {
+                                            return '<p class="ellipsis text-left" style="width:30em">'+data+'</p>';
+                                        } else {
+                                            return data = '--';
+                                        }
+                                    }
+                                },
+                                {
+                                    "aTargets": [2],
+                                    "mRender": function (data) {
+                                        if (data) {
+                                            data = data.slice(3);
+                                            return '<img src="'+data+'" style="width:46px"/>';
+                                        } else {
+                                            return data = '--';
+                                        }
+                                    }
+                                },
+                                {
+                                    "aTargets": [-1],//操作最后一列
+                                    "mRender": function (data,type,nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                                        if (data) {
+                                            return '<button type="submit" class="btn btn-primary" ng-click="modal_add(&quot;'+data+'&quot;,&quot;'+data+'&quot;)">修改</button><button type="submit" class="btn btn-danger" ng-click="delList(&quot;'+data+'&quot;)">删除</button>';
+                                        } else {
+                                            return data = '--';
+                                        }
+                                    },
+                                    "fnCreatedCell": function (nTd,sData) {
+                                        $compile(nTd,sData)($scope);//加载完成后重新注册$scope,不然的话按钮无法点击
+                                    }
+                                }
+                            ]
+                        });
+                        $('#dataTable').DataTable(options);
+                    }
+                }
+            }, function () {
+                // tip("");
+            });
+        };
+        $scope.getList();
+
+        // 删除操作
+        $scope.delList = function (_id) {
+            if (_id) {
+                if (confirm("删除操作不可恢复，确认删除吗？")) {
+                    var datas = {"id": _id};
+                    datas = $.param(datas);
+                    var _url = "controller/case.php?type="+$scope.type.del;
+                    apiService.queryAPI(_url, datas, function (data) {
+                        if (data) {
+                            // console.log(data);
+                            tip(data.data.msg);
+                            $scope.getList();
+                        }
+                    }, function () {
+
+                    });
+                } else {
+                    return false;
+                }
+            }
+        };
+
+        //新增||修改-modal
+        $scope.modal_add = function (_this,_id) {
+            var changeItem = containsJson($scope.list,'id', _this);
+            if(_id){
+                $scope.datas = changeItem;
+                $scope.modalType = {
+                    type: 2,
+                    title: "修改"
+                };
+            }else{
+                $scope.datas = {
+                    id: "",
+                    pid: $scope.pid,
+                    paixu: 0,
+                    title: "",
+                    casetype: "",
+                    description: "",
+                    link: "",
+                    img_src: "",
+                    txt: ""
+                };
+                $scope.modalType = {
+                    type: 1,
+                    title: "添加"
+                }
+            }
+            //这里很关键,是打开模态框的过程
+            var modalInstance = $uibModal.open({
+                animation: true,//打开时的动画开关
+                templateUrl: 'pages/modal/article-case.html',//模态框的页面内容,这里的url是可以自己定义的,也就意味着什么都可以写
+                controller: 'articleController',//这是模态框的控制器,是用来控制模态框的
+                size: 'normal',//模态框的大小尺寸
+                backdrop:'static',
+                resolve: {//这是一个入参,这个很重要,它可以把主控制器中的参数传到模态框控制器中
+                    modalData: function () {//items是一个回调函数
+                        return $scope.datas;//这个值会被模态框的控制器获取到
+                    },
+                    modalType: function () {
+                        return $scope.modalType
+                    }
+                }
+            });
+            //接收模态框返回值
+            modalInstance.result.then(function (selectedItem) {
+                $scope.getList();
+                window.location.reload();
+                if (selectedItem.length > 1) {
+                } else {
+                }
+            }, function () {
+
+            });
+
+        };
+
+
+        //模态框控制器
+        appModule.controller('articleController', ['$scope', '$http', 'apiService', '$uibModal', '$uibModalInstance', 'modalData','modalType', function ($scope, $http, apiService, $uibModal, $uibModalInstance, modalData, modalType) {
+            $scope.image = '';
+            $scope.pid = 5;//保函系统id
+            $scope.nosubmit = true;
+            $scope.modalTitle = modalType.title;
+            $scope.datas = "";
+            $scope.type = {
+                get: 1,
+                add: 2,
+                edit: 3,
+                del: 4
+            };
+            //取消添加关闭模态框
+            $scope.close = function () {
+                $uibModalInstance.close(1);
+            };
+
+            if(modalData.id){
+                $scope.datas = modalData;
+                $scope.imgShow = $scope.datas.img_src.slice(3);
+            }else{
+                $scope.datas = {
+                    id: "",
+                    pid: $scope.pid,
+                    paixu: 0,
+                    title: "",
+                    img_src: ""
+                };
+            }
+
+            //提交表单
+            $scope.submitData = function () {
+                $scope.nosubmit = false;
+                var img_src = $("#imgsrcs").val();
+                console.log(img_src)
+                if(img_src){
+                    $scope.datas.img_src = img_src;
+                }
+                var datas = {"id":$scope.datas.id,"pid":$scope.datas.pid,"paixu":$scope.datas.paixu,"title":$scope.datas.title,"img_src":$scope.datas.img_src};
+                console.log(datas);
+                datas = $.param(datas);
+                // console.log(datas);
+                var _url = "";
+                if(modalData.id){
+                    _url = "controller/case.php?type="+$scope.type.edit;
+                }else{
+                    _url = "controller/case.php?type="+$scope.type.add;
+                }
+                apiService.queryAPI(_url, datas, function (data) {
+                    if (data) {
+                        // console.log(data);
+                        tip(data.data.msg);
+                        if(data.data.result == 1){
+                            $uibModalInstance.close(1);
+                        }else{
+                            $scope.nosubmit = true;
+                        }
+                    }else{
+                        tip(data.data.msg);
+                    }
+                }, function () {
+
+                });
+            };
+
+            //取消添加关闭模态框
+            $scope.close = function () {
+                $uibModalInstance.close(1);
+            };
+
+            //angular 图片上传改造
+            var imgSrc = []; //图片路径
+            var imgFile = []; //文件流
+            var imgName = []; //图片名字
+            var imgBase64 = []; //图片Base64数据
+            var thisObj = ''; //当前焦点
+            //选择图片
+            var maxnum = 1;
+            // 上传按钮
+
+            $scope.uploadImage = function () {
+                var _this = $(".changeImg");
+                // console.log(_this);
+                var fileImg = _this[0];
+                // console.log(fileImg);
+                var fileList = fileImg.files;
+                $scope.$apply(function () {
+                    $scope.datas.title = splitFileName(fileList[0].name);
+                });
+
+
+                var changeNum = fileList.length;
+                var newImgSrc = [];
+                var newImgBase64 = [];
+                if(fileList.length > maxnum ){
+                    $('.tip').html("图片最多上传"+maxnum+"张").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+                    return false;
+                }else{
+                    for(var i = 0; i < fileList.length; i++) {
+                        var imgSrcI = getObjectURL(fileList[i]);
+                        // console.log(imgSrcI);
+                        imgName.push(fileList[i].name);
+                        // console.log(imgName);
+
+                        imgSrc.push(imgSrcI);
+                        newImgSrc.push(imgSrcI);
+                        //console.log(imgSrc);
+                        imgFile.push(fileList[i]);
+                        //console.log(fileList[i]);//获得file对象
+                        //先将图片进行base64位转换，然后倒序构建imgBase64数组，相当于异步执行then中的代码
+                        // console.log(fileList[i]);
+                        base64Data(fileList[i]).then(function(result){
+                            // console.log(imgBase64);
+                            imgBase64.push(result);
+                            newImgBase64.push(result);
+                        })
+                    }
+                }
+
+                setTimeout(function () {
+                    addNewContent(_this.parent(),newImgSrc,newImgBase64);
+                    uploadIMgs(_this);
+                }, 200);
+
+                //uploadnow(obj);
+            };
+
+            //图片展示
+            function addNewContent(obj,newImgSrc,newImgBase64) {
+                // console.log(newImgBase64);
+                for(var a = 0; a < newImgSrc.length; a++) {
+                    $(obj).before('<div class="imgContainer"><img title=' + imgName[a] + ' src=' + newImgSrc[a] + ' imgtype=' + imgFile[a].type + ' imgsize=' + imgFile[a].size + ' base64data=' + newImgBase64[a] + ' onclick="imgDisplay(this)"><p onclick="removeImg(this)" class="imgDelete">X</p></div>');
+                }
+            }
+
+            //删除
+            function removeImg(_this) {
+                var delindex = $(_this).parent().index();
+                $(_this).parent().remove();
+                imgBase64.splice(delindex, 1);
+                // console.log(1);
+                document.getElementById("upBox").reset()
+            }
+
+            //上传(将文件流数组传到后台)
+            function uploadIMgs(_this) {
+                // 添加图片的上传
+                var imgData = [];
+                var item = {
+                    "name":"",
+                    "size":"",
+                    "type":"",
+                    "base64Data":""
+                };
+                _this.parents(".pcimgBox").find(".imgContainer").each(function (index) {
+                    item = {
+                        "name":$(this).children("img").attr("title"),
+                        "size":$(this).children("img").attr("imgsize"),
+                        "type":$(this).children("img").attr("imgtype"),
+                        "base64Data":$(this).children("img").attr("base64data")
+                    };
+                    imgData.push(item);
+                });
+                console.log(imgData);
+
+                //图片上传
+                $.ajax({
+                    type: "post",
+                    url: "../admin/controller/upload-base64img.php",
+                    dataType: "json",
+                    data: {'imgData':imgData},
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+                        console.log("图片上传返回值");
+                        console.log(data);
+                        _this.parents("form").find(".imgsrcs").val(data.src);
+                    },
+                    error: function () {
+                        $('.tip').html("上传失败,刷新重试").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+                    }
+                });
+            }
+
+            //图片灯箱
+            function imgDisplay(obj) {
+                var src = $(obj).attr("src");
+                var imgHtml = '<div style="width: 100%;height: 100vh;overflow: auto;background: rgba(0,0,0,0.5);text-align: center;position: fixed;top: 0;left: 0;z-index: 1000;"><img src=' + src + ' style="margin-top: 100px;width: 70%;margin-bottom: 100px;"/><p style="font-size: 50px;position: fixed;top: 30px;right: 30px;color: white;cursor: pointer;" onclick="closePicture(this)">×</p></div>';
+                $('body').append(imgHtml);
+            }
+            //关闭
+            function closePicture(obj) {
+                $(obj).parent("div").remove();
+            }
+
+            //图片预览路径 blob
+            function getObjectURL(file) {
+                var url = null;
+                if(window.createObjectURL != undefined) { // basic
+                    url = window.createObjectURL(file);
+                } else if(window.URL != undefined) { // mozilla(firefox)
+                    url = window.URL.createObjectURL(file);
+                } else if(window.webkitURL != undefined) { // webkit or chrome
+                    url = window.webkitURL.createObjectURL(file);
+                }
+                return url;
+            }
+
+            //file对象转base64格式
+            function base64Data(files){
+                return new Promise(function(resolve, reject) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(files);
+                    reader.onload = function (e){
+                        //console.log(this.result);
+                        resolve(this.result)
+                    }
+                })
+            }
+
+
+
+
+        }]);
+
+    }])
+
+</script>

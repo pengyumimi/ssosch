@@ -1,0 +1,75 @@
+/*自定义css*/
+
+.my-page {
+    opacity: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.main-btn {
+    background-color: #d8b219;
+}
+
+.main-btn:not(.weui-btn_disabled):active {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: #b99917;
+}
+
+h3 {
+    color: #333;
+    font-size: 16px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.errortip {
+    visibility: hidden;
+    color: #b53131;
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.tip {
+    position: fixed;
+    display: none;
+    width: 180px;
+    height: 80px;
+    background: rgba(0, 0, 0, .8);
+    color: #fff;
+    font: normal 16px/80px 'Microsoft Yahei';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    border-radius: 5px;
+    display: none;
+    z-index: 99999;
+}
+.sc-color{
+    color: #1AAD19;
+}
+.kj-color{
+    color: #d8b219;
+}
+input:disabled, textarea:disabled {
+    color: #999;
+    cursor: default;
+}
+.close-upimg{
+    cursor: pointer;
+}
+.upload-progress{
+    font-size: 12px;
+    color: green;
+    text-align: right;
+}
+[v-clock]{
+    display: none;
+}

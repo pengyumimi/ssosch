@@ -1,0 +1,149 @@
+html{
+    height: 100%;
+}
+.index{
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 80px 15px 20px;
+    background: #80d8f7;
+}
+.index h1{
+    margin-bottom: 30px;
+}
+.search-box{
+    font-size: 0;
+}
+.search-box .search-input{
+    height: 36px;
+    line-height: 36px;
+    -webkit-appearance: none;
+    border: 1px solid #0a84c1;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: 18px;
+    outline: none;
+    padding: 0 15px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+    width: 60%;
+    background: #fff;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-right: 0;
+    margin-right: -3px;
+}
+.search-box button{
+    position: relative;;
+    height: 36px;
+    line-height: 36px;
+    width: 40%;
+    background: #0a84c1;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 1px solid #0a84c1;
+    border-left: 0;
+    border-radius: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding-left: 26px;
+    cursor: pointer;
+}
+.search-box i{
+    position: absolute;
+    left: 4px;
+    top: 0px;
+}
+.fontc{
+    font-size: 14px;
+    font-weight: bold;
+    color: #24adf1;
+}
+.fontca{
+    font-size: 10px;
+    color: #fff;
+}
+.img-box {
+    position: fixed;
+    z-index: 100;
+    width: 90%;
+    height: 90%;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    background: rgba(0,0,0,0.8);
+    border-radius: 4px;
+}
+.img-box h3,.img-box p{
+    position: absolute;
+    top: 50px;
+    color: #fff;
+    display: block;
+    left: 0;
+    right: 0;
+}
+.img-box p{
+    top: auto;
+    bottom: 10px;
+    font-size: 12px;
+}
+.img-box img{
+    position: absolute;
+    top: 100px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 90%;
+    display: inline-block;
+    max-height: 85%;
+}
+.img-box i{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+/* footer */
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #323232;
+    padding: 20px 0;
+    border-top: 4px solid #0A84C1;
+    margin-left: -15px;
+}
+.foot{
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    text-align: center;
+    color: #959595;
+    font-size: 13px;
+}
+.errortip{
+    visibility: hidden;
+    color: #b53131;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 28px;
+    margin-top: 5px;
+    position: absolute;
+    line-height: 1;
+}
+
+@media (min-width: 1200px) {
+    .search-box{
+        width: 762px;
+        margin: 0 auto;
+    }
+    .img-box {
+        width: 800px;
+        height: 1000px;
+    }
+}

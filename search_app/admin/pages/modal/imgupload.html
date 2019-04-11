@@ -1,0 +1,395 @@
+
+<div class="modal-header" >
+    <button type="button" class="close close2" data-dismiss="modal" ng-click="close()" aria-hidden="true">×</button>
+    <h4 class="modal-title">
+        图片剪裁|上传
+    </h4>
+</div>
+<div id="avatar-modal" class="modal-body" style="margin:0;padding:0">
+    <!--<button class="btn btn-danger" ng-click="openUpload()">上传图片</button>-->
+
+    <!--图片剪裁-->
+        <form class="avatar-form">
+            <div class="modal-body">
+                <div class="avatar-body" style="margin:0;padding:0;">
+                    <div class="avatar-upload" style="position: absolute;right:90px;top:-45px;">
+                        <input class="avatar-src" name="avatar_src" type="hidden">
+                        <input class="avatar-data" name="avatar_data" type="hidden">
+                        <!--<label for="avatarInput" style="line-height: 35px;">图片上传</label>-->
+                        <button class="btn btn-danger"  type="button" style="height: 35px;" onclick="$('input[id=avatarInput]').click();">请选择图片</button>
+                        <span id="avatar-name"></span>
+                        <input class="avatar-input hide" id="avatarInput" name="avatar_file" type="file">
+                    </div>
+                    <div class="row" style="margin-bottom:10px;">
+                        <div class="col-md-12">
+                            <div class="avatar-wrapper" style="margin-top:0" bili="{{proportion}}"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="avatar-preview" style="margin-top:0" ng-style="{width:imgResult.width,height:imgResult.height}" id="imageHead"></div>
+                    </div>
+                    <div class="row avatar-btns">
+                        <div class="col-md-4">
+                            <div class="btn-group">
+                                <button class="btn btn-danger fa fa-undo" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"> 向左旋转</button>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn  btn-danger fa fa-repeat" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"> 向右旋转</button>
+                            </div>
+                        </div>
+                        <div class="col-md-5" style="text-align: right;">
+                            <button class="btn btn-danger glyphicon glyphicon-sound-stereo" data-method="setDragMode" data-option="move" type="button" title="移动">
+                            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;setDragMode&quot;, &quot;move&quot;)"></span>
+                            </button>
+                            <button type="button" class="btn btn-danger glyphicon glyphicon-plus" data-method="zoom" data-option="0.1" title="放大图片">
+                            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, 0.1)">
+
+                            </span>
+                            </button>
+                            <button type="button" class="btn btn-danger glyphicon glyphicon-minus" data-method="zoom" data-option="-0.1" title="缩小图片">
+                            <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;zoom&quot;, -0.1)">
+
+                            </span>
+                            </button>
+                            <button type="button" class="btn btn-danger glyphicon glyphicon-refresh" data-method="reset" title="重置图片">
+                                <span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="$().cropper(&quot;reset&quot;)" aria-describedby="tooltip866214"></span>
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-danger btn-block avatar-save fa fa-save" type="button" data-dismiss="modal"> 保存修改</button>
+                            <input type="hidden" id="imgsrc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+
+</div>
+
+<script>
+    var t=setTimeout("go()",300);
+    function  go() {
+        // console.log("hai");
+        var proportion = $('.avatar-wrapper').attr("bili");
+        // console.log(proportion);
+        // var proportion = 16/9;
+        function CropAvatar($element) {
+            this.$container = $element;
+
+            this.$avatarView = this.$container.find('.avatar-view');
+            this.$avatar = this.$avatarView.find('img');
+            this.$avatarModal = $("body").find('#avatar-modal');
+            this.$loading = $("#page-wrapper").find('.loading');
+
+            this.$avatarForm = this.$avatarModal.find('.avatar-form');
+            this.$avatarUpload = this.$avatarForm.find('.avatar-upload');
+            this.$avatarSrc = this.$avatarForm.find('.avatar-src');
+            this.$avatarData = this.$avatarForm.find('.avatar-data');
+            this.$avatarInput = this.$avatarForm.find('.avatar-input');
+            this.$avatarSave = this.$avatarForm.find('.avatar-save');
+            this.$avatarBtns = this.$avatarForm.find('.avatar-btns');
+
+            this.$avatarWrapper = this.$avatarModal.find('.avatar-wrapper');
+            this.$avatarPreview = this.$avatarModal.find('.avatar-preview');
+
+            this.init();
+        }
+
+        CropAvatar.prototype = {
+            constructor: CropAvatar,
+            support: {
+                fileList: !!$('<input type="file">').prop('files'),
+                blobURLs: !!window.URL && URL.createObjectURL,
+                formData: !!window.FormData
+            },
+
+            init: function() {
+                this.support.datauri = this.support.fileList && this.support.blobURLs;
+
+                if(!this.support.formData) {
+                    this.initIframe();
+                }
+
+                this.initTooltip();
+                this.initModal();
+                this.addListener();
+            },
+
+            addListener: function() {
+                this.$avatarView.on('click', $.proxy(this.click, this));
+                this.$avatarInput.on('change', $.proxy(this.change, this));
+                this.$avatarForm.on('submit', $.proxy(this.submit, this));
+                this.$avatarBtns.on('click', $.proxy(this.rotate, this));
+            },
+
+            initTooltip: function() {
+                this.$avatarView.tooltip({
+                    placement: 'bottom'
+                });
+            },
+
+            initModal: function() {
+                this.$avatarModal.modal({
+                    show: false
+                });
+            },
+
+            initPreview: function() {
+                var url = this.$avatar.attr('src');
+            },
+
+            initIframe: function() {
+                var target = 'upload-iframe-' + (new Date()).getTime(),
+                    $iframe = $('<iframe>').attr({
+                        name: target,
+                        src: ''
+                    }),
+                    _this = this;
+
+                // Ready ifrmae
+                $iframe.one('load', function() {
+
+                    // respond response
+                    $iframe.on('load', function() {
+                        var data;
+
+                        try {
+                            data = $(this).contents().find('body').text();
+                        } catch(e) {
+                            console.log(e.message);
+                        }
+
+                        if(data) {
+                            try {
+                                data = $.parseJSON(data);
+                            } catch(e) {
+                                console.log(e.message);
+                            }
+
+                            _this.submitDone(data);
+                        } else {
+                            _this.submitFail('Image upload failed!');
+                        }
+
+                        _this.submitEnd();
+
+                    });
+                });
+
+                this.$iframe = $iframe;
+                this.$avatarForm.attr('target', target).after($iframe.hide());
+            },
+
+            click: function() {
+                this.$avatarModal.modal('show');
+                this.initPreview();
+            },
+
+            change: function() {
+                var files,
+                    file;
+
+                if(this.support.datauri) {
+                    files = this.$avatarInput.prop('files');
+
+                    if(files.length > 0) {
+                        file = files[0];
+
+                        if(this.isImageFile(file)) {
+                            if(this.url) {
+                                URL.revokeObjectURL(this.url); // Revoke the old one
+                            }
+
+                            this.url = URL.createObjectURL(file);
+                            this.startCropper();
+                        }
+                    }
+                } else {
+                    file = this.$avatarInput.val();
+
+                    if(this.isImageFile(file)) {
+                        this.syncUpload();
+                    }
+                }
+            },
+
+            submit: function() {
+                if(!this.$avatarSrc.val() && !this.$avatarInput.val()) {
+                    return false;
+                }
+
+                if(this.support.formData) {
+                    this.ajaxUpload();
+                    return false;
+                }
+            },
+
+            rotate: function(e) {
+                var data;
+
+                if(this.active) {
+                    data = $(e.target).data();
+
+                    if(data.method) {
+                        this.$img.cropper(data.method, data.option);
+                    }
+                }
+            },
+
+            isImageFile: function(file) {
+                if(file.type) {
+                    return /^image\/\w+$/.test(file.type);
+                } else {
+                    return /\.(jpg|jpeg|png|gif)$/.test(file);
+                }
+            },
+
+            startCropper: function() {
+                var _this = this;
+
+                if(this.active) {
+                    this.$img.cropper('replace', this.url);
+                } else {
+                    this.$img = $('<img src="' + this.url + '">');
+                    this.$avatarWrapper.empty().html(this.$img);
+                    this.$img.cropper({
+                        aspectRatio: proportion,//设置比例变量 16/9
+                        preview: this.$avatarPreview.selector,
+                        strict: false,
+                        background: true,
+                        autoCropArea: 1,//默认剪裁框比例
+                        crop: function(data) {
+                            var json = [
+                                '{"x":' + data.x,
+                                '"y":' + data.y,
+                                '"height":' + data.height,
+                                '"width":' + data.width,
+                                '"rotate":' + data.rotate + '}'
+                            ].join();
+                            _this.$avatarData.val(json);
+                        }
+                    });
+
+                    this.active = true;
+                }
+            },
+
+            stopCropper: function() {
+                if(this.active) {
+                    this.$img.cropper('destroy');
+                    this.$img.remove();
+                    this.active = false;
+                }
+            },
+
+            syncUpload: function() {
+                this.$avatarSave.click();
+            },
+
+            submitStart: function() {
+                this.$loading.fadeIn();
+            },
+
+            submitFail: function(msg) {
+                this.alert(msg);
+            },
+
+            submitEnd: function() {
+                this.$loading.fadeOut();
+            },
+
+            cropDone: function() {
+                this.$avatarForm.get(0).reset();
+                this.$avatar.attr('src', this.url);
+                this.stopCropper();
+                this.$avatarModal.modal('hide');
+            },
+
+            alert: function(msg) {
+                var $alert = [
+                    '<div class="alert alert-danger avater-alert">',
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>',
+                    msg,
+                    '</div>'
+                ].join('');
+
+                this.$avatarUpload.after($alert);
+            }
+        };
+
+        $(function() {
+            return new CropAvatar($('#crop-avatar'));
+        });
+
+        function imgset(_this){
+            _thisimg = $(_this);
+            proportion = $(_this).attr("proportion");//设置切图比例
+            return proportion;
+        };
+
+        //选择图片时验证大小格式
+        $('#avatarInput').on('change', function(e) {
+            var filemaxsize = 1024 * 5;//5M
+            var target = $(e.target);
+            var Size = target[0].files[0].size / 1024;
+            if(Size > filemaxsize) {
+                alert('图片过大，请重新选择!');
+                $(".avatar-wrapper").empty();
+                return false;
+            }else if(!this.files[0].type.match(/image.*/)) {
+                alert('请选择正确的图片!');
+                return false;
+            }else {
+                var filename = document.querySelector("#avatar-name");
+                var texts = document.querySelector("#avatarInput").value;
+                var teststr = texts; //你这里的路径写错了
+                testend = teststr.match(/[^\\]+\.[^\(]+/i); //直接完整文件名的
+                filename.innerHTML = testend;
+            }
+        });
+        //保存时按钮
+        $(".avatar-save").on("click", function() {
+            var img_lg = document.getElementById('imageHead');
+            // console.log(img_lg);
+            // 截图小的显示框内的内容
+            html2canvas(img_lg, {
+                allowTaint: true,
+                taintTest: false,
+                onrendered: function(canvas) {
+                    canvas.id = "mycanvas";
+                    //生成base64图片数据
+                    var dataUrl = canvas.toDataURL("image/jpeg");
+                    var newImg = document.createElement("img");
+                    newImg.src = dataUrl;
+                    imagesAjax(dataUrl);
+                }
+            });
+        });
+
+        //base64图片提交接口
+        function imagesAjax(src) {
+            // console.log("base64图片信息");
+            // console.log(src);
+            $.ajax({
+                url: "controller/upload-img.php",
+                data: {
+                    imgData:src
+                },
+                type: "POST",
+                dataType: 'json',
+                success: function(data) {
+                    // console.log("base64图片上传返回值：");
+                    // console.log(data);
+                    if(data.result == '1') {
+                        $('.tip').html(data.msg).stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+                        $("#imgsrc").val(data.src);//数据库返回图片地址赋值到当前img
+                        $(".close2").trigger("click");
+                    }
+                }
+            });
+        };
+    }
+
+</script>

@@ -1,0 +1,57 @@
+
+<div class="modal-header" >
+    <button type="button" class="close" data-dismiss="modal" ng-click="close()" aria-hidden="true">×</button>
+    <h4 class="modal-title">
+        {{modalTitle}}
+    </h4>
+</div>
+<div id="avatar-modal" class="modal-body" style="margin:0;padding:0">
+
+    <!--内容-->
+    <div class="avatar-form">
+        <div class="modal-body">
+            <!-- Name input-->
+            <div class="form-group">
+                <label class="col-md-2 control-label m_top_10">列表显示排序：</label>
+                <div class="col-md-10">
+                    <input type="text" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-.]+/,'');}).call(this)" placeholder="显示排序" class="form-control" ng-model="datas.paixu">
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label m_top_10">保函名称：</label>
+                <div class="col-md-10">
+                    <input type="text" placeholder="输入保函查询名称" class="form-control" ng-model="datas.title" maxlength="200">
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label m_top_10">保函图片：</label>
+                <!--<input type="file"  ng-model="image" onchange="angular.element(this).scope().uploadImage(this)" />-->
+                <div class="col-md-10">
+                    <img ng-src="{{imgShow}}" style="height: 120px;display:inline-block;">
+                    <form id="upBox_{{$index}}" style="display:inline-block;vertical-align:middle;margin-bottom:0;">
+                        <div id="imgBox_{{$index}}" class="pcimgBox">
+                            <div id="inputBox_{{$index}}" class="addBtn">
+                                <input type="file" class="changeImg" onchange="angular.element(this).scope().uploadImage(this)" ng-model="image" title="请选择图片" id="file_{{$index}}" multiple accept="image/png,image/jpg,image/gif,image/JPEG"/>
+                                <span>+</span>
+                            </div>
+                        </div>
+                        <input id="imgsrcs" type="hidden" class="imgsrcs imgsrcs_{{$index}}">
+                    </form>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+            <div style="clear:both"></div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer text-center">
+    <button type="button" class="btn btn-default btn_cancel" ng-click="close()">取消</button>
+    <button type="button" class="btn btn-primary saveBtn" ng-click="submitData()">确定</button>
+</div>
+<style>
+    .m_top_10{margin-top:10px;}
+</style>

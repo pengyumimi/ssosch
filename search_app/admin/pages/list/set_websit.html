@@ -1,0 +1,144 @@
+<div ng-controller="websitController">
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active">网站信息设置</li>
+        </ol>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">网站信息设置</h1>
+        </div>
+    </div><!--/.row-->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">常规设置</div>
+                <div class="panel-body">
+                    <div class="col-md-9">
+
+                        <div class="form-group websitset">
+                            <label>网站信息设置</label>
+                            <div class="web_set">
+                                <input name="id" type="hidden" ng-model="websitInfo.id">
+                                <div class="name_item">网站名称</div>
+                                <input name="title" class="form-control data_show" ng-model="websitInfo.title" placeholder="显示网站名称" value="">
+                                <div class="name_item">网站描述</div>
+                                <input name="description" class="form-control data_show" ng-model="websitInfo.description" placeholder="网站描述" value="">
+                                <div class="name_item">网站SEO关键字</div>
+                                <input name="keywords" class="form-control data_show" ng-model="websitInfo.keywords" placeholder="网站SEO关键字" value="">
+                                <div class="name_item">公司地址</div>
+                                <input name="address" class="form-control data_show" ng-model="websitInfo.address" placeholder="公司地址" value="">
+                                <div class="name_item">网站网址</div>
+                                <input name="url" class="form-control data_show" ng-model="websitInfo.url" placeholder="网站网址" value="">
+                                <div class="name_item">TEL</div>
+                                <input name="tel" class="form-control data_show" ng-model="websitInfo.tel" placeholder="tel" value="">
+                                <div class="name_item">PHONE</div>
+                                <input name="phone" class="form-control data_show" ng-model="websitInfo.phone" placeholder="phone" value="">
+                                <div class="name_item">EMAIL</div>
+                                <input name="email" class="form-control data_show" ng-model="websitInfo.email" placeholder="邮箱" value="">
+
+                                <button type="submit" class="btn btn-primary" ng-click="setWebsite()">确认并保存</button>
+                            </div>
+                        </div>
+                        <!--<div class="form-group lxrsetlist">
+                            <label>网站联系人设置</label>
+                            <div id="lxr1">
+                                <div class="lxr"><input name="id" type="hidden" value="">
+                                    <div class="name_item">主任免费咨询</div>
+                                    <input name="telZr" class="form-control data_show" placeholder="显示称呼" ng-model="websitInfo.telZr">
+                                    <div class="name_item">律师免费咨询</div>
+                                    <input name="telLs" class="form-control data_show" placeholder="职业" ng-model="websitInfo.telLs">
+                                    <button type="submit" class="btn btn-primary" onclick="edit(this)">修改</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group hzlist">
+                            <label>关于我们设置</label>
+                            <div class="hz">
+                                <input name="id" type="hidden" value="">
+                                <input name="title" class="form-control data_show" placeholder="关于我们" value="">
+                                <textarea class="form-control swhz" name="txt" rows="3" placeholder="关于我们详细信息"></textarea>
+                                <button type="submit" class="btn btn-primary" onclick="edithz(this)">修改</button>
+                            </div>
+                        </div>-->
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col-->
+    </div><!-- /.row -->
+</div>
+
+<script>
+//设置网站内容
+appModule.controller('websitController', ['$scope', '$http', '$uibModal', 'apiService', function ($scope, $http, $uibModal, apiService) {
+
+    $scope.websitInfo = [];
+    //网站设置渲染
+    function getWebsite() {
+        var datas = "";
+        var _url = "controller/web_set.php";//读取列表
+        apiService.queryAPI(_url, datas, function (data) {
+            if (data) {
+                console.log(data);
+                var datas = data.data[0];
+                $scope.websitInfo.id = datas.id;
+                $scope.websitInfo.title = datas.title;
+                $scope.websitInfo.description = datas.description;
+                $scope.websitInfo.keywords = datas.keywords;
+                $scope.websitInfo.address = datas.address;
+                $scope.websitInfo.url = datas.url;
+                $scope.websitInfo.tel = datas.tel;
+                $scope.websitInfo.phone = datas.phone;
+                $scope.websitInfo.email = datas.email;
+                $scope.websitInfo.shangqiao = datas.shangqiao;
+                $scope.websitInfo.sqSiteId = datas.sqSiteId;
+                $scope.websitInfo.sqUserId = datas.sqUserId;
+                $scope.websitInfo.lxbSid = datas.lxbSid;
+            }
+        }, function () {
+
+        });
+    }
+    getWebsite();
+
+    //网站设置修改保存
+    $scope.setWebsite = function() {
+        var datas = {
+            "listid": $scope.websitInfo.id,
+            "title": $scope.websitInfo.title,
+            "description": $scope.websitInfo.description,
+            "keywords": $scope.websitInfo.keywords,
+            "address": $scope.websitInfo.address,
+            "url": $scope.websitInfo.url,
+            "tel": $scope.websitInfo.tel,
+            "phone": $scope.websitInfo.phone,
+            "email": $scope.websitInfo.email,
+            "qq": $scope.websitInfo.qq,
+            "weibo": $scope.websitInfo.weibo,
+            "shangqiao": $scope.websitInfo.shangqiao,
+            "sqSiteId": $scope.websitInfo.sqSiteId,
+            "sqUserId": $scope.websitInfo.sqUserId,
+            "lxbSid": $scope.websitInfo.lxbSid
+        };
+        datas = $.param(datas);
+        // console.log(datas);
+        var _url = "controller/web_edit.php";//读取列表
+        apiService.queryAPI(_url, datas, function (data) {
+            if (data) {
+                console.log(data);
+                tip(data.data.msg);
+                // $('.tip').html(data.data.msg).stop(true, false).fadeIn(0).delay(1000).fadeOut("slow");
+            }
+        }, function () {
+
+        });
+
+    }
+
+}]);
+
+</script>

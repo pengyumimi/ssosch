@@ -1,0 +1,71 @@
+body{
+	font-size: 62.5%;
+}
+.list-box ul{
+	padding: 15px;
+}
+.list-box ul li{
+	margin-bottom: 1rem;
+}
+.list-box .img-box{
+	width: 8rem;
+	height: 6rem;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 1rem;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 0.4rem;
+}
+.txt-box{
+	display: inline-block;
+	vertical-align: top;
+}
+.txt-box h3{
+	font-size: 1.1rem;
+	margin: 0 0 0.3rem 0;
+	color: #333;
+	font-weight: normal;
+}
+.txt-box p{
+	font-size: 0.8rem;
+	color: #666;
+}
+.pay-box{
+	border-bottom: 1px solid #eee;
+	margin-top: 5px;
+	text-align: right;
+	padding: 4px 10px;
+}
+.pay-box .yj{
+	font-size: 0.7rem;
+	color: #888;
+
+}
+.pay-box a{
+	display: inline-block;
+	font-size: 1rem;
+	color: #fff;
+	background: #ff2222;
+	border-radius: 4px;
+	padding: 3px 10px;
+}
+
+.star-list{
+	font-family: 'FontAwesome';
+	width: 1em;
+	padding: 0 .05em;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	color: #fb8d10;
+	content: '\f005';
+}
+.list-banner{
+	padding: 15px;
+}
+.list-banner img{
+	width: 100%;
+	border-radius: 10px;
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>给会计</title>
+    <link rel="stylesheet" href="common/css/example.css"/>
+    <link rel="stylesheet" href="common/css/weui.css">
+    <link type="text/css" rel="stylesheet" href="imgupload/index.css">
+    <link rel="stylesheet" href="common/css/myweui.css">
+</head>
+<body>
+
+<div class="page my-page">
+    <div class="p-20">
+        <h1 class="page__title">
+            <img src="../img/logo.png" alt="弗立兹" height="36px"/>
+        </h1>
+        <h3 class="">给会计表单（<span class="workerName"></span>）</h3>
+        <p class="kj-color">此表单信息会提交给财务人员，您填写的越准确，财务越喜欢！</p>
+    </div>
+
+    <div class="page__bd">
+        <div class="weui-cells__title">客户姓名</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input id="name" class="weui-input mustInput" maxlength="8" type="text" placeholder="请输入客户姓名"/>
+                    <div class="errortip">此项必填</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">手机号</div>
+        <div class="weui-cells">
+
+            <div class="weui-cell weui-cell_select weui-cell_select-before">
+                <div class="weui-cell__hd">
+                    <select class="weui-select" name="select2">
+                        <option value="1">+86</option>
+                        <option value="2">+80</option>
+                        <option value="3">+84</option>
+                        <option value="4">+87</option>
+                    </select>
+                </div>
+                <div class="weui-cell__bd">
+                    <input id="phone" class="weui-input phone" type="number" maxlength="11" pattern="[0-9]*" placeholder="请输入手机号码"/>
+                    <div class="errortip">请填写正确的手机号</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">客户地址</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input id="adress" class="weui-input mustInput" type="text" maxlength="100" placeholder="请输入客户地址"/>
+                    <div class="errortip">此项必填</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">联系邮箱</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input id="email" class="weui-input email" type="text" maxlength="50" placeholder="请输入联系邮箱"/>
+                    <div class="errortip">请填入正确的邮箱地址</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">合同附件</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd camera-area" style="text-align: left">
+                    <form enctype="multipart/form-data" method="post">
+                        <input id="fsrc" type="file" name="fileToUpload" class="fileToUpload weui-btn" style="color:#333;line-height: 2em;font-size:12px" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" capture="camera"/>
+                        <div class="upload-progress"><span></span></div>
+                    </form>
+                    <div class="thumb"></div>
+                    <input type="hidden" id="filePostSrc">
+                    <!--<div class="errortip">此项必填</div>-->
+                </div>
+            </div>
+        </div>
+        
+        <div class="weui-cells__title">报价单电子版</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <div class="img-box full">
+                        <section class=" img-section">
+                            <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
+                            <div class="z_photo upimg-div clear">
+                                <section class="z_file fl">
+                                    <img src="imgupload/a11.png" class="add-img">
+                                    <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple="">
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">发货日期</div>
+        <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+            <div class="weui-cell__bd">
+                <input id="time" class="weui-input mustInput" type="date" value=""/>
+                <div class="errortip">此项必填</div>
+            </div>
+        </div>
+        </div>
+
+        <div class="weui-cells__title">付款条件</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input id="info" class="weui-input mustInput" type="text" maxlength="200" placeholder="请填写付款条件"/>
+                    <div class="errortip">此项必填</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:" id="submit-btn">确定</a>
+        </div>
+
+        <div class="page__ft">
+            <a href="javascript:void(0)" style="color:#666;font-size:12px;line-height:56px;"><img src="../img/logoicon.png"/>SSOSCH</a>
+        </div>
+    </div>
+</div>
+
+<div class="tip"></div>
+
+    <script src="common/js/zepto.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="imgupload/imgUp.js"></script>
+    <script src="fileupload/upload.js" type="text/javascript"></script>
+    <script src="common/js/main.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var localData = JSON.parse(localStorage.getItem('key'));
+            if(localData){
+                $(".workerName").html(localData.username);
+                // alert(typeof(localData.id));
+            }else{
+                alert("您需要先选择指定的会计才可以提交");
+                window.location.href = "index.html";
+            }
+
+            $("#submit-btn").click(function () {
+                //图片地址处理
+                var imgsrcData = '';
+                $(".imgsrcs").each(function (e) {
+                    imgsrcData += $(this).val()+',';
+                });
+                var modal_name = $("#name").val();
+                var modal_phone = $("#phone").val();
+                var modal_address = $("#adress").val();
+                var modal_email = $("#email").val();
+                var modal_fsrc = $("#filePostSrc").val();
+                var modal_isrc = imgsrcData;
+                var modal_time = $("#time").val();
+                var modal_info = $("#info").val();
+                // console.log(modal_name,modal_phone,modal_address,modal_email,modal_fsrc,modal_time,modal_info,modal_radio);
+                // console.log(2);
+                if (yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_info, $("#info"))) {
+                    var params = {
+                        uid: localData.id,
+                        fname: modal_name,
+                        fphone: modal_phone,
+                        faddress: modal_address,
+                        femail: modal_email,
+                        ffsrc: modal_fsrc,
+                        fisrc: modal_isrc,
+                        ftime: modal_time,
+                        finfo: modal_info
+                    };
+                    console.log(params);
+                    // return;
+                    $.ajax({
+                        type: "POST",  //提交方式
+                        url: "controller/formtokuaiji_add.php",//路径
+                        data: params,//数据，这里使用的是Json格式进行传输
+                        dataType: "json",
+                        beforeSend: function(xhr, settings){
+                            $(".loading").show();
+                        },
+                        success: function (data) {//返回数据根据结果进行相应的处理
+                            console.log(data);
+                            if (data.result == '1') {
+                                console.log('提交成功');
+                            }
+                            $('.tip').html(data.msg).show();
+                            setTimeout(function() {
+                                $(".tip").hide(500);
+                            }, 1000);
+                        },
+                        error: function (xhr, type) {
+                            $('.tip').html("提交失败稍后再试").show();
+                            setTimeout(function() {
+                                $(".tip").hide(500);
+                            }, 1000);
+                        }
+                    });
+                } else {
+                    // alert('请正确填写信息');
+                    return false;
+                }
+            });
+
+            $(".camera-area").fileUpload({
+                "url": "fileupload/savetofile.php",
+                "file": "myFile"
+            });
+            /*$("#fsrc").change(function () {
+                var formData = new FormData($('#uploadForm')[0]);
+
+                console.log($('#uploadForm'));return;
+                $.ajax({
+                    type: "post",
+                    url: "imgupload/upload-base64img.php",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function () {
+                        console.log("上传失败,刷新重试");
+                    }
+                });
+
+            });*/
+
+        });
+    </script>
+</body>
+</html>

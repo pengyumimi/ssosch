@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报名页面</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .ewmbox h1 {text-align:center}
+        .dialogChange .Dcontent .list {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sign_wrap">
+    <div class="logo"><img src="img/logo.jpg" alt="木非木艺"></div>
+    <div class="sign_title">
+        <!--<img src="img/title.png" alt="">-->
+        <h3 class="activityTitle">万圣节“狂欢夜”</h3>
+    </div>
+    <div class="sign_line"><img src="img/line.png" alt=""></div>
+    <div class="sign_text">
+    	<p>2018年10月27日，28日</p>
+    	<p>北京市海淀区西四环北路137号院<br>（西木学堂209亲子教室）</p>
+    </div>
+    <div class="sign_form" id="signForm">
+        <div class="sign_term">
+            <label class="sign_name"></label>
+            <!-- <input type="text" placeholder="请输入姓名" name="name"> -->
+            <input type="text" class="field-text" name="userName" placeholder="请输入用户名" data-required="true" data-descriptions="username">
+        </div>
+        <div class="sign_term">
+            <label class="sign_phone"></label>
+            <!-- <input type="text" placeholder="请输入手机号" name="phone"> -->
+            <input type="text" class="field-text" name="phone" placeholder="请输入手机号码" data-validate="phone" data-describedby="phone-description">
+        </div>
+        <div class="sign_term">
+            <button type="button" name="changci" title="请选择场次">请选择场次</button>
+            <input type="hidden" id="changci" name="changci"  data-required="true" data-descriptions="renshu">
+        </div>
+        <div class="sign_term">
+            <button type="button" name="renshu" title="请选择参与人数">请选择参与人数</button>
+            <input type="hidden" id="renshu" name="renshu" data-required="true" data-descriptions="renshu">
+        </div>
+        <!--<div class="sign_term">-->
+            <!--<button type="button" name="address" title="请选择观影地址">请选择观影地址</button>-->
+            <!--<input type="hidden" name="address">-->
+        <!--</div>-->
+        <div class="sign_button">
+            <button type="submit" class="zbtn">立刻报名</button>
+            <!-- <input type="submit" value="提交" class="zbtn">  -->
+        </div>
+    </div>
+    <div class="sign_welcome">
+    	<i>/</i>诚<i>/</i>挚<i>/</i>欢<i>/</i>迎<i>/</i>您<i>/</i>的<i>/</i>到<i>/</i>来<i>/</i>
+    </div>
+</div>
+
+<!-- 遮罩背景 -->
+<div class="sign_bg"  style="display: none"></div>
+<!-- 报名成功弹框 -->
+<div class="sign_tk" id="suc_tk" style="display: none">
+	<div class="sign_suc">
+		<div class="suc_title"></div>
+		<div class="sign_con">
+			<p>恭喜您</p>
+			<p>报名成功</p>
+		</div>
+		<div class="sign_close"></div>
+	</div>
+</div>
+<!-- 报名已经满额弹框 -->
+<div class="sign_tk" id="unsuc_over" style="display: none">
+	<div class="sign_suc">
+		<div class="unsuc_title">报名结束</div>
+		<div class="sign_con">
+			<p>报名名额已满</p>
+			<p>敬请您关注下次活动！</p>
+		</div>
+		<div class="sign_close"></div>
+	</div>
+</div>
+<!-- 报名失败弹框 -->
+<div class="sign_tk" id="unsuc_tk" style="display: none">
+    <div class="sign_suc">
+        <div class="unsuc_title">报名失败</div>
+        <div class="sign_con">
+            <p>可能网络错误</p>
+            <p>建议您再试一次</p>
+        </div>
+        <div class="sign_close"></div>
+    </div>
+</div>
+<!-- 重复报名弹框 -->
+<div class="sign_tk" id="repeat" style="display: none">
+    <div class="sign_suc">
+        <div class="unsuc_title">报名失败</div>
+        <div class="sign_con">
+            <p>您已经报名</p>
+            <p>不能重复报名</p>
+        </div>
+        <div class="sign_close"></div>
+    </div>
+</div>
+
+<!-- 选择数据弹框 -->
+<div class="dialogChange" style="display:none">
+    <div class="Dtitle"></div>
+    <div class="Dcontent"><ul></ul></div>
+</div>
+
+<div class="ewmbox" style="display: none">
+    <h1>长按识别二维码付款<p style="font-size:16px;color:red;">付款后必须截图付款成功状态</p></h1><img class="ewm" src="img/pay.jpg">
+
+    <button class="guanzhuok" style="position:absolute;z-index:9999;height:55px;bottom:0;">完成付款并关闭</button>
+</div>
+
+<script type="text/javascript" src="../../js/vendor/zepto.min.js"></script>
+<!-- 信息验证 -->
+<script>
+$(document).ready(function(){
+   /* var ewmkey = JSON.parse(localStorage.getItem('ewmkey'));
+    if(ewmkey == "1"){
+        $(".ewmbox").hide();
+    }else{
+        $(".ewmbox").show();
+    }*/
+    var changciData = [{"id":001,"name":"场次一 27日 9：00-11：30","v":"场次一 27日 9：00-11：30"},{"id":002,"name":"场次二 27日 13：00-15：30","v":"场次二 27日 13：00-15：30"},{"id":003,"name":"场次三 27日 16：00-18：30","v":"场次三 27日 16：00-18：30"},{"id":004,"name":"场次四 28日 9：00-11：30","v":"场次四 28日 9：00-11：30"},{"id":005,"name":"场次五 28日 13：00-15：30","v":"场次五 28日 13：00-15：30"},{"id":006,"name":"场次六 28日 16：00-18：30","v":"场次六 28日 16：00-18：30"}];
+    var renshuData = [{"id":001,"name":"1人","v":1},{"id":002,"name":"2人","v":2}];
+    var addressData = [{"id":001,"name":"北京通州区世贸天阶2层"},{"id":002,"name":"北京市海淀区国际大厦一层203"}];
+
+    /*报名成功弹框关闭*/
+    $(".sign_close").click(function(){
+        $(this).parents(".sign_tk").hide(400);
+		$(".sign_bg").hide(400);
+	});
+
+    /*选择场次弹框*/
+    $("button[name='changci']").click(function(){
+        var thisName = $(this).attr("title");
+        $(".dialogChange .Dtitle").html(thisName);
+        goHtml($(".dialogChange .Dcontent"),changciData,'changci');
+        $(".dialogChange").show(400);
+    });
+
+    /*选择人数弹框*/
+    $("button[name='renshu']").click(function(){
+        var thisName = $(this).attr("title");
+        $(".dialogChange .Dtitle").html(thisName);
+        goHtml($(".dialogChange .Dcontent"),renshuData,'renshu');
+        $(".dialogChange").show(400);
+    });
+
+    /*选择地址弹框*/
+    $("button[name='address']").click(function(){
+        var thisName = $(this).attr("title");
+        $(".dialogChange .Dtitle").html(thisName);
+        goHtml($(".dialogChange .Dcontent"),addressData,'address');
+        $(".dialogChange").show(400);
+    });
+
+    //构造html
+    function goHtml(_this,data,inputName){
+        $(".dialogChange .Dcontent ul").html('');
+        if(data.length > 0){
+            var _html;
+            for(var i=0;i<data.length;i++){
+                _html = '<li class="list" thisV="'+ data[i].v +'" dataId="'+ data[i].id +'" inputName="'+inputName+'"> '+ data[i].name +' </li>';
+                $(_this).children('ul').append(_html);
+            }
+        }
+    }
+
+    //选择人数事件
+    $('ul').on('click','.list',function(){
+        var dataId = $(this).attr("dataId");
+        var dataName = $(this).text();
+        var inputName = $(this).attr("inputName");
+        var thisV = $(this).attr("thisV");
+        $(".dialogChange").hide(400);
+        var inputData = {
+            "id":dataId,
+            "name":dataName,
+            "value": thisV
+        }
+        var changeName = inputName;
+        console.log(changeName);
+        $("button[name="+changeName+"]").html(dataName);
+        $("input[name="+changeName+"]").val(inputData.value.toString());
+        console.log(dataId + dataName +inputName);
+    });
+
+    //关注后点击按钮
+    $(".guanzhuok").click(function(){
+        localStorage.setItem('ewmkey', "1");
+        $(".ewmbox").hide();
+    }); 
+
+    //手机格式验证
+    $(".zbtn").click(function(){
+        var userName = $("input[name='userName']").val();
+        var phone = $("input[name='phone']").val();
+        var changci = $("input[name='changci']").val();
+        var renshu = $("input[name='renshu']").val();
+        if(!userName){
+            alert("请输入用户名");
+            return false
+        }
+        if(userName.length < 2 ||  userName.length > 10){
+            alert("用户名长度限定为2-10位");
+            return false
+        }
+        if(!phone){
+            alert("请输入手机号");
+            return false
+        }
+        var phonereg = /^1[3|4|5|7|8][0-9]\d{8}$/;
+        if (!phonereg.test(phone)) {
+            alert("手机号格式不正确");
+            return false;
+        } else if (phone.length != 11) {
+            alert("手机号限定长度为11位");
+            return false;
+        }
+        if(!changci){
+            alert("请选择场次");
+            return false
+        }
+        if(!renshu){
+            alert("请选择人数");
+            return false
+        }
+        submitData();
+    });
+
+    //添加接口
+    function submitData() {
+        var postData = {
+            "userName": $("input[name='userName']").val(),
+            "phone": $("input[name='phone']").val(),
+            "changci": $("input[name='changci']").val(),
+            "renshu": $("input[name='renshu']").val()
+        };
+        console.log(postData);
+        $.ajax({
+            type: 'POST',
+            url: '../controller/enterFor-2/submitData.php',
+            // data to be added to query string:
+            data: { userName: $("input[name='userName']").val(),phone: $("input[name='phone']").val(),changci: $("input[name='changci']").val(),renshu: $("input[name='renshu']").val() },
+            // type of data we are expecting in return:
+            dataType: 'json',
+            timeout: 300,
+            context: $('body'),
+            success: function(data){
+                console.log(data);
+                if(data){
+                    if(data.result == "1"){
+                        $("#suc_tk,.sign_bg").show(400);
+                        $(".ewmbox").show();
+                    }
+                    if(data.result == "0"){
+                        alert(data.msg);
+                    }
+                    if(data.result == "2"){
+                        $("#unsuc_tk,.sign_bg").show(400);
+                    }
+                    if(data.result == "3"){
+                        $("#repeat,.sign_bg").show(400);
+                    }
+                    if(data.result == "4"){
+                        $("#unsuc_over,.sign_bg").show(400);
+                    }
+                }
+            },
+            error: function(xhr, type){
+                alert('提交失败')
+            }
+        });
+
+    }
+});
+</script>
+</body>
+</html>

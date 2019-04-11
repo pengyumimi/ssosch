@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="common/css/common.css">
 	<link rel="stylesheet" href="css/ssosch_main.css">
 	<link rel="stylesheet" href="admin/css/styles.css">
-	
+
 <style>
 .slider-container{width:70%;}
 </style>
@@ -82,7 +82,7 @@
 									<input id="phone" name="phone" type="text" placeholder="输入手机号/Your phone" class="form-control">
 									</div>
 								</div>
-							
+
 								<!-- Email input-->
 								<div class="form-group">
 									<label class="col-md-3 control-label" for="email">邮箱/Your E-mail</label>
@@ -90,7 +90,7 @@
 										<input id="email" name="email" type="text" placeholder="输入邮箱/Your email" class="form-control">
 									</div>
 								</div>
-								
+
 								<!-- Message body -->
 								<div class="form-group">
 									<label class="col-md-3 control-label" for="message">写点什么/Your message</label>
@@ -98,7 +98,7 @@
 										<textarea class="form-control" id="message" name="message" placeholder="输入详细内容/Please enter your message here..." rows="5"></textarea>
 									</div>
 								</div>
-								
+
 								<!-- Form actions -->
 								<div class="form-group">
 									<div class="col-md-12 widget-right">
@@ -109,14 +109,14 @@
 						</form>
 					</div>
 				</div>
-		
-				
+
+
 			</div><!--/.col-->
 
 		</div><!--/.row-->
 
 		</section>
-		
+
 		<section class="index_linksbox">
 			<div class="index_links">
 				<h3>合作伙伴</h3>
@@ -164,7 +164,7 @@
 				</ul>
 				<p>© 2001-2017 All Rights Reserved  Collect from <a href="http://www.ssosch.com">WWW.SSOSCH.COM</a></p>
 			</div>
-			
+
 		</div>
 	</footer>
 
@@ -255,7 +255,7 @@
 
             // Use Ajax to submit form data
             $.post($form.attr('action'), $form.serialize(), function(data) {
-                console.log(data);
+                // console.log(data);
 				$('.tip').html(data.msg).fadeIn(0).delay(1000).fadeOut("slow");
             }, 'json');
         });

@@ -1,0 +1,427 @@
+/* Common Class Library */
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 300;
+}
+
+h1, h2,h5{
+	text-align: center;
+}
+
+h5{
+	font-size: 12px;
+	color: #999;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+	outline:none; 
+	text-decoration:none; 
+	color:#0a84c1;
+}
+
+a:focus, a:hover {
+    color: #0090ff;
+    text-decoration: none;
+}
+
+i{
+	font-style: normal;
+}
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.m_c{
+	color: #0084ff !important;
+}
+
+.c_3{
+	color: #333 !important;
+}
+
+.c_6{
+	color: #666 !important;
+}
+
+.c_9{
+	color: #999 !important;
+}
+
+.c_r{
+	color: #ef5e49 !important;
+}
+
+.c_y{
+	color: #f08800 !important;
+}
+
+.c_g{
+	color: #009944 !important;
+}
+
+.c_gray{
+	color: #ccc !important;
+}
+
+.c_t_h3{
+	color: #88a6bf !important;
+}
+
+.bc_b{
+	background-color: #0084ff !important;
+	color: #fff !important;
+}
+
+.backc_1{
+	background: #CC8DAA !important;
+}
+
+.a_reduce{
+	font-size: 0.6em !important;
+}
+
+.a_plus{
+	font-size: 1.6em !important;
+}
+
+.font_16{
+	font-size: 16px !important;
+}
+
+.m_left{
+	margin-left: 10px !important;
+}
+
+.m_right0{
+	margin-right: 0px !important;
+}
+
+.m_bottom20{
+	margin-bottom: 20px !important;
+}
+.m_bottom10{
+	margin-bottom: 10px !important;
+}
+
+.m_top5{
+	margin-top: 5px !important;
+}
+
+.m_top10{
+	margin-top: 10px !important;
+}
+
+.m_leftright5{
+	margin: 0 5px !important;
+}
+
+.mui_content_m{
+	margin: 10px 15px;
+}
+
+.padd_y5{
+	padding: 5px;
+}
+
+.b_0{
+	border: 0 !important;
+}
+
+.b_radius{
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.blue_but{
+    background: #007aff;
+    color: #fff !important;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.green_but{
+    background: #009944;
+    color: #fff !important;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.yellow_but{
+    background: #f08800;
+    color: #fff !important;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.blue_but_2{
+    background: #64b3f1;
+    color: #fff !important;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.red_but{
+    background: #ef5e49;
+    color: #fff !important;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.gray_but{
+    background: #cccccc;
+    color: #fff !important;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.reset_but{
+	position: absolute;
+	right: 0;
+	top: 15px;
+	padding: 3px 10px;	
+}
+
+.t_center{
+	text-align: center;
+}
+
+.c_h3{
+	font-size: 17px;
+    color: #4c566c;
+    display: block;
+    line-height: 17px;
+    padding: 0;
+    margin: 5px 0 5px 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.c_h4{
+	font-size: 12px;
+	line-height: 1.5em;
+	color: #666;
+	text-align: center;
+}
+
+/*超出省略号显示*/
+.ellipsis{
+	overflow: hidden;
+	-ms-text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	word-wrap:normal;
+}
+
+.p_100{
+    width: auto;
+}
+
+/*下面这个样式用来控制title属性显示的那个方框样式的*/
+#qTip {
+	width: 400px;
+	line-height: 2em;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	display: none; 
+	font-size: 12px; 
+	Z-INDEX: 10; 
+	background: rgba(0,0,0,.7);
+	color: #fff;
+	font-family: "Microsoft Yahei"; 
+	position: absolute; 
+	text-align: left;
+	padding: 10px 20px;
+	margin-top:-4px;
+}
+
+header{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 68px;
+	z-index: 1000;
+	background-color: #fff;
+    -webkit-box-shadow: 0px 2px 5px #ccc;  
+    -moz-box-shadow: 0px 2px 5px #ccc;
+    box-shadow: 0px 2px 5px #ccc;
+}
+
+/* 导航自动吸顶 */
+.headroom {
+	transition: transform 200ms linear;
+	display: block;
+	width: auto;
+}
+.headroom--pinned {
+	transform: translateY(0%);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+.headroom--unpinned {
+	transform: translateY(-100%);
+}
+/* /导航自动吸顶 */
+
+nav{
+	width: 1200px;
+	height: 68px;
+	margin: 0 auto;
+}
+
+.logo{
+    height: 36px;
+    margin-top: 15px;
+}
+nav ul li{
+	display: inline-block;
+	position: relative;
+}
+
+nav ul .active{
+    background-color: #0090ff;
+}
+nav ul .active a{
+    color: #fff !important;
+}
+
+nav .nav_l a,.nav_r a{
+	color: #333;
+    display: inline-block;
+    padding: 26px 20px;
+    font: normal 16px/1em 'Microsoft Yahei';
+}
+
+.nav_l{
+	margin-left: 20px;
+}
+
+.nav_r{
+	margin: 0 10px;
+	color: #fff;
+}
+
+.nav_r a{
+	padding: 26px 2px !important;
+}
+
+nav ul:last-child a{
+	font-size: 14px;
+	padding: 22px 5px;
+}
+
+/* 导航下拉 */
+nav .drop-down{
+	display: none;
+    position: absolute;
+    width: 120px;
+    top: 68px;
+    left: 0;
+    padding: 0;
+    background-color: rgba(10, 132, 193, 0.6);
+    z-index: 100;
+    border: 1px solid #ccc;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+nav .drop-down li{
+    display: block;
+    margin: 0;
+    padding: 10px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+nav .drop-down li:last-child{
+	border-bottom: none;
+}
+
+nav .drop-down li a{
+    color: #333;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+nav .drop-down li a{
+	color: #fff;
+	font-weight: 400;
+}
+
+nav .drop-down li:hover{
+	background: rgba(10, 132, 193, 0.6);
+}
+
+nav .nav_r a{
+	color: #666;
+}
+nav .nav_r a:hover{
+    color: #0090ff;
+}
+/* /导航下拉 */
+
+/* 面包屑导航 */
+.mbx_nav_box{
+    margin: 20px auto;
+}
+.mbx_nav{
+    font-size: 12px;
+    vertical-align: bottom;
+}
+.mbx_nav a{
+    
+}
+.mbx_nav h1{
+    display: inline;
+    font-size: 12px;
+}
+.mbx_nav i{
+    display: inline;
+    padding: 0 3px;
+}
+/* /面包屑导航 */
+
+.main_box{
+    margin-top: 68px;
+    position: relative;
+    padding: 1px 0;
+}
+
+section{
+	width: 1200px;
+	height: auto;
+    margin: 50px auto;
+    overflow: hidden;
+}
+.tip{position:fixed;display:none;width:180px;height:80px;background:rgba(0,0,0,.8);color:#fff;font:normal 16px/80px 'Microsoft Yahei';top:0;bottom:0;left:0;right:0;margin:auto;text-align:center;border-radius:5px;z-index:99999;}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>任务处理队列</title>
+    <link rel="stylesheet" href="common/css/example.css"/>
+    <link rel="stylesheet" href="common/css/weui.css">
+    <link rel="stylesheet" href="common/css/myweui.css">
+</head>
+<body>
+
+<div class="page my-page" id="listApp">
+    <div class="p-20">
+        <h1 class="page__title">
+            <img src="../img/logo.png" alt="弗立兹" height="36px"/>
+        </h1>
+        <h3 class="">任务处理队列</h3>
+        <p class="sc-color">此页面提供所有待处理的任务，请认真对待。</p>
+    </div>
+
+    <div class="page__bd">
+
+        <div class="weui-cells__title"><i class="weui-icon-waiting"></i>待处理的任务</div>
+        <div class="weui-cells">
+            <a  v-for="item in list" class="weui-cell weui-cell_access" :href="getGoodsHref(item.id)">
+                <div class="weui-cell__bd">
+                    <p v-clock>客户姓名：{{item.fname}}</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+
+        <div class="weui-cells__title" style="margin-top:40px;"><i class="weui-icon-success"></i>已处理的任务</div>
+        <div class="weui-cells">
+            <a  v-for="item in completedlist" class="weui-cell weui-cell_access" :href="getGoodsHref(item.id)">
+                <div class="weui-cell__bd">
+                    <p v-clock>客户姓名：{{item.fname}}</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+        </div>
+
+        <div class="page__ft">
+            <a href="javascript:void(0)" style="color:#666;font-size:12px;line-height:56px;"><img src="../img/logoicon.png"/>SSOSCH</a>
+        </div>
+    </div>
+</div>
+
+<div class="tip"></div>
+
+    <script src="common/js/zepto.min.js"></script>
+    <script src="common/js/vue.min.2.4.2.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="common/js/main.js"></script>
+
+    <script type="text/javascript">
+        if(localserId){
+            var listApp = new Vue({
+                el: '#listApp',
+                data: {
+                    list: [],
+                    completedlist: [],
+                    userType: localserType
+                },
+                created: function () {
+                    //为了在内部函数能使用外部函数的this对象，要给它赋值了一个名叫self的变量。
+                    var self = this;
+                    //搜索接口
+                    function touchlist(source, userId, userType, sctype) {
+                        var postData ={
+                            userId: userId,
+                            userType : userType,
+                            sctype: sctype
+                        };
+                        // console.log(postData);
+                        $.ajax({
+                            type: 'POST',
+                            url: source,
+                            data: postData,
+                            dataType: "json",
+                            beforeSend: function (xhr, settings) {
+                                $(".loading").show();
+                            },
+                            success: function (res) {
+                                console.log(res);
+                                if (res) {
+                                    $(".loading").hide();
+                                    self.list = res;
+                                    // console.log(self.list)
+                                }
+                            },
+                            error: function (xhr, type) {
+                                $('.tip').html("获取数据失败").show();
+                                setTimeout(function () {
+                                    $(".tip").hide(500);
+                                }, 1000);
+                            }
+                        });
+                    };
+                    function completedlist(source, userId, userType, sctype) {
+                        var postData ={
+                            userId: userId,
+                            userType : userType,
+                            sctype: sctype
+                        };
+                        // console.log(postData);
+                        $.ajax({
+                            type: 'POST',
+                            url: source,
+                            data: postData,
+                            dataType: "json",
+                            beforeSend: function (xhr, settings) {
+                                $(".loading").show();
+                            },
+                            success: function (res) {
+                                console.log(res);
+                                if (res) {
+                                    $(".loading").hide();
+                                    self.completedlist = res;
+                                    // console.log(self.list)
+                                }
+                            },
+                            error: function (xhr, type) {
+                                $('.tip').html("获取数据失败").show();
+                                setTimeout(function () {
+                                    $(".tip").hide(500);
+                                }, 1000);
+                            }
+                        });
+                    }
+                    touchlist("controller/task.php", localserId, localserType, "1");
+                    completedlist("controller/task.php", localserId, localserType, "2");
+                    /*
+                    if(userType == 3){
+
+                    }else if (userType == 5){
+                        touchlist("controller/task2.php", localserId, localserType, "1");
+                        completedlist("controller/task2.php", localserId, localserType, "2");
+                    }*/
+
+
+                },
+                methods: {
+                    getGoodsHref: function (val) {
+
+                        if(localserType == 3){
+                            return 'shengchan.html?uid='+localserId+'&pid=' + val
+                        }else if(localserType == 5){
+                            return 'anzhuang.html?uid='+localserId+'&pid=' + val
+                        }
+
+                    }
+                }
+            });
+
+            listApp.$watch('list',function(val){
+                // setStars();
+
+            });
+        }
+    </script>
+</body>
+</html>

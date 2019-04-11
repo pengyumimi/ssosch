@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!--默认用ie8的最高内核进行渲染，如果有谷歌的gcf，则用谷歌的内核渲染-->
+    <meta name="renderer" content="webkit"><!--默认用360极速模式渲染-->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!--默认以百分百比例打开-->
+    <title>律师风采详情</title>
+    <meta name="description" content="{description}"/>
+    <meta name="keywords" content="{keywords}"/>
+    <link rel="stylesheet" href="../../frontend/css/common.css">
+    <link rel="stylesheet" href="../../frontend/css/wi_main.css">
+</head>
+<body class="index">
+<header>
+    <nav class="container">
+        <a href="../index.html"><img src="../../frontend/img/logo.png" class="logo left"/></a>
+        <span class="phone_navBtn"></span>
+        <ul class="nav_l">
+            <li><a href="../../index.php">首页</a></li>
+            <li><a href="../../frontend/business.php">业务领域</a></li>
+            <li><a href="../../frontend/lawyer.php">律师团队</a></li>
+            <li><a href="../../frontend/case.php">亲办案例</a></li>
+            <li><a href="../../frontend/trends.php">维得动态</a></li>
+            <li><a href="../../frontend/teams.php">团队介绍</a></li>
+            <li><a href="../../frontend/contact.php">联系我们</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="banner_box relative">
+    <img style="cursor:pointer" class="w_p100" src="../../frontend/img/banner-articleLawyer.jpg"/>
+</div>
+
+<div class="overflow_hidden m_top_40 relative lawyer-article-box">
+    <div class="container b_w">
+        <div class="p_top_30 p_bottom_30 m_bottom_30 flex-box flex-start lawyer-article">
+            <div class="left m_bottom_30"><img class="shadow-box" style="width:259px;height:315px;" src="{img_src}"></div>
+            <div class="right m_bottom_30"><p>
+                <div class="lawyer-name">{title}<span class="p_left_10">{job}</span></div>
+                <p class="p_left_0 lawyer-sc">{begoodat}</p>
+            </p>
+                <button>立即咨询</button>
+            </div>
+            <div class="article-text">
+                <!--<h3>擅长领域：政府及行政机关法律顾问、公司法律顾问、劳动争议及劳动纠纷解决，婚姻家庭纠纷、房地产及拆迁纠纷、民商诉讼仲裁、刑事辩护等。</h3>-->
+                <p>
+                    {txt}
+                 
+                </p>
+
+                <!--<div class="pagegod">-->
+                    <!--<a href="#">上一篇：第一页</a>-->
+                    <!--<a href="#">下一篇：【发回重审】中年房地产老板涉嫌合同诈骗、非法吸收公众存款、信用卡诈骗、行贿罪数罪并罚</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="b_y2">
+            <div class="container business-tiaojian p_top_30 p_bottom_30">
+                <div class="tell-now doudun">
+                    <div class="tel-number">400-6787698</div>
+                    <div class="tel-info">如何维护自己的合法权利，立即咨询</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<iframe runat="server" src="/frontend/footer.html" width="100%" height="261" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+
+</body>
+<script src="../../common/js/vendor/jquery-1.9.0.min.js"></script>
+<script src="../../common/js/vendor/headroom.min.js"></script><!--导航跟随效果-->
+<script src="../../frontend/js/wi_main.js"></script><!--网站主要js-->
+<script>
+    /**
+     * 重新构建数据
+     */
+    var lawyerSc = $(".lawyer-sc").text();
+    if(lawyerSc){
+        console.log(lawyerSc);
+        var thisValue = lawyerSc.split(/[,， \n]/);
+        console.log(thisValue);
+        var html = '';
+        for(var i=0;i<thisValue.length;i++){
+            html += '<p class="p_left_0 lawyer-sc">'+thisValue[i]+'</p>';
+        }
+        console.log(html);
+        $(".lawyer-sc").html(html);
+    }
+</script>
+</html>
