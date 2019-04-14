@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>业务单处理</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/datepicker3.css" rel="stylesheet">
+<link href="css/bootstrap-table.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>SSOSCH</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><span class="username" id="username"> User </span><span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> 设置</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li><a href="index.html"><span class="glyphicon glyphicon-dashboard"></span> 网站管理</a></li>
+			<li class="active"><a href="webapp_list.html"><span class="glyphicon glyphicon-stats"></span> 业务单</a></li>
+			<li><a href="set_index.html"><span class="glyphicon glyphicon-th"></span> 首页设置</a></li>
+			<li><a href="set_websit.html"><span class="glyphicon glyphicon-th"></span> 网站信息设置</a></li>
+			<li><a href="set_products.html"><span class="glyphicon glyphicon-stats"></span> 产品页设置</a></li>
+			<li><a href="set_cases.html"><span class="glyphicon glyphicon-list-alt"></span> 案例页设置</a></li>
+			<li><a href="set_about.html"><span class="glyphicon glyphicon-pencil"></span> 关于我们设置</a></li>
+			<li role="presentation" class="divider"></li>
+		</ul>
+		<div class="attribution">技术问题联系QQ:295879185;TEL:18632363993</div>
+	</div><!--/.sidebar-->
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li class="active">业务单处理</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">业务单处理</h1>
+			</div>
+		</div><!--/.row-->
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">业务流转单处理</div>
+					<div class="panel-body">
+						<table id="tableP">
+						</table>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+
+	</div><!--/.main-->
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/chart.min.js"></script>
+	<!--<script src="js/chart-data.js"></script>-->
+	<!--<script src="js/easypiechart.js"></script>-->
+	<!--<script src="js/easypiechart-data.js"></script>-->
+	<!--<script src="js/bootstrap-datepicker.js"></script>-->
+	<script src="js/bootstrap-table.js"></script>
+	<script>
+
+		var url1 = "tables/data1.json";
+		var url2 = "controller/webapp_list.php";
+
+        var datas = [
+            {
+                "id": 0,
+                "name": "Item 0",
+                "price": "$0"
+            },
+            {
+                "id": 1,
+                "name": "Item 1",
+                "price": "$1"
+            },
+            {
+                "id": 2,
+                "name": "Item 2",
+                "price": "$2"
+            },
+            {
+                "id": 3,
+                "name": "Item 3",
+                "price": "$3"
+            },
+            {
+                "id": 4,
+                "name": "Item 4",
+                "price": "$4"
+            },
+            {
+                "id": 5,
+                "name": "Item 5",
+                "price": "$5"
+            },
+            {
+                "id": 6,
+                "name": "Item 6",
+                "price": "$6"
+            },
+            {
+                "id": 7,
+                "name": "Item 7",
+                "price": "$7"
+            },
+            {
+                "id": 8,
+                "name": "Item 8",
+                "price": "$8"
+            },
+            {
+                "id": 9,
+                "name": "Item 9",
+                "price": "$9"
+            },
+            {
+                "id": 10,
+                "name": "Item 10",
+                "price": "$10"
+            },
+            {
+                "id": 11,
+                "name": "Item 11",
+                "price": "$11"
+            },
+            {
+                "id": 12,
+                "name": "Item 12",
+                "price": "$12"
+            },
+            {
+                "id": 13,
+                "name": "Item 13",
+                "price": "$13"
+            },
+            {
+                "id": 14,
+                "name": "Item 14",
+                "price": "$14"
+            },
+            {
+                "id": 15,
+                "name": "Item 15",
+                "price": "$15"
+            },
+            {
+                "id": 16,
+                "name": "Item 16",
+                "price": "$16"
+            },
+            {
+                "id": 17,
+                "name": "Item 17",
+                "price": "$17"
+            },
+            {
+                "id": 18,
+                "name": "Item 18",
+                "price": "$18"
+            },
+            {
+                "id": 19,
+                "name": "Item 19",
+                "price": "$19"
+            },
+            {
+                "id": 20,
+                "name": "Item 20",
+                "price": "$20"
+            }
+        ]
+
+        /*$('#tableP').bootstrapTable({
+            contentType: "application/x-www-form-urlencoded",
+            data: datas
+        })*/
+
+
+
+        var $dataTableHot = $("#tableP").bootstrapTable({
+            search: false,
+            pagination: true,
+            contentType: "application/x-www-form-urlencoded",
+            pageSize: 15,
+            pageList: [5, 10, 15, 20],
+            showColumns: true,
+            showRefresh: false,
+            locale: "zh-CN",
+            striped: true,
+            toggle:true,
+            async:false,
+            url: url2,
+            method: 'POST',
+            columns: [
+                {
+                    field: '',//域值
+                    title: '',//标题
+                    checkbox: 'true',
+                    visible: true,//false表示不显示
+                    width : '5%',
+                },{
+                    field: 'id',//域值
+                    title: '序号',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'fname',//域值
+                    title: '客户姓名',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'fphone',//域值
+                    title: '客户电话',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'femail',//域值
+                    title: '客户邮箱',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'faddress',//域值
+                    title: '客户地址',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'ftime',//域值
+                    title: '发货日期',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'finfo',//域值
+                    title: '付款条件',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'fradio',//域值
+                    title: '是否计量',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                    formatter: function (value, row, index) {
+                        if (row['fradio'] == 0) {
+                            return "<span class='color-red'>否</span>";
+                        }
+                        if (row['fradio'] == 1) {
+                            return "<span class='color-teal'>是</span>";
+                        }
+                    }
+                },{
+                    field: 'fresultisrc',//域值
+                    title: '讨论结果',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },{
+                    field: 'step1',//域值
+                    title: '生产状态',//内容
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '20%',
+                    formatter : function (value, row, index) {
+                        if (row['step1'] == 1) {
+                            return "<span class='color-blue'>正在生产</span>";
+                        }
+                        if (row['step1'] == 2) {
+                            return "<span class='color-teal'>已经生产</span>";
+                        }
+                        return value;
+                    }
+                },{
+                    field: 'uid',//域值
+                    title: '生产执行人',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+					formatter: getUid
+                }
+            ]
+        });
+
+        function getUid() {
+
+            //获取用户默认数据
+            $.ajax({
+                type: "POST",  //提交方式
+                url: "controller/changeuser.php",//路径
+                data: {sctype: 2},//数据，这里使用的是Json格式进行传输
+                dataType: "json",
+                beforeSend: function (xhr, settings) {
+                    // $(".loading").show();
+                },
+                success: function (data) {//返回数据根据结果进行相应的处理
+                    // console.log(data);
+                    dataList = data;
+                    if (data) {
+                        for (var j = 0; j < data.length; j++) {
+                            if (data[j].type == 5) {
+                                anzhuangList.push(data[j]);
+                            }
+                        }
+                        for (var i = 0; i < anzhuangList.length; i++) {
+                            $("#userselect").append("<option value='" + anzhuangList[i].id + "'>" + anzhuangList[i].username + "</option>");
+                        }
+                    }
+                },
+                error: function (xhr, type) {
+                    $('.tip').html("网络故障").show();
+                    setTimeout(function () {
+                        $(".tip").hide(500);
+                    }, 1000);
+                }
+            });
+
+			return '杨春文'
+        }
+
+        /*$('#tableP').bootstrapTable({
+            url:"tables/data1.json",//请求数据url
+            queryParams: function (params) {
+                return {
+                    offset: params.offset,  //页码
+                    limit: params.limit,   //页面大小
+                    search : params.search, //搜索
+                    order : params.order, //排序
+                    ordername : params.sort, //排序
+                };
+            },
+            showHeader : true,
+            showColumns : true,
+            showRefresh : true,
+            async:false,
+            pagination: true,//分页
+            sidePagination : 'server',//服务器端分页
+            pageNumber : 1,
+            pageList: [5, 10, 20, 50],//分页步进值
+            search: true,//显示搜索框
+            //表格的列
+            columns: [
+                {
+                    field: 'id',//域值
+                    title: '规则ID',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '5%',
+                },
+                {
+                    field: 'name',//域值
+                    title: '唯一英文标识',//标题
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '30%',
+                    editable:true,
+                },
+                {
+                    field: 'title',//域值
+                    title: '中文描述',//内容
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '35%',
+                    editable:true,
+                },
+                {
+                    field: 'status',//域值
+                    title: '状态',//内容
+                    visible: true,//false表示不显示
+                    sortable: true,//启用排序
+                    width : '20%',
+                    formatter : function (value, row, index) {
+                        if (row['status'] === 1) {
+                            return '正常';
+                        }
+                        if (row['status'] === 0) {
+                            return '禁用';
+                        }
+                        return value;
+                    }
+                }
+            ]
+        });*/
+
+        !function ($) {
+            $(document).on("click","ul.nav li.parent > a > span.icon", function(){
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        })
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+	</script>	
+</body>
+
+</html>

@@ -103,17 +103,9 @@
 		</div>
 		<section class="index_linksbox">
 			<div class="index_links">
-				<h3>合作伙伴</h3>
+				<h3>员工风采</h3>
 				<div class="links">
-					<a href="#"><img src="img/partners/partners1.jpg"/></a>
-					<a href="#"><img src="img/partners/partners2.jpg"/></a>
-					<a href="#"><img src="img/partners/partners3.jpg"/></a>
-					<a href="#"><img src="img/partners/partners4.jpg"/></a>
-					<a href="#"><img src="img/partners/partners5.jpg"/></a>
-					<a href="#"><img src="img/partners/partners6.jpg"/></a>
-					<a href="#"><img src="img/partners/partners7.jpg"/></a>
-					<a href="#"><img src="img/partners/partners8.jpg"/></a>
-					<a href="#"><img src="img/partners/partners9.jpg"/></a>
+					
 				</div>
 			</div>
 
@@ -125,9 +117,9 @@
 					<a href="http://www.climats-tec.com/"><img src="img/friendlylink/link3.jpg"/><span>克莱梅</span></a>
 					<a href="http://www.wut.com/"><img src="img/friendlylink/link4.jpg"/><span>伟思</span></a>
 				</div>
-				<div class="yqlinks_more">
+				<!--<div class="yqlinks_more">
 					<a href="#"><img src="img/more.png"/></a>
-				</div>
+				</div>-->
 			</div>
 
 		</section>
@@ -136,6 +128,11 @@
 		<div class="foot">
 			<div class="left">
 				<a href="#"><img src="img/footer_logo.png"/></a>
+				<div style="margin-top:15px;text-align:center">
+					<div class="stamp">
+						<img src="img/hou.jpg"/>
+					</div>
+				</div>
 			</div>
 			<div class="left foot_text">
 				<h3>联系我们</h3>
@@ -166,47 +163,26 @@
 	<script src="js/ajaxapi.js"></script>
 	<script>
 		$(document).ready(function() {
-		    var mapJson = [
-				{_getLng:"116.721332",_getLat:"39.794823",_hotelname:"北京弗立兹",_hoteltell:"010-65407746"},
-				{_getLng:"116.279811",_getLat:"39.938985",_hotelname:"西木学堂",_hoteltell:"010-52902109"},
-			];
-		    console.log(mapJson[0]._getLng);
-
 			//地图接口115.292824,40.980855
-			/*var _getLng = "116.721332";//经度,
-			var _getLat = "39.794823";//纬度
-			var _hotelname = "北京弗立兹";//酒店名
-			var _hoteltell = "010-65407746";//电话号*/
-			for(var i=0;i<mapJson.length;i++){
-                var map = new AMap.Map('container', {
-                    resizeEnable: true,
-                    zoom:10,//缩放级别
-                    center: [mapJson[i]._getLng,mapJson[i]._getLat],//所在点标注位置
-                });
-                //地图设置标注点显示
-                var marker = new AMap.Marker({
-                    position: map.getCenter()
-                });
-                marker.setMap(map);
-                marker.setTitle(mapJson[i]._hotelname);//设置鼠标划过点标记显示的文字提示
-                marker.setLabel({
-                    offset: new AMap.Pixel(20,-30),//显示位置偏移量
-                    content: "<div class='map_bz'>"+mapJson[i]._hotelname+"</br><span class='c_r'>联系电话："+mapJson[i]._hoteltell+"</span></div>",//标注提示框显示内容
-                });
-			}
-
-
-			//地图设置标注点显示
-			/*var marker2 = new AMap.Marker({
-				position: map.getCenter()
-			});
-			marker2.setMap(map);
-			marker2.setTitle("北京弗立兹");//设置鼠标划过点标记显示的文字提示
-			marker2.setLabel({
-				offset: new AMap.Pixel(20,-30),//显示位置偏移量
-				content: "<div class='map_bz'>"+_hotelname+"</br><span class='c_r'>联系电话1："+_hoteltell+"</span></div>",//标注提示框显示内容
-			});*/
-
+		var _getLng = "116.721332";//经度,
+		var _getLat = "39.794823";//纬度
+		var _hotelname = "北京弗立兹";//酒店名
+		var _hoteltell = "010-65407746";//电话号
+	    var map = new AMap.Map('container', {
+	        resizeEnable: true,
+	        zoom:10,//缩放级别
+	        center: [_getLng,_getLat],//所在点标注位置
+	    });
+	    //地图设置标注点显示
+        var marker = new AMap.Marker({  
+            position: map.getCenter()  
+        });
+        marker.setMap(map);
+        marker.setTitle("北京弗立兹");//设置鼠标划过点标记显示的文字提示
+        marker.setLabel({  
+            offset: new AMap.Pixel(20,-30),//显示位置偏移量
+            content: "<div class='map_bz'>"+_hotelname+"</br><span class='c_r'>联系电话："+_hoteltell+"</span></div>",//标注提示框显示内容
+        });
 		});
 	</script>
 </body>

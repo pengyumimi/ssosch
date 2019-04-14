@@ -21,7 +21,13 @@
     <script src="js/ajaxapi.js"></script>
 <style>
 .index{background: #fafafa;}
-
+.indexPimg {
+    padding: 15px;
+}
+.Pimg1{border-top-left-radius: 10px;border-top-right-radius: 10px;}
+.index_linksbox {
+    width: 1170px;
+}
 </style>
 </head>
 <!--test-->
@@ -58,35 +64,37 @@
 		</nav>
 	</header>
 	<div class="main_box">
-		<div class="banner">
-			<!--banner大图-->
-			<ul class="bigpic">
-      			<li><a href="#"><img class="b_img" src="img/banner/banner_1.jpg" alt=""/></a></li>
-				<li><a href="#"><img class="b_img" src="img/banner/banner_2.jpg" alt=""/></a></li>
-				<li><a href="#"><img class="b_img" src="img/banner/banner_3.jpg" alt=""/></a></li>
-				<li><a href="#"><img class="b_img" src="img/banner/banner_4.jpg" alt=""/></a></li>
-			</ul>
-			<!--/banner大图-->
-			<!--banner缩略图-->
-			<ul class="s_pic">
-      			<li><a href="javascript:void(0);"><img class="s_img intro_img" src="img/banner/banner_1.gif" alt=""/></a></li>
-				<li><a href="javascript:void(0);"><img class="s_img" src="img/banner/banner_2.gif" alt=""/></a></li>
-				<li><a href="javascript:void(0);"><img class="s_img" src="img/banner/banner_3.gif" alt=""/></a></li>
-				<li><a href="javascript:void(0);"><img class="s_img" src="img/banner/banner_4.gif" alt=""/></a></li>
-			</ul>
-			<!--/banner缩略图-->
+		<div class="bannerzbox" style="z-index:10;position:relative">
+			<div class="banner">
+				<!--banner大图-->
+				<ul class="bigpic">
+					<li><a href="#"><img class="b_img" src="img/banner/banner_1.jpg" alt=""/></a></li>
+					<li><a href="#"><img class="b_img" src="img/banner/banner_2.jpg" alt=""/></a></li>
+					<li><a href="#"><img class="b_img" src="img/banner/banner_3.jpg" alt=""/></a></li>
+					<li><a href="#"><img class="b_img" src="img/banner/banner_4.jpg" alt=""/></a></li>
+				</ul>
+				<!--/banner大图-->
+				<!--banner缩略图-->
+				<ul class="s_pic">
+					<li><a href="javascript:void(0);"><img class="s_img intro_img" src="img/banner/banner_1.gif" alt=""/></a></li>
+					<li><a href="javascript:void(0);"><img class="s_img" src="img/banner/banner_2.gif" alt=""/></a></li>
+					<li><a href="javascript:void(0);"><img class="s_img" src="img/banner/banner_3.gif" alt=""/></a></li>
+					<li><a href="javascript:void(0);"><img class="s_img" src="img/banner/banner_4.gif" alt=""/></a></li>
+				</ul>
+				<!--/banner缩略图-->
 
+			</div>
+			<script>
+				function banner_size(){
+					var w_body = $("body").width();
+					count_h = w_body/2.4;
+					var banner_h = $(".banner").height(count_h);
+				};
+				banner_size();
+				$(window).resize(banner_size);
+			</script>
 		</div>
-		<script>
-			function banner_size(){
-				var w_body = $("body").width();
-				count_h = w_body/2.4;
-				var banner_h = $(".banner").height(count_h);
-			};
-			banner_size();
-			$(window).resize(banner_size);
-		</script>
-		<section class="m_top_0 m_bottom_0">
+		<section class="m_top_0 m_bottom_0" style="z-index:100;margin-top:-150px;width:1170px;position: relative;">
 			<div class="indexPimg Pimg1">
 				<div class="indexPp">
 					<a href="products.html?id=0"><img src="img/tu1.png"/><h3>冷水机组系统</h3></a>
@@ -110,17 +118,9 @@
 		
 		<section class="index_linksbox">
 			<div class="index_links">
-				<h3>合作伙伴</h3>
+				<h3>员工风采</h3>
 				<div class="links">
-					<a href="#"><img src="img/partners/partners1.jpg"/></a>
-					<a href="#"><img src="img/partners/partners2.jpg"/></a>
-					<a href="#"><img src="img/partners/partners3.jpg"/></a>
-					<a href="#"><img src="img/partners/partners4.jpg"/></a>
-					<a href="#"><img src="img/partners/partners5.jpg"/></a>
-					<a href="#"><img src="img/partners/partners6.jpg"/></a>
-					<a href="#"><img src="img/partners/partners7.jpg"/></a>
-					<a href="#"><img src="img/partners/partners8.jpg"/></a>
-					<a href="#"><img src="img/partners/partners9.jpg"/></a>
+					
 				</div>
 			</div>
 
@@ -132,9 +132,9 @@
 					<a href="http://www.climats-tec.com/"><img src="img/friendlylink/link3.jpg"/><span>克莱梅</span></a>
 					<a href="http://www.wut.com/"><img src="img/friendlylink/link4.jpg"/><span>伟思</span></a>
 				</div>
-				<div class="yqlinks_more">
+				<!--<div class="yqlinks_more">
 					<a href="#"><img src="img/more.png"/></a>
-				</div>
+				</div>-->
 			</div>
 
 		</section>
@@ -143,6 +143,11 @@
 		<div class="foot">
 			<div class="left">
 				<a href="#"><img src="img/footer_logo.png"/></a>
+				<div style="margin-top:15px;text-align:center">
+					<div class="stamp">
+						<img src="img/hou.jpg"/>
+					</div>
+				</div>
 			</div>
 			<div class="left foot_text">
 				<h3>联系我们</h3>
