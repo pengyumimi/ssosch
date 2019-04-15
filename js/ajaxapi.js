@@ -165,7 +165,7 @@ function swhz(){
 //swhz();
 
 
-//友情链接
+//show case
 function case_list(){
     $.ajax({
         url: "admin/controller/case_list.php",
