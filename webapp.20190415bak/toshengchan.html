@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
     <title>给生产</title>
-    <link type="text/css" rel="stylesheet" href="common/css/example.css"/>
-    <link type="text/css" rel="stylesheet" href="common/css/weui.css">
+    <link rel="stylesheet" href="common/css/example.css"/>
+    <link rel="stylesheet" href="common/css/weui.css">
     <link type="text/css" rel="stylesheet" href="imgupload/index.css">
-    <link type="text/css" rel="stylesheet" href="common/css/myweui.css">
+    <link rel="stylesheet" href="common/css/myweui.css">
 </head>
 <body>
 
@@ -21,16 +21,6 @@
     </div>
 
     <div class="page__bd">
-        <div class="weui-cells__title">公司名称</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="companyname" class="weui-input mustInput" maxlength="40" type="text" placeholder="请输入公司名称"/>
-                    <div class="errortip">此项必填</div>
-                </div>
-            </div>
-        </div>
-
         <div class="weui-cells__title">客户姓名</div>
         <div class="weui-cells">
             <div class="weui-cell">
@@ -109,7 +99,7 @@
                                  </section>-->
                                 <section class="z_file fl">
                                     <img src="imgupload/a11.png" class="add-img">
-                                    <input type="file" name="file" id="imgjsfj" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
+                                    <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple="">
                                 </section>
                             </div>
                         </section>
@@ -120,40 +110,6 @@
                             <p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
                         </div>
                     </aside>-->
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">合同附件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd camera-area" style="text-align: left">
-                    <form enctype="multipart/form-data" method="post">
-                        <input id="fsrc" type="file" name="fileToUpload" class="fileToUpload weui-btn" style="color:#333;line-height: 2em;font-size:12px" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" capture="camera"/>
-                        <div class="upload-progress"><span></span></div>
-                    </form>
-                    <div class="thumb"></div>
-                    <input type="hidden" id="filePostSrc">
-                    <!--<div class="errortip">此项必填</div>-->
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">报价单电子版</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <div class="img-box full">
-                        <section class=" img-section">
-                            <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
-                            <div class="z_photo upimg-div clear">
-                                <section class="z_file fl">
-                                    <img src="imgupload/a11.png" class="add-img">
-                                    <input type="file" name="file" id="imgbjd" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
-                                </section>
-                            </div>
-                        </section>
-                    </div>
                 </div>
             </div>
         </div>
@@ -218,7 +174,6 @@
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
     <script src="imgupload/imgUp.js"></script>
-    <script src="fileupload/upload.js" type="text/javascript"></script>
     <script src="common/js/main.js"></script>
 
     <script type="text/javascript">
@@ -234,28 +189,17 @@
             // console.log(localData);
             $("#submit-btn").click(function () {
                 //图片地址处理
-                // 技术附件
-                var jsfjobj = $("#imgjsfj");
-                var jsfjimgsrcData = '';
-                //报价单电子版
-                var bjdobj = $("#imgbjd");
-                var bjdimgsrcData = '';
-
-                $(jsfjobj).parents(".img-box .imgsrcs").each(function (e) {
-                    jsfjimgsrcData += $(this).val()+',';
-                });
-                $(bjdobj).parents(".img-box .imgsrcs").each(function (e) {
-                    bjdimgsrcData += $(this).val()+',';
+                var imgsrcData = '';
+                $(".imgsrcs").each(function (e) {
+                    imgsrcData += $(this).val()+',';
                 });
                 // console.log(imgsrcData);
-                var modal_companyname = $("#companyname").val();
                 var modal_name = $("#name").val();
                 var modal_phone = $("#phone").val();
                 var modal_address = $("#address").val();
                 var modal_email = $("#email").val();
-                var modal_fsrc = $("#filePostSrc").val();
-                var modal_isrc = jsfjimgsrcData;
-                var modal_isrc = bjdimgsrcData;
+                var modal_fsrc = $("#fsrc").val();
+                var modal_isrc = imgsrcData;
                 var modal_time = $("#time").val();
                 var modal_info = $("#info").val();
                 var modal_radio = $("input[name='radio1']:checked").val();
@@ -264,7 +208,6 @@
                 if (yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_info, $("#info"))) {
                     var params = {
                         uid: localData.id,
-                        fcompanyname: modal_companyname,
                         fname: modal_name,
                         fphone: modal_phone,
                         faddress: modal_address,
@@ -276,7 +219,7 @@
                         fradio: modal_radio
                     };
                     console.log(params);
-                    return;
+                    // return;
                     $.ajax({
                         type: "POST",  //提交方式
                         url: "controller/formtoshengchan_add.php",//路径

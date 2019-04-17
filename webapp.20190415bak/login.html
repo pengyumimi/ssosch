@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!--默认用ie8的最高内核进行渲染，如果有谷歌的gcf，则用谷歌的内核渲染-->
+    <meta name="renderer" content="webkit"><!--默认用360极速模式渲染-->
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!--默认以百分百比例打开-->
+    <title>登录弗立兹</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="common/css/common.css">
+    <link rel="stylesheet" href="common/css/wi_main.css">
+</head>
+<body class="sign_main">
+<div class="sign_background"></div>
+<div class="container">
+    <div class="col-xs-12 col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+        <div class="mainbox">
+            <div class="sign_banner_box">
+                <div class="col-xs-12 col-xs-12 col-sm-12 col-md-12 col-lg-12 sign_banner">
+                    <div class="sign_banner_img">
+                        <a href="index.html"><img class="img-responsive" src="../img/logo.png"/></a>
+                    </div>
+                    <!--<div class="sign_banner_img">
+                        <img class="img-responsive" src="img/logintxt_signin.png"/>
+                    </div>-->
+                </div>
+            </div>
+
+            <div class="sign_box">
+                <!--登录-->
+                <div class="signmain">
+                    <div class="input_item">
+                        <p class="errortip">您输入的手机号有误</p>
+                        <input type="text" name="phone" placeholder="手机号" autocomplete="off"/>
+                    </div>
+                    <div class="input_item">
+                        <p class="errortip">您输入的密码有误</p>
+                        <input type="password" name="password" placeholder="输入密码" autocomplete='new-password'/>
+                    </div>
+                    <div class="input_item">
+                        <button class="ripple" name="sgin_btn" data-loading-text="Loading...">登录</button>
+                    </div>
+                </div>
+                <!--<a class="right m_top_10 f_14" href="reset.html">忘记密码？</a>-->
+            </div>
+        </div>
+    </div>
+    <div class="loginBg"></div>
+</div>
+
+<div class="tip"></div>
+
+</body>
+
+<script src="../js/jquery.min.js"></script>
+<script src="common/js/jquery.base64.js"></script><!--base64加密-->
+<script src="common/js/cookie_set.js"></script><!--ajax数据交互-->
+<script src="common/js/ajaxapi_sign.js"></script><!--ajax数据交互-->
+<script>
+
+    /*js原生获取cookie参数*/
+    function getcookies(value) {
+        var getCookie = document.cookie.replace(/[ ]/g, ""); //获取cookie，并且将获得的cookie格式化，去掉空格字符
+        var arrCookie = getCookie.split(";"); //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+        var tips; //声明变量tips
+        for (var i = 0; i < arrCookie.length; i++) { //使用for循环查找cookie中的tips变量
+            var arr = arrCookie[i].split("="); //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+            if (value == arr[0]) { //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+                tips = arr[1]; //将cookie的值赋给变量tips
+                break; //终止for循环遍历
+            }
+        }
+        return tips;
+    }
+
+    $("button[name='sgin_btn']").click(function(){
+        var _this = $(this);
+        var phoneselecter = $("input[name='phone']");
+        var phone_val = phoneselecter.val();
+        var passwordselecter = $("input[name='password']");
+        var password_val = passwordselecter.val();
+        //后台json数据传输格式
+        var pagedata = {
+            _username: $.base64.btoa(phone_val),//base64加密赋值
+            _password: $.base64.btoa(password_val),//base64加密赋值
+        };
+        yanz_phone(phone_val,phoneselecter);//执行验证手机号
+        yanz_pass(password_val,passwordselecter);//执行密码验证
+        if(flag_phone == 1 && flag_password == 1){
+            signin("controller/login.php", pagedata, _this);
+        }
+    });
+
+</script>
+</html>

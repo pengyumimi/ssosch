@@ -1,31 +1,27 @@
 var maxN = 5;
 $(function () {
     var defaults = {
-        fileType: ["jpg", "png", "bmp", "jpeg", "gif"],   // 上传文件的类型
-        fileSize: 1024 * 1024 * 10                 // 上传文件的大小 10M
+        fileType: ["jpg", "png", "bmp", "jpeg"],   // 上传文件的类型
+        fileSize: 1024 * 1024 * 10                  // 上传文件的大小 10M
     };
-    var changeObj;
-    var newImgPostData = [];
-    var item = {};
 
-    /*点击图片的文本框 change 事件*/
+    /*点击图片的文本框*/
     $(".file").change(function () {
-        changeObj = this;
         var idFile = $(this).attr("id");
         var file = document.getElementById(idFile);
         var imgContainer = $(this).parents(".z_photo"); //存放图片的父亲元素
         var fileList = file.files; //获取的图片文件
+        var input = $(this).parent();//文本框的父亲元素
         var imgArr = [];
         //遍历得到的图片文件
-        var numUp = imgContainer.find(".up-section").length; //一次多选的图片数
-        var totalNum = numUp + fileList.length;  //已经上传的总图片数
+        var numUp = imgContainer.find(".up-section").length;
+        var totalNum = numUp + fileList.length;  //总的数量
 
         if (fileList.length > maxN || totalNum > maxN) {
             alert("图片数不可以超过"+maxN+"个，请重新选择");  //一次选择上传超过5个 或者是已经上传和这次上传的到的总数也不可以超过5个
         } else if (numUp < maxN) {
-            fileList = validateUp(fileList);
             // console.log(fileList);
-            //构建 html 图片
+            fileList = validateUp(fileList);
             for (var i = 0; i < fileList.length; i++) {
                 var imgUrl = window.URL.createObjectURL(fileList[i]);
                 imgArr.push(imgUrl);
@@ -42,16 +38,12 @@ $(function () {
                 $input.appendTo($section);
                 var $input2 = $("<input id='tags' name='tags' value='' type='hidden'/>");
                 $input2.appendTo($section);
-                // console.log(fileList[i]);
-                // alert(22);
-                buildData(fileList[i],i);
+                // console.log($img);
             }
-
-            //异步上传
         }
         setTimeout(function () {
-            $(changeObj).parents(".img-box").find(".up-section").removeClass("loading");
-            $(changeObj).parents(".img-box").find(".up-img").removeClass("up-opcity");
+            $(".up-section").removeClass("loading");
+            $(".up-img").removeClass("up-opcity");
         }, 450);
         numUp = imgContainer.find(".up-section").length;
         if (numUp >= maxN) {
@@ -59,56 +51,39 @@ $(function () {
         }
     });
 
-    //构建数据
-    function buildData(file,xuhao) {
-        // console.log(file);
-        base64Data(file).then(function (result) {
-            setTimeout(function() {
-                item = {
-                    "name":file.name,
-                    "size":file.size,
-                    "type":file.type,
-                    "base64Data": result
-                };
-                newImgPostData.push(item);
-                // console.log(newImgPostData);
-                uploadIMgs(item,xuhao);//上传
-            }, 1);
-        });
+    //图片灯箱
+    /*$(".closeimg").on("click",function(event){
+        alert(333);
+    })*/
 
-    }
+    var newImgPostData = [];
+    var item = {};
+    var b64 = [];
 
-    //上传(将文件流数组传到后台)
-    function uploadIMgs(thisData,xuhao) {
-        // console.log(thisData);
-        // 添加图片的上传
-        // $(changeObj).parents(".img-box").find(".imgsrcs").remove();
-        // console.log(thisData);
-        var dataitem = {
-            "name":thisData.name,
-            "base64Data":thisData.base64Data
-        };
-        //图片上传ajax
-        $.ajax({
-            type: "post",
-            url: "imgupload/upload-base64img.php",
-            dataType: "json",
-            data: dataitem,
-            beforeSend: function () {},
-            success: function (data) {
-                $(changeObj).parents(".img-box").prepend('<input type="hidden" class="imgsrcs imgsrcs'+xuhao+'" value='+data.src+'>');
-            },
-            error: function () {
-                console.log("上传失败,刷新重试");
-            }
-        });
-
-    };
-
-    //图片校验
     function validateUp(files) {
         var arrFiles = [];//替换的文件数组
         for (var i = 0, file; file = files[i]; i++) {
+            // console.log(i);
+            // console.log(file);
+            item = {
+                "name":file.name,
+                "size":file.size,
+                "type":file.type,
+                "base64Data":''
+            };
+            newImgPostData.push(item);
+            // console.log(item);
+            base64Data(file).then(function (result) {
+                setTimeout(function() {
+                    b64.push(result);
+                    // console.log(b64);
+                    for(var j=0;j<b64.length;j++){
+                        newImgPostData[j].base64Data = b64[j];
+                    };
+                    // console.log(newImgPostData);
+                }, 1);
+            });
+
             //获取文件上传的后缀名
             var newStr = file.name.split("").reverse().join("");
             if (newStr.split(".")[0] != null) {
@@ -130,25 +105,46 @@ $(function () {
                 alert('您这个"' + file.name + '"没有类型, 无法识别');
             }
         }
+        uploadIMgs(newImgPostData);//上传
         return arrFiles;
     };
 
-    //file对象转base64格式
-    function base64Data(files){
-        return new Promise(function(resolve, reject) {
-            var reader = new FileReader();
-            reader.readAsDataURL(files);
-            reader.onload = function (e){
-                // console.log(this.result);
-                resolve(this.result)
+    //上传(将文件流数组传到后台)
+    function uploadIMgs(thisData) {
+        // 添加图片的上传
+        $(".imgsrcs").remove();
+        setTimeout(function() {
+            // console.log(thisData);
+            for (var i = 0; i < thisData.length; i++) {
+                var dataitem = {
+                    "name":thisData[i].name,
+                    "base64Data":thisData[i].base64Data
+                }
+                saveData(i);
+                function saveData(i) {
+                    //图片上传
+                    $.ajax({
+                        type: "post",
+                        url: "imgupload/upload-base64img.php",
+                        dataType: "json",
+                        data: dataitem,
+                        beforeSend: function () {
+                        },
+                        success: function (data) {
+                            // console.log("图片上传返回值");
+                            // console.log(data);
+                            $(".img-box").prepend('<input type="hidden" id="imgsrcs'+i+'" class="imgsrcs" value='+data.src+'>')
+                            // $(".imgsrcs").val(data.src);
+                        },
+                        error: function () {
+                            console.log("上传失败,刷新重试");
+                        }
+                    });
+                }
             }
-        })
-    }
+        }, 800);
 
-    //图片灯箱
-    /*$(".closeimg").on("click",function(event){
-        alert(333);
-    })*/
+    };
 
     //图片预览路径 blob
     function getObjectURL(file) {
@@ -163,36 +159,28 @@ $(function () {
         return url;
     }
 
+    //file对象转base64格式
+    function base64Data(files){
+        return new Promise(function(resolve, reject) {
+            var reader = new FileReader();
+            reader.readAsDataURL(files);
+            reader.onload = function (e){
+                // console.log(this.result);
+                resolve(this.result)
+            }
+        })
+    }
+
 });
 
 function removeImg(_this,index_i) {
-    // console.log(_this,index_i);
-    var delParent = $(_this).parent();
-    var delSrc = $(_this).parents(".img-box");
+    delParent = $(_this).parent();
     var numUp = delParent.siblings().length;
-    var imgsrc = $(delSrc).find(".imgsrcs"+index_i+"").val();
-    //图片删除ajax
-    $.ajax({
-        type: "post",
-        url: "imgupload/upload-base64img.php",
-        dataType: "json",
-        data: {
-            imgsrc : imgsrc,
-            posttype: 2
-        },
-        beforeSend: function () {},
-        success: function (data) {
-            // console.log(data);
-            //如果在限制张数以内，显示添加图片按钮
-            if (numUp < maxN+1) {
-                delParent.parent().find(".z_file").show();
-            }
-            // console.log(delParent);
-            delParent.remove();
-            $(delSrc).find(".imgsrcs"+index_i+"").remove();
-        },
-        error: function () {
-            console.log("删除失败,刷新重试");
-        }
-    });
+    //如果在限制张数以内，显示添加图片按钮
+    if (numUp < maxN+1) {
+        delParent.parent().find(".z_file").show();
+    }
+    // console.log(delParent);
+    delParent.remove();
+    $("#imgsrcs"+index_i+"").remove();
 };

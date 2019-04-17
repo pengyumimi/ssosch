@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
-    <title>给生产</title>
-    <link type="text/css" rel="stylesheet" href="common/css/example.css"/>
-    <link type="text/css" rel="stylesheet" href="common/css/weui.css">
+    <title>给会计</title>
+    <link rel="stylesheet" href="common/css/example.css"/>
+    <link rel="stylesheet" href="common/css/weui.css">
     <link type="text/css" rel="stylesheet" href="imgupload/index.css">
-    <link type="text/css" rel="stylesheet" href="common/css/myweui.css">
+    <link rel="stylesheet" href="common/css/myweui.css">
 </head>
 <body>
 
@@ -16,21 +16,11 @@
         <h1 class="page__title">
             <img src="../img/logo.png" alt="弗立兹" height="36px"/>
         </h1>
-        <h3 class="">给生产表单（<span class="workerName"></span>）</h3>
-        <p class="sc-color">此表单信息会提交给生产人员，您填写的越准确，生产效率越高！</p>
+        <h3 class="">给会计表单（<span class="workerName"></span>）</h3>
+        <p class="kj-color">此表单信息会提交给财务人员，您填写的越准确，财务越喜欢！</p>
     </div>
 
     <div class="page__bd">
-        <div class="weui-cells__title">公司名称</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="companyname" class="weui-input mustInput" maxlength="40" type="text" placeholder="请输入公司名称"/>
-                    <div class="errortip">此项必填</div>
-                </div>
-            </div>
-        </div>
-
         <div class="weui-cells__title">客户姓名</div>
         <div class="weui-cells">
             <div class="weui-cell">
@@ -64,7 +54,7 @@
         <div class="weui-cells">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <input id="address" class="weui-input mustInput" type="text" maxlength="100" placeholder="请输入客户地址"/>
+                    <input id="adress" class="weui-input mustInput" type="text" maxlength="100" placeholder="请输入客户地址"/>
                     <div class="errortip">此项必填</div>
                 </div>
             </div>
@@ -76,50 +66,6 @@
                 <div class="weui-cell__bd">
                     <input id="email" class="weui-input email" type="text" maxlength="50" placeholder="请输入联系邮箱"/>
                     <div class="errortip">请填入正确的邮箱地址</div>
-                </div>
-            </div>
-        </div>
-
-        <!--<div class="weui-cells__title">技术附件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="fsrc" class="weui-input" type="text" placeholder="请上传技术附件"/>
-                    &lt;!&ndash;<div class="errortip">此项必填</div>&ndash;&gt;
-                </div>
-            </div>
-        </div>-->
-        
-        <div class="weui-cells__title">技术附件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <div class="img-box full">
-                        <section class=" img-section">
-                            <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
-                            <div class="z_photo upimg-div clear">
-                                <!--<section class="up-section fl">
-                                     <span class="up-span"></span>
-                                     <img src="/img/buyerCenter/a7.png" class="close-upimg">
-                                     <img src="/img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
-                                     <img src="/img/test2.jpg" class="up-img">
-                                     <p class="img-namep"></p>
-                                     <input id="taglocation" name="taglocation" value="" type="hidden">
-                                     <input id="tags" name="tags" value="" type="hidden">
-                                 </section>-->
-                                <section class="z_file fl">
-                                    <img src="imgupload/a11.png" class="add-img">
-                                    <input type="file" name="file" id="imgjsfj" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
-                                </section>
-                            </div>
-                        </section>
-                    </div>
-                    <!--<aside class="mask works-mask">
-                        <div class="mask-content">
-                            <p class="del-p ">您确定要删除图片吗？</p>
-                            <p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
-                        </div>
-                    </aside>-->
                 </div>
             </div>
         </div>
@@ -138,7 +84,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="weui-cells__title">报价单电子版</div>
         <div class="weui-cells">
             <div class="weui-cell">
@@ -149,7 +95,7 @@
                             <div class="z_photo upimg-div clear">
                                 <section class="z_file fl">
                                     <img src="imgupload/a11.png" class="add-img">
-                                    <input type="file" name="file" id="imgbjd" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
+                                    <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple="">
                                 </section>
                             </div>
                         </section>
@@ -179,29 +125,6 @@
             </div>
         </div>
 
-        <div class="weui-cells__title">是否计量</div>
-        <div class="weui-cells weui-cells_radio">
-            <label class="weui-cell weui-check__label" for="x11">
-                <div class="weui-cell__bd">
-                    <p>需要计量</p>
-                </div>
-                <div class="weui-cell__ft">
-                    <input type="radio" class="weui-check" name="radio1" id="x11" value="1"/>
-                    <span class="weui-icon-checked"></span>
-                </div>
-            </label>
-            <label class="weui-cell weui-check__label" for="x12">
-
-                <div class="weui-cell__bd">
-                    <p>不需要</p>
-                </div>
-                <div class="weui-cell__ft">
-                    <input type="radio" name="radio1" class="weui-check" id="x12"  value="0" checked="checked"/>
-                    <span class="weui-icon-checked"></span>
-                </div>
-            </label>
-        </div>
-
         <div class="weui-btn-area">
             <a class="weui-btn weui-btn_primary" href="javascript:" id="submit-btn">确定</a>
         </div>
@@ -228,43 +151,29 @@
                 $(".workerName").html(localData.username);
                 // alert(typeof(localData.id));
             }else{
-                alert("您需要先选择指定的生产人员才可以提交");
+                alert("您需要先选择指定的会计才可以提交");
                 window.location.href = "index.html";
             }
-            // console.log(localData);
+
             $("#submit-btn").click(function () {
                 //图片地址处理
-                // 技术附件
-                var jsfjobj = $("#imgjsfj");
-                var jsfjimgsrcData = '';
-                //报价单电子版
-                var bjdobj = $("#imgbjd");
-                var bjdimgsrcData = '';
-
-                $(jsfjobj).parents(".img-box .imgsrcs").each(function (e) {
-                    jsfjimgsrcData += $(this).val()+',';
+                var imgsrcData = '';
+                $(".imgsrcs").each(function (e) {
+                    imgsrcData += $(this).val()+',';
                 });
-                $(bjdobj).parents(".img-box .imgsrcs").each(function (e) {
-                    bjdimgsrcData += $(this).val()+',';
-                });
-                // console.log(imgsrcData);
-                var modal_companyname = $("#companyname").val();
                 var modal_name = $("#name").val();
                 var modal_phone = $("#phone").val();
-                var modal_address = $("#address").val();
+                var modal_address = $("#adress").val();
                 var modal_email = $("#email").val();
                 var modal_fsrc = $("#filePostSrc").val();
-                var modal_isrc = jsfjimgsrcData;
-                var modal_isrc = bjdimgsrcData;
+                var modal_isrc = imgsrcData;
                 var modal_time = $("#time").val();
                 var modal_info = $("#info").val();
-                var modal_radio = $("input[name='radio1']:checked").val();
                 // console.log(modal_name,modal_phone,modal_address,modal_email,modal_fsrc,modal_time,modal_info,modal_radio);
                 // console.log(2);
                 if (yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_info, $("#info"))) {
                     var params = {
                         uid: localData.id,
-                        fcompanyname: modal_companyname,
                         fname: modal_name,
                         fphone: modal_phone,
                         faddress: modal_address,
@@ -272,14 +181,13 @@
                         ffsrc: modal_fsrc,
                         fisrc: modal_isrc,
                         ftime: modal_time,
-                        finfo: modal_info,
-                        fradio: modal_radio
+                        finfo: modal_info
                     };
                     console.log(params);
-                    return;
+                    // return;
                     $.ajax({
                         type: "POST",  //提交方式
-                        url: "controller/formtoshengchan_add.php",//路径
+                        url: "controller/formtokuaiji_add.php",//路径
                         data: params,//数据，这里使用的是Json格式进行传输
                         dataType: "json",
                         beforeSend: function(xhr, settings){
@@ -307,6 +215,33 @@
                     return false;
                 }
             });
+
+            $(".camera-area").fileUpload({
+                "url": "fileupload/savetofile.php",
+                "file": "myFile"
+            });
+            /*$("#fsrc").change(function () {
+                var formData = new FormData($('#uploadForm')[0]);
+
+                console.log($('#uploadForm'));return;
+                $.ajax({
+                    type: "post",
+                    url: "imgupload/upload-base64img.php",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function () {
+                    },
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function () {
+                        console.log("上传失败,刷新重试");
+                    }
+                });
+
+            });*/
 
         });
     </script>

@@ -1,18 +1,13 @@
 <?php
 //print_r($base64);die();
-$postType = $_POST['posttype'];
-$imgsrc = $_POST['imgsrc'];
-$imgName = $_POST['name'];
-$imgBase64 = $_POST['base64Data'];
+$imgName = $_POST['name'];;
+$imgBase64 = $_POST['base64Data'];;
+fiximg($imgBase64, $imgName);
 
-//图片处理
-if($postType == 2){
-    delimg($imgsrc);
-}else{
-    fiximg($imgBase64, $imgName);
-}
-
-function fiximg($img64data, $imgNameN){
+//    $callbackurls = array();
+//图片处理的工厂
+function fiximg($img64data, $imgNameN)
+{
 
     $base64_body = substr(strstr($img64data, ','), 1);//去除头部
     $img = base64_decode($base64_body);//base64解码
@@ -33,17 +28,6 @@ function fiximg($img64data, $imgNameN){
 
 //        array_push($callbackurls,$urls);
     echo json_encode(array("msg" => "操作成功", "src" => $urls, "result" => "1"));
-}
-
-function delimg($imgsrc){
-    if (!unlink($imgsrc))
-    {
-        echo json_encode(array("msg" => "操作失败", "src" => $imgsrc, "result" => "0"));
-    }
-    else
-    {
-        echo json_encode(array("msg" => "操作成功", "src" => $imgsrc, "result" => "1"));
-    }
 }
 
 ?>

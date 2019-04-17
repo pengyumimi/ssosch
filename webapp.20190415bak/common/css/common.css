@@ -1,0 +1,564 @@
+/*
+    Common Class Library
+    此ui库只用于车享邦公司内部使用，严禁盗版
+    公共ui库class命名规则
+    class属性英文缩写_属性值名称 例如：
+    .c_mfont{
+	   color: #0084ff !important;
+    }
+    c_red,表示color_red,它的值为：red。书写如下
+    .c_red{
+        color: red;
+    }
+    初始化公共样式命名按常规命名，如
+    h1,h2,h3{
+        color: #333;
+        margin: 0;
+        padding: 0.5em 1em;
+    }
+*/
+/* 初始化标签 */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: 0;
+}
+
+a{
+    outline: none;
+    text-decoration: none;
+    color: #f3981a;
+    cursor: pointer;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #1983d6;
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+a:link{
+	text-decoration: none;
+}
+h1, h2, h3, h4 {
+    font-weight: 300;
+}
+
+h2{
+    font-size: 16px;
+    color: #666;
+}
+
+h3{
+    font-size: 14px;
+    color: #333;
+}
+
+strong {
+    font-weight: bold;
+}
+
+hr{
+    color:#e6e6e6;
+    height:1px;
+    border:0px;
+    border-top:1px solid #e6e6e6;
+    margin:0px;
+    padding:0px;
+    overflow:hidden;
+}
+
+i,cite{
+    font-style: normal;
+}
+ul,li{
+	list-style: none;
+}
+a:hover{
+	transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+}
+/* 常用颜色 */
+.f_color{
+    color: #32a0f6 !important;
+}
+.link_a{
+    color: #32a0f6 !important;
+    margin: 0 5px;
+}
+
+.b_color{
+    background-color: #32a0f6 !important;
+}
+
+.c_3{
+    color: #333 !important;
+}
+
+.c_6{
+    color: #666 !important;
+}
+
+.c_9{
+    color: #999 !important;
+}
+
+.c_c{
+    color: #ccc !important;
+}
+
+.c_r{
+    color: #ff6c60 !important;
+}
+
+.c_y{
+    color: #f8ac59 !important;
+}
+
+.c_g{
+    color: #1ab394 !important;
+}
+
+.c_w{
+    color: #fff !important;
+}
+
+.b_h{
+    background: #e6e6e6 !important;
+}
+
+.b_b{
+    background: #32a0f6 !important;
+}
+
+.b_r{
+    background: #ff6c60 !important;
+}
+
+.b_y{
+    background: #f8ac59 !important;
+}
+
+.b_g{
+    background: #1ab394 !important;
+}
+
+.b_c{
+    background: #ccc !important;
+}
+.bc_b{
+    background-color: #32a0f6 !important;
+    color: #fff !important;
+}
+.b_w{
+	background: #fff !important;
+}
+
+/* 常用字体比例和边距 */
+.f_reduce{
+    font-size: 0.6em !important;
+}
+
+.f_plus{
+    font-size: 1.6em !important;
+}
+
+.f_12{
+    font-size: 12px;
+}
+
+.f_14{
+	font-size: 14px;
+}
+
+.f_16{
+    font-size: 16px;
+}
+
+small {
+    font-size: 80%;
+}
+
+.m_0{
+    margin: 0 !important;
+}
+
+.m_5{
+    margin: 5px;
+}
+
+.m_10{
+    margin: 10px;
+}
+
+.m_15{
+    margin: 15px;
+}
+
+.m_20{
+    margin: 20px;
+}
+
+.m_30{
+    margin: 30px;
+}
+
+.p_0{
+    padding: 0;
+}
+
+.p_5{
+    padding: 5px;
+}
+
+.p_10{
+    padding: 10px;
+}
+
+.p_15{
+    padding: 15px;
+}
+
+.p_20{
+    padding: 20px;
+}
+
+.p_t5{
+    padding-top: 5px !important;
+}
+
+.p_t0{
+    padding-top: 0;
+}
+
+.p_b0{
+	padding-bottom: 0 !important;
+}
+
+.mLR_5{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.m_top_0{
+    margin-top: 0px;
+}
+
+.m_top_5{
+    margin-top: 5px;
+}
+
+.m_top_10{
+    margin-top: 10px;
+}
+
+.m_top_15{
+    margin-top: 15px;
+}
+
+.m_top_20{
+    margin-top: 20px;
+}
+
+.m_top_30{
+    margin-top: 30px;
+}
+
+.m_top_40{
+	margin-top: 40px;
+}
+
+.m_right_0{
+    margin-right: 0px;
+}
+
+.m_right_5{
+    margin-right: 5px;
+}
+
+.m_right_10{
+    margin-right: 10px;
+}
+
+.m_right_15{
+    margin-right: 15px;
+}
+
+.m_right_20{
+    margin-right: 20px;
+}
+
+.m_bottom_0{
+    margin-bottom: 0px;
+}
+
+.m_bottom_5{
+    margin-bottom: 5px;
+}
+
+.m_bottom_10{
+    margin-bottom: 10px !important;
+}
+
+.m_bottom_15{
+    margin-bottom: 15px;
+}
+
+.m_bottom_20{
+    margin-bottom: 20px !important;
+}
+
+.m_left_0{
+    margin-left: 0px !important;
+}
+
+.m_left_5{
+    margin-left: 5px;
+}
+
+.m_left_10{
+    margin-left: 10px !important;
+}
+
+.m_left_15{
+    margin-left: 15px;
+}
+
+.m_left_20{
+    margin-left: 20px !important;
+}
+
+.p_left_0{
+    padding-left: 0px !important;
+}
+
+.p_right_0{
+    padding-right: 0px;
+}
+
+.p_left_5{
+    padding-left: 5px;
+}
+
+.p_left_10{
+    padding-left: 10px !important;
+}
+
+.p_left_15{
+    padding-left: 15px !important;
+}
+
+.p_right_15{
+    padding-right: 15px !important;
+}
+
+.p_right_5{
+    padding-right: 5px;
+}
+
+.b_0{
+    border: 0 !important;
+}
+button[disabled], html input[disabled] {
+    cursor: default;
+    background: #ccc !important;
+}
+
+/* 常用控制 */
+.overflow_hidden{
+	overflow: hidden;
+}
+/* 超出文本以省略号显示 */
+.ellipsis{
+    overflow: hidden;
+    -ms-text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    word-wrap:normal;
+}
+
+/* 占位隐藏 */
+.v_hidden{
+    visibility:hidden;
+}
+
+/*input和img混合布局时对齐方式*/
+input,img{
+    vertical-align:middle;
+    border:0 none;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.t_center{
+    text-align: center !important;
+}
+
+.t_left{
+    text-align: left;
+}
+
+.t_right{
+    text-align: right;
+}
+
+.w_p100{
+    width: 100% !important;
+}
+
+.relative{
+    position: relative;
+}
+.relative-i{
+    position: relative !important;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.none{
+    display: none;
+}
+.block{
+    display: block !important;
+}
+.inline_block{
+    display: inline-block !important;
+}
+
+.tip{
+	position:fixed;
+	display:none;
+	width:180px;
+	height:80px;
+	background:rgba(0,0,0,.8);
+	color:#fff;font:normal 16px/80px 'Microsoft Yahei';
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+	text-align:center;
+	border-radius:5px;
+	z-index:99999;
+}
+.login_input{
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+/* 按钮 */
+button {
+    margin: 0 5px;
+    background: #fff;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.5em;
+    border: 1px solid #e6e6e6;
+    padding: 6px 22px;
+    outline: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+
+.btn_main, .btn_reset {
+    color: #fff;
+    background: #01CDBA;
+    font-size: 14px;
+    padding: 4px 15px;
+    border: 0 none;
+}
+
+.btn_del {
+    color: #fff;
+    background: red;
+    font-size: 14px;
+    padding: 4px 15px;
+    border: 0 none;
+}
+
+.btn_reset {
+    background: #eee;
+    color: #333;
+}
+
+.resetactive {
+    color: #fff;
+    background: #01CDBA;
+}
+
+xmp {
+    margin: 10px 5px;
+    padding: 1em 2em;
+    background: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: #666 0px 0px 10px;
+    -moz-box-shadow: #666 0px 0px 10px;
+    line-height: 1.2em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.block{
+    display: block;
+}
+/*点击水波效果*/
+.ripple {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0)
+}
+
+.ripple:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);/*背景径向渐变*/
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s
+}
+
+.ripple:active:after {
+    transform: scale(0, 0);
+    opacity: .2;
+    transition: 0s
+}
+/*全屏loading动画*/
+.loading{
+    position: fixed;
+    display: none;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255,255,255,.3) url(../img/loading.gif) no-repeat center center;
+}

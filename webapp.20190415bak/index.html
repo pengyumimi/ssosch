@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>销售表单</title>
+    <link rel="stylesheet" href="common/css/example.css"/>
+    <link rel="stylesheet" href="common/css/weui.css">
+    <link rel="stylesheet" href="common/css/myweui.css">
+</head>
+<body>
+
+<div class="page my-page">
+    <div class="page__hd">
+        <h1 class="page__title">
+            <img src="../img/logo.png" alt="弗立兹" height="36px"/>
+        </h1>
+        <h1 class="">销售上传表单</h1>
+        <p class="page__desc">销售上传表单</p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <a href="javascript:void(0)" class="weui-btn weui-btn_primary tosc-btn">给生产</a>
+        <a href="javascript:void(0)" class="weui-btn main-btn tokj-btn">给会计</a>
+
+        <div class="weui-cells__title userseletc-t">请选择生产人员</div>
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__bd">
+                <select class="weui-select" id="userseletc" onchange="selectfunc()">
+                    <option value='0'>==请选择==</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="page__ft">
+    <a href="javascript:home()"><img src="common/images/icon_footer.png"/></a>
+</div>
+
+</div>
+
+<script src="common/js/zepto.min.js"></script>
+<script type="text/javascript" src="common/js/jweixin-1.0.0.js"></script>
+<script src="common/js/weui.min.js"></script>
+<script src="common/js/main.js"></script>
+
+<script type="text/javascript">
+    var dataList = [];
+    var shengchanList = [];
+    var caiwuList = [];
+    //获取用户默认数据
+    $.ajax({
+        type: "POST",  //提交方式
+        url: "controller/changeuser.php",//路径
+        data: {sctype: 1},//数据，这里使用的是Json格式进行传输
+        dataType: "json",
+        beforeSend: function (xhr, settings) {
+            // $(".loading").show();
+        },
+        success: function (data) {//返回数据根据结果进行相应的处理
+            // console.log(data);
+            dataList = data;
+            if (data) {
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j].type == 3) {
+                        shengchanList.push(data[j]);
+                    }
+                    if (data[j].type == 4) {
+                        caiwuList.push(data[j]);
+                    }
+                }
+                // console.log(shengchanList);
+                for (var i = 0; i < shengchanList.length; i++) {
+                    $("#userseletc").append("<option value='" + shengchanList[i].id + "'>" + shengchanList[i].username + "</option>");
+                }
+            }
+        },
+        error: function (xhr, type) {
+            $('.tip').html("网络故障").show();
+            setTimeout(function () {
+                $(".tip").hide(500);
+            }, 1000);
+        }
+    });
+
+    $(".tosc-btn").click(function () {
+        // alert(1);
+        $(".userseletc-t").text("请选择生产人员");
+        $("#userseletc").empty();
+        $("#userseletc").append("<option value='0'>==请选择==</option>");
+        for (var i = 0; i < shengchanList.length; i++) {
+            $("#userseletc").append("<option value='" + shengchanList[i].id + "'>" + shengchanList[i].username + "</option>");
+        }
+        // window.location.href = "toshengchan.html";
+    });
+    $(".tokj-btn").click(function () {
+        // alert(2);
+        $(".userseletc-t").text("请选择会计人员");
+        $("#userseletc").empty();
+        $("#userseletc").append("<option value='0'>==请选择==</option>");
+        for (var i = 0; i < caiwuList.length; i++) {
+            $("#userseletc").append("<option value='" + caiwuList[i].id + "'>" + caiwuList[i].username + "</option>");
+        }
+        // window.location.href = "tokuaiji.html";
+    });
+
+    function selectfunc(){
+        //获取被选中的option标签
+        var vs = $('#userseletc').val();
+        var info = {};
+        if(vs && dataList.length > 0){
+            for (var i = 0; i < dataList.length; i++) {
+                if(vs == dataList[i].id){
+                    info = dataList[i];
+                }
+            }
+            localStorage.setItem('key', JSON.stringify(info));
+        }
+        console.log(info);
+        if(info.type == 3){
+            window.location.href = "toshengchan.html";
+        }else if(info.type == 4){
+            window.location.href = "tokuaiji.html";
+        }
+    }
+
+</script>
+</body>
+</html>
