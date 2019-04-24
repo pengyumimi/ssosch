@@ -3,6 +3,7 @@
     fileUpload: function(opts) {
       this.each(function() {
         var $self = $(this);
+        // console.log($self);
         var doms = {
           "fileToUpload": $self.find(".fileToUpload"),
           "thumb": $self.find(".thumb"),
@@ -62,10 +63,10 @@
             }
           },
           "uploadComplete": function(evt) {
-            /*console.log(typeof (evt.target.responseText))
-              console.log(JSON.parse(evt.target.responseText));*/
-            var backData = JSON.parse(evt.target.responseText);
-            $("#filePostSrc").val(backData.src);
+              // console.log($self.find(".filesrc"))
+              // console.log(JSON.parse(evt.target.responseText));
+              var backData = JSON.parse(evt.target.responseText);
+              $self.find(".filesrc").val(backData.src);
           }
         };
         doms.fileToUpload.on("change", function() {

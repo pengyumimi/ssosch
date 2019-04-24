@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
-    <title>给生产</title>
+    <title>发布流程单</title>
     <link type="text/css" rel="stylesheet" href="common/css/example.css"/>
     <link type="text/css" rel="stylesheet" href="common/css/weui.css">
     <link type="text/css" rel="stylesheet" href="imgupload/index.css">
@@ -16,190 +16,203 @@
         <h1 class="page__title">
             <img src="../img/logo.png" alt="弗立兹" height="36px"/>
         </h1>
-        <h3 class="">给生产表单（<span class="workerName"></span>）</h3>
-        <p class="sc-color">此表单信息会提交给生产人员，您填写的越准确，生产效率越高！</p>
+        <h3 class="">发布流程单<a class="weui-btn weui-btn_mini weui-btn_primary right" href="task.html">正在进行的流程单</a></h3>
+        <p class="sc-color"><small>此表单信息会提交给工作人员，您填写的越准确，生产效率越高！</small></p>
     </div>
 
     <div class="page__bd">
-        <div class="weui-cells__title">公司名称</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="companyname" class="weui-input mustInput" maxlength="40" type="text" placeholder="请输入公司名称"/>
-                    <div class="errortip">此项必填</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">客户姓名</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="name" class="weui-input mustInput" maxlength="8" type="text" placeholder="请输入客户姓名"/>
-                    <div class="errortip">此项必填</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">手机号</div>
-        <div class="weui-cells">
-
-            <div class="weui-cell weui-cell_select weui-cell_select-before">
-                <div class="weui-cell__hd">
-                    <select class="weui-select" name="select2">
-                        <option value="1">+86</option>
-                        <option value="2">+80</option>
-                        <option value="3">+84</option>
-                        <option value="4">+87</option>
-                    </select>
-                </div>
-                <div class="weui-cell__bd">
-                    <input id="phone" class="weui-input phone" type="number" maxlength="11" pattern="[0-9]*" placeholder="请输入手机号码"/>
-                    <div class="errortip">请填写正确的手机号</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">客户地址</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="address" class="weui-input mustInput" type="text" maxlength="100" placeholder="请输入客户地址"/>
-                    <div class="errortip">此项必填</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">联系邮箱</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="email" class="weui-input email" type="text" maxlength="50" placeholder="请输入联系邮箱"/>
-                    <div class="errortip">请填入正确的邮箱地址</div>
-                </div>
-            </div>
-        </div>
-
-        <!--<div class="weui-cells__title">技术附件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="fsrc" class="weui-input" type="text" placeholder="请上传技术附件"/>
-                    &lt;!&ndash;<div class="errortip">此项必填</div>&ndash;&gt;
-                </div>
-            </div>
-        </div>-->
-        
-        <div class="weui-cells__title">技术附件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <div class="img-box full">
-                        <section class=" img-section">
-                            <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
-                            <div class="z_photo upimg-div clear">
-                                <!--<section class="up-section fl">
-                                     <span class="up-span"></span>
-                                     <img src="/img/buyerCenter/a7.png" class="close-upimg">
-                                     <img src="/img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
-                                     <img src="/img/test2.jpg" class="up-img">
-                                     <p class="img-namep"></p>
-                                     <input id="taglocation" name="taglocation" value="" type="hidden">
-                                     <input id="tags" name="tags" value="" type="hidden">
-                                 </section>-->
-                                <section class="z_file fl">
-                                    <img src="imgupload/a11.png" class="add-img">
-                                    <input type="file" name="file" id="imgjsfj" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
-                                </section>
-                            </div>
-                        </section>
+        <div class="form-part-1">
+            <div class="weui-cells__title">公司名称</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input id="companyname" class="weui-input mustInput" maxlength="40" type="text" placeholder="请输入公司名称"/>
+                        <div class="errortip">此项必填</div>
                     </div>
-                    <!--<aside class="mask works-mask">
-                        <div class="mask-content">
-                            <p class="del-p ">您确定要删除图片吗？</p>
-                            <p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">客户姓名</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input id="name" class="weui-input mustInput" maxlength="8" type="text" placeholder="请输入客户姓名"/>
+                        <div class="errortip">此项必填</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">手机号</div>
+            <div class="weui-cells">
+
+                <div class="weui-cell weui-cell_select weui-cell_select-before">
+                    <div class="weui-cell__hd">
+                        <select class="weui-select" name="select2">
+                            <option value="1">+86</option>
+                            <option value="2">+80</option>
+                            <option value="3">+84</option>
+                            <option value="4">+87</option>
+                        </select>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input id="phone" class="weui-input phone" type="number" maxlength="11" pattern="[0-9]*" placeholder="请输入手机号码"/>
+                        <div class="errortip">请填写正确的手机号</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">客户地址</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input id="address" class="weui-input mustInput" type="text" maxlength="100" placeholder="请输入客户地址"/>
+                        <div class="errortip">此项必填</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">联系邮箱</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input id="email" class="weui-input email" type="text" maxlength="50" placeholder="请输入联系邮箱"/>
+                        <div class="errortip">请填入正确的邮箱地址</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">项目序号</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <input id="ordernumber" class="weui-input email" type="text" maxlength="50" placeholder="请输入项目序号"/>
+                        <div class="errortip">请填入正确的序号</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-part-2">
+
+            <div class="weui-cells__title">技术文本</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd camera-area" style="text-align: left">
+                        <form enctype="multipart/form-data" method="post">
+                            <input type="file" name="fileToUpload" class="fileToUpload weui-btn" style="color:#333;line-height: 2em;font-size:12px" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" capture="camera"/>
+                            <div class="upload-progress"><span></span></div>
+                        </form>
+                        <div class="thumb"></div>
+                        <input type="hidden" class="filesrc" id="fileJsfj">
+                        <!--<div class="errortip">此项必填</div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">发货地址</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"></div>
+                    <div class="weui-cell__bd">
+                        <input id="fahuodz" class="weui-input mustInput" type="text" value=""/>
+                        <div class="errortip">此项必填</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">发货日期</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+                    <div class="weui-cell__bd">
+                        <input id="time" class="weui-input mustInput" type="date" value=""/>
+                        <div class="errortip">此项必填</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells__title">是否计量</div>
+            <div class="weui-cells weui-cells_radio">
+                <label class="weui-cell weui-check__label radio-label" for="x11">
+                    <div class="weui-cell__bd">
+                        <p>需要计量</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input type="radio" class="weui-check" name="radio1" id="x11" value="1"/>
+                        <span class="weui-icon-checked myweui-icon-checked"></span>
+                    </div>
+                </label>
+                <label class="weui-cell weui-check__label radio-label myweui-togger" for="x12">
+
+                    <div class="weui-cell__bd">
+                        <p>不需要</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                        <input type="radio" name="radio1" class="weui-check" id="x12"  value="0" checked="checked"/>
+                        <span class="weui-icon-checked myweui-icon-checked"></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-part-3">
+            <div class="weui-cells__title">合同文本</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd camera-area" style="text-align: left">
+                        <form enctype="multipart/form-data" method="post">
+                            <input type="file" name="fileToUpload" class="fileToUpload weui-btn" style="color:#333;line-height: 2em;font-size:12px" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" capture="camera"/>
+                            <div class="upload-progress"><span></span></div>
+                        </form>
+                        <div class="thumb"></div>
+                        <input type="hidden" class="filesrc" id="fileHtfj">
+                        <!--<div class="errortip">此项必填</div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <div class="img-box full">
+                            <section class="img-section">
+                                <p class="up-p"><span class="up-span">合同电子照，最多可以上传5张图片</span></p>
+                                <div class="z_photo upimg-div clear">
+                                    <section class="z_file fl">
+                                        <img src="imgupload/a11.png" class="add-img">
+                                        <input type="file" name="file" id="imgHt" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
+                                    </section>
+                                </div>
+                            </section>
                         </div>
-                    </aside>-->
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">合同附件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd camera-area" style="text-align: left">
-                    <form enctype="multipart/form-data" method="post">
-                        <input id="fsrc" type="file" name="fileToUpload" class="fileToUpload weui-btn" style="color:#333;line-height: 2em;font-size:12px" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" capture="camera"/>
-                        <div class="upload-progress"><span></span></div>
-                    </form>
-                    <div class="thumb"></div>
-                    <input type="hidden" id="filePostSrc">
-                    <!--<div class="errortip">此项必填</div>-->
-                </div>
-            </div>
-        </div>
-
-        <div class="weui-cells__title">报价单电子版</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <div class="img-box full">
-                        <section class=" img-section">
-                            <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
-                            <div class="z_photo upimg-div clear">
-                                <section class="z_file fl">
-                                    <img src="imgupload/a11.png" class="add-img">
-                                    <input type="file" name="file" id="imgbjd" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif" multiple="">
-                                </section>
-                            </div>
-                        </section>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="weui-cells__title">发货日期</div>
-        <div class="weui-cells">
-        <div class="weui-cell">
-            <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
-            <div class="weui-cell__bd">
-                <input id="time" class="weui-input mustInput" type="date" value=""/>
-                <div class="errortip">此项必填</div>
+            <div class="weui-cells__title">报价单文本</div>
+            <div class="weui-cells">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd camera-area" style="text-align: left">
+                        <form enctype="multipart/form-data" method="post">
+                            <input type="file" name="fileToUpload" class="fileToUpload weui-btn" style="color:#333;line-height: 2em;font-size:12px" accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" capture="camera"/>
+                            <div class="upload-progress"><span></span></div>
+                        </form>
+                        <div class="thumb"></div>
+                        <input type="hidden" class="filesrc" id="fileBjd">
+                        <!--<div class="errortip">此项必填</div>-->
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
 
         <div class="weui-cells__title">付款条件</div>
         <div class="weui-cells">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <input id="info" class="weui-input mustInput" type="text" maxlength="200" placeholder="请填写付款条件"/>
+                    <input id="fktj" class="weui-input mustInput" type="text" maxlength="200" placeholder="请填写付款条件"/>
                     <div class="errortip">此项必填</div>
                 </div>
             </div>
-        </div>
-
-        <div class="weui-cells__title">是否计量</div>
-        <div class="weui-cells weui-cells_radio">
-            <label class="weui-cell weui-check__label" for="x11">
-                <div class="weui-cell__bd">
-                    <p>需要计量</p>
-                </div>
-                <div class="weui-cell__ft">
-                    <input type="radio" class="weui-check" name="radio1" id="x11" value="1"/>
-                    <span class="weui-icon-checked"></span>
-                </div>
-            </label>
-            <label class="weui-cell weui-check__label" for="x12">
-
-                <div class="weui-cell__bd">
-                    <p>不需要</p>
-                </div>
-                <div class="weui-cell__ft">
-                    <input type="radio" name="radio1" class="weui-check" id="x12"  value="0" checked="checked"/>
-                    <span class="weui-icon-checked"></span>
-                </div>
-            </label>
         </div>
 
         <div class="weui-btn-area">
@@ -210,42 +223,39 @@
             <a href="javascript:void(0)" style="color:#666;font-size:12px;line-height:56px;"><img src="../img/logoicon.png"/>SSOSCH</a>
         </div>
     </div>
+
 </div>
 
 <div class="tip"></div>
 
     <script src="common/js/zepto.min.js"></script>
-    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script type="text/javascript" src="common/js/jweixin-1.0.0.js"></script>
+    <script src="common/js/weui.min.js"></script>
     <script src="imgupload/imgUp.js"></script>
     <script src="fileupload/upload.js" type="text/javascript"></script>
     <script src="common/js/main.js"></script>
 
     <script type="text/javascript">
         $(function () {
-            var localData = JSON.parse(localStorage.getItem('key'));
-            if(localData){
-                $(".workerName").html(localData.username);
+            var sessionData = JSON.parse(sessionStorage.getItem('key'));
+            //非销售人员不可以进入此页面
+            if(sessionData && sessionData.usertype == 2){
+                // $(".workerName").html(localData.username);
                 // alert(typeof(localData.id));
             }else{
-                alert("您需要先选择指定的生产人员才可以提交");
-                window.location.href = "index.html";
+                alert("您需要先登录才可以进行操作");
+                window.location.href = "login.html";
             }
+            $(".camera-area").fileUpload({
+                "url": "fileupload/savetofile.php",
+                "file": "myFile"
+            });
             // console.log(localData);
             $("#submit-btn").click(function () {
                 //图片地址处理
-                // 技术附件
-                var jsfjobj = $("#imgjsfj");
-                var jsfjimgsrcData = '';
-                //报价单电子版
-                var bjdobj = $("#imgbjd");
-                var bjdimgsrcData = '';
-
-                $(jsfjobj).parents(".img-box .imgsrcs").each(function (e) {
-                    jsfjimgsrcData += $(this).val()+',';
-                });
-                $(bjdobj).parents(".img-box .imgsrcs").each(function (e) {
-                    bjdimgsrcData += $(this).val()+',';
+                var imgsrcHt = '';
+                $(".imgsrcs0").each(function (e) {
+                    imgsrcHt += $(this).val()+',';
                 });
                 // console.log(imgsrcData);
                 var modal_companyname = $("#companyname").val();
@@ -253,30 +263,35 @@
                 var modal_phone = $("#phone").val();
                 var modal_address = $("#address").val();
                 var modal_email = $("#email").val();
-                var modal_fsrc = $("#filePostSrc").val();
-                var modal_isrc = jsfjimgsrcData;
-                var modal_isrc = bjdimgsrcData;
+                var modal_ordernumber = $("#ordernumber").val();
+                var modal_fileJsfj = $("#fileJsfj").val();
+                var modal_fahuodz = $("#fahuodz").val();
                 var modal_time = $("#time").val();
-                var modal_info = $("#info").val();
                 var modal_radio = $("input[name='radio1']:checked").val();
-                // console.log(modal_name,modal_phone,modal_address,modal_email,modal_fsrc,modal_time,modal_info,modal_radio);
+                var modal_fileHtfj = $("#fileHtfj").val();
+                var modal_fileBjd = $("#fileBjd").val();
+                var modal_fktj = $("#fktj").val();
+
                 // console.log(2);
-                if (yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_info, $("#info"))) {
+                if (yanz_must(modal_companyname, $("#companyname")) && yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_fktj, $("#fktj"))) {
                     var params = {
-                        uid: localData.id,
+                        aid: sessionData.userId,
                         fcompanyname: modal_companyname,
                         fname: modal_name,
                         fphone: modal_phone,
                         faddress: modal_address,
                         femail: modal_email,
-                        ffsrc: modal_fsrc,
-                        fisrc: modal_isrc,
+                        fordernumber: modal_ordernumber,
+                        fjsfj: modal_fileJsfj,
+                        ffahuodz: modal_fahuodz,
                         ftime: modal_time,
-                        finfo: modal_info,
-                        fradio: modal_radio
+                        fradio: modal_radio,
+                        fhtfj: modal_fileHtfj,
+                        fimgsht: imgsrcHt,
+                        fbjd: modal_fileBjd,
+                        ffktj: modal_fktj,
                     };
                     console.log(params);
-                    return;
                     $.ajax({
                         type: "POST",  //提交方式
                         url: "controller/formtoshengchan_add.php",//路径
@@ -307,6 +322,11 @@
                     return false;
                 }
             });
+
+            $(".radio-label").click(function () {
+                $(this).siblings(".radio-label").removeClass("myweui-togger");
+                $(this).addClass("myweui-togger");
+            })
 
         });
     </script>

@@ -76,11 +76,9 @@ function signin(url, pagedata, _this) {
                     sessionStorage.setItem('username', data.username);
                     sessionStorage.setItem('usertype', data.type);
                     if(data.type == 2){
-                        window.location.href = "index.html";
-                    }else if(data.type == 3){
+                        window.location.href = "toshengchan.html";
+                    }else{
                         window.location.href = "task.html";
-                    }else if(data.type == 4){
-                        window.location.href = "index.html";
                     }
                     // window.location.href = "index.html";
                 })

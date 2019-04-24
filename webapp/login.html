@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="common/css/common.css">
     <link rel="stylesheet" href="common/css/wi_main.css">
 </head>
-<body class="sign_main">
+<body class="sign_main" onkeydown="keyLogin()">
 <div class="sign_background"></div>
 <div class="container">
     <div class="col-xs-12 col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
@@ -50,7 +50,7 @@
                         <input type="password" name="password" placeholder="输入密码" autocomplete='new-password'/>
                     </div>
                     <div class="input_item">
-                        <button class="ripple" name="sgin_btn" data-loading-text="Loading...">登录</button>
+                        <button id="signinBtn" class="ripple" name="sgin_btn" data-loading-text="Loading...">登录</button>
                     </div>
                 </div>
                 <!--<a class="right m_top_10 f_14" href="reset.html">忘记密码？</a>-->
@@ -102,6 +102,11 @@
             signin("controller/login.php", pagedata, _this);
         }
     });
+
+    function keyLogin() {
+        if (event.keyCode == 13)
+            document.getElementById("signinBtn").click();
+    }
 
 </script>
 </html>

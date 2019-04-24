@@ -171,6 +171,7 @@ function removeImg(_this,index_i) {
     var delSrc = $(_this).parents(".img-box");
     var numUp = delParent.siblings().length;
     var imgsrc = $(delSrc).find(".imgsrcs"+index_i+"").val();
+    // console.log(imgsrc);
     //图片删除ajax
     $.ajax({
         type: "post",

@@ -10,7 +10,7 @@ $mysqli = mysqli_connect($mysql_server_name, $mysql_username, $mysql_password, $
 $mysqli->query("set names utf8");//**设置字符集***
 
 if ($fsctype == '1') {
-    $sql = "select * from web_formshengchan where uid = '{$uid}' and step1 = 1 or pid = '{$uid}' and step2 = 1";
+    $sql = "select * from web_formshengchan where step1 = 1 or step2 = 1";
     $result = $mysqli->query($sql);
 
     if ($result) {
@@ -30,7 +30,7 @@ if ($fsctype == '1') {
     };
 } else if ($fsctype == '2') {
 
-    $sql = "select * from web_formshengchan where uid = '{$uid}' and step1 = 2 or pid = '{$uid}' and step2 = 2";
+    $sql = "select * from web_formshengchan where step1 = 2 or step2 = 2";
     $result = $mysqli->query($sql);
 
     if ($result) {
