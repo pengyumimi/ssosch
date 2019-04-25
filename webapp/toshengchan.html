@@ -134,19 +134,14 @@
             <div class="weui-cells__title">是否计量</div>
             <div class="weui-cells weui-cells_radio">
                 <label class="weui-cell weui-check__label radio-label" for="x11">
-                    <div class="weui-cell__bd">
-                        <p>需要计量</p>
-                    </div>
+                    <div class="weui-cell__bd"><p>需要计量</p></div>
                     <div class="weui-cell__ft">
                         <input type="radio" class="weui-check" name="radio1" id="x11" value="1"/>
                         <span class="weui-icon-checked myweui-icon-checked"></span>
                     </div>
                 </label>
                 <label class="weui-cell weui-check__label radio-label myweui-togger" for="x12">
-
-                    <div class="weui-cell__bd">
-                        <p>不需要</p>
-                    </div>
+                    <div class="weui-cell__bd"><p>不需要</p></div>
                     <div class="weui-cell__ft">
                         <input type="radio" name="radio1" class="weui-check" id="x12"  value="0" checked="checked"/>
                         <span class="weui-icon-checked myweui-icon-checked"></span>
@@ -237,9 +232,10 @@
 
     <script type="text/javascript">
         $(function () {
-            var sessionData = JSON.parse(sessionStorage.getItem('key'));
+            var sessionData = JSON.parse(sessionStorage.getItem('usertype'));
             //非销售人员不可以进入此页面
-            if(sessionData && sessionData.usertype == 2){
+            console.log(sessionData);
+            if(sessionData && sessionData == 2){
                 // $(".workerName").html(localData.username);
                 // alert(typeof(localData.id));
             }else{
@@ -289,9 +285,9 @@
                         fhtfj: modal_fileHtfj,
                         fimgsht: imgsrcHt,
                         fbjd: modal_fileBjd,
-                        ffktj: modal_fktj,
+                        ffktj: modal_fktj
                     };
-                    console.log(params);
+                    // console.log(params);
                     $.ajax({
                         type: "POST",  //提交方式
                         url: "controller/formtoshengchan_add.php",//路径
@@ -322,11 +318,6 @@
                     return false;
                 }
             });
-
-            $(".radio-label").click(function () {
-                $(this).siblings(".radio-label").removeClass("myweui-togger");
-                $(this).addClass("myweui-togger");
-            })
 
         });
     </script>

@@ -83,4 +83,10 @@ $("#name,#company,#postion").on('change', function (e) {
     var val = e.target.value;
     yanz_must(val, $(this));
 });
-
+//是否计量效果
+$(".radio-label").click(function () {
+    $(this).siblings(".radio-label").removeClass("myweui-togger");
+    $(this).siblings(".radio-label").find(".weui-check").prop("checked",false);
+    $(this).find(".weui-check").prop("checked",true);
+    $(this).addClass("myweui-togger");
+})

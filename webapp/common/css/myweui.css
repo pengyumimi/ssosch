@@ -88,6 +88,11 @@ input:disabled, textarea:disabled {
     padding: 15px;
     margin-bottom: 10px;
 }
+.form-part-4{
+    background: rgba(134, 78, 219, 0.4);
+    padding: 15px;
+    margin-bottom: 10px;
+}
 .weui-cells__title {
     color: #666;
 }
@@ -100,4 +105,7 @@ input:disabled, textarea:disabled {
 }
 .right{
     float: right;
+}
+.normal-font{
+    font-size: 1em !important;
 }
