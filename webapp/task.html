@@ -23,24 +23,38 @@
 
         <div class="weui-cells__title"><i class="weui-icon-waiting"></i>待处理的任务</div>
         <div class="weui-cells">
-            <a  v-for="item in list" class="weui-cell weui-cell_access" :href="getGoodsHref(item.id)">
-                <div class="weui-cell__bd">
-                    <p v-clock>客户姓名：{{item.fname}}</p>
+            <div class="" v-for="item in list" >
+                <a class="weui-cell weui-cell_access" :href="getGoodsHref(item.id)">
+                    <div class="weui-cell__bd">
+                        <p v-clock>客户姓名：{{item.fname}}</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <div class="weui-progress" style="width:100%">
+                    <div class="weui-progress__bar">
+                        <div class="weui-progress__inner-bar js_progress" :style="{width:item.pwidth}"></div>
+                    </div>
                 </div>
-                <div class="weui-cell__ft">
-                </div>
-            </a>
+            </div>
         </div>
 
         <div class="weui-cells__title" style="margin-top:40px;"><i class="weui-icon-success"></i>已处理的任务</div>
         <div class="weui-cells">
-            <a  v-for="item in completedlist" class="weui-cell weui-cell_access" :href="getGoodsHref(item.id)">
-                <div class="weui-cell__bd">
-                    <p v-clock>客户姓名：{{item.fname}}</p>
+            <div class="" v-for="item in completedlist" >
+                <a class="weui-cell weui-cell_access" :href="getGoodsHref(item.id)">
+                    <div class="weui-cell__bd">
+                        <p v-clock>客户姓名：{{item.fname}}</p>
+                    </div>
+                    <div class="weui-cell__ft">
+                    </div>
+                </a>
+                <div class="weui-progress" style="width:100%">
+                    <div class="weui-progress__bar">
+                        <div class="weui-progress__inner-bar js_progress" style="width:100%"></div>
+                    </div>
                 </div>
-                <div class="weui-cell__ft">
-                </div>
-            </a>
+            </div>
         </div>
 
         <div class="page__ft">
@@ -59,6 +73,7 @@
 
     <script type="text/javascript">
         if(localserId){
+
             var listApp = new Vue({
                 el: '#listApp',
                 data: {
@@ -86,9 +101,30 @@
                                 $(".loading").show();
                             },
                             success: function (res) {
-                                console.log(res);
+
                                 if (res) {
                                     $(".loading").hide();
+                                    for(var i=0;i<res.length;i++){
+                                        switch (res[i].step1)
+                                        {
+                                            case "0":
+                                                res[i].pwidth = '0';
+                                                break;
+                                            case "1":
+                                                res[i].pwidth = '25%';
+                                                break;
+                                            case "2":
+                                                res[i].pwidth = '50%';
+                                                break;
+                                            case "3":
+                                                res[i].pwidth = '75%';
+                                                break;
+                                            case "4":
+                                                res[i].pwidth = '100%';
+                                                break;
+                                        }
+                                    }
+                                    // console.log(res);
                                     self.list = res;
                                     // console.log(self.list)
                                 }

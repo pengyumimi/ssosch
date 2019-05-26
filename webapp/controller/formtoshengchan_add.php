@@ -18,7 +18,7 @@
 	$fbjd = $_POST["fbjd"];
 	$ffktj = $_POST["ffktj"];
 
-if(empty($userid) || empty($fcompanyname))
+if(empty($userid))
 	{
 		echo json_encode(array("msg"=>"请输入完整信息！", "result"=>"0"));
 	}

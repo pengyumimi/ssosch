@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">一键复制客户信息</a>
+                    <a class="copyBtn weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:" onclick="copyBtn()">一键复制客户信息</a>
                 </div>
             </div>
 
@@ -85,33 +85,67 @@
                         <label class="weui-form-preview__label">发货日期：</label>
                         <span class="weui-form-preview__value" id="time"></span>
                     </div>
+                    <div class="weui-form-preview__item">
+                        <label class="weui-form-preview__label">是否计量：</label>
+                        <span class="weui-form-preview__value" id="jiliang"></span>
+                    </div>
                 </div>
 
-                <div class="weui-cells__title">是否计量</div>
-                <div class="weui-cells weui-cells_radio">
-                    <label class="weui-cell weui-check__label radio-label" for="x11">
-                        <div class="weui-cell__bd"><p>需要计量</p></div>
-                        <div class="weui-cell__ft">
-                            <input type="radio" class="weui-check" name="radio1" id="x11" value="1"/>
-                            <span class="weui-icon-checked myweui-icon-checked"></span>
+                <div class="weui-cells weui-cells_checkbox">
+                    <label class="weui-cell weui-check__label" for="s11">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>生产是否完成</p>
                         </div>
                     </label>
-                    <label class="weui-cell weui-check__label radio-label" for="x12">
-                        <div class="weui-cell__bd"><p>不需要</p></div>
-                        <div class="weui-cell__ft">
-                            <input type="radio" name="radio1" class="weui-check" id="x12"  value="0" checked="checked"/>
-                            <span class="weui-icon-checked myweui-icon-checked"></span>
+                    <label class="weui-cell weui-check__label" for="s12">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>调试是否完成</p>
+                        </div>
+                    </label>
+                    <label class="weui-cell weui-check__label" for="s13">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s13">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>技术指标是否满足</p>
+                        </div>
+                    </label>
+                    <label class="weui-cell weui-check__label" for="s14">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s14">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>计量是否完成</p>
+                        </div>
+                    </label>
+                    <label class="weui-cell weui-check__label" for="s15">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s15">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>发货是否完成</p>
                         </div>
                     </label>
                 </div>
 
-                <div class="weui-cells__title">讨论结果</div>
+                <div class="weui-cells__title">备注（配置表、生产瑕疵等电子文件）</div>
                 <div class="weui-cells">
                     <div class="weui-cell">
                         <div class="weui-cell__bd">
                             <div class="img-box full">
                                 <section class=" img-section">
-                                    <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
+                                    <!--<p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>-->
                                     <div class="z_photo upimg-div clear">
                                         <section class="z_file fl">
                                             <img src="imgupload/a11.png" class="add-img">
@@ -123,13 +157,32 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="searchTljg weui-cells">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <div class="weui-uploader">
+                                <div class="weui-uploader__hd">
+                                    <p class="weui-uploader__title" style="font-size:12px;color:#666;">讨论结果</p>
+                                    <div class="weui-uploader__info imgNum"></div>
+                                </div>
+                                <div class="weui-uploader__bd">
+                                    <ul class="weui-uploader__files" class="imgList">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
         <div class="form-part-3">
 
-            <div class="weui-form-preview">
+            <div class="weui-form-preview"  style="height:800px">
                 <div class="weui-form-preview__hd">
                     <div class="weui-form-preview__item">
                         <label class="weui-form-preview__label">财务信息</label>
@@ -145,20 +198,101 @@
                         <label class="weui-form-preview__label">报价单文本：</label>
                         <span class="weui-form-preview__value"><a class="filesrc" target="_blank" id="fileBjd"><small>点击查看文件</small></a></span>
                     </div>
+                    <div class="weui-form-preview__item">
+                        <label class="weui-form-preview__label">付款条件：</label>
+                        <span class="weui-form-preview__value"><a class="filesrc" target="_blank" id="fktj"></a></span>
+                    </div>
+
                 </div>
-                <div class="weui-cells">
-                    <div class="weui-cell">
-                        <div class="weui-cell__bd">
-                            <div class="weui-uploader">
-                                <div class="weui-uploader__hd">
-                                    <p class="weui-uploader__title" style="font-size:12px;color:#666;">合同电子文档</p>
-                                    <div class="weui-uploader__info imgNum"></div>
+
+                <div class="navbar js_show"  style="height:600px">
+                    <div class="page__bd"  style="height:600px">
+                        <div class="weui-tab"  style="height:600px">
+                            <div class="weui-navbar">
+                                <div class="weui-navbar__item weui-bar__item_on">
+                                    预付款
                                 </div>
-                                <div class="weui-uploader__bd">
-                                    <ul class="weui-uploader__files" id="isrc">
-                                        <!--<li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>-->
-                                    </ul>
+                                <div class="weui-navbar__item">
+                                    发货款
                                 </div>
+                                <div class="weui-navbar__item">
+                                    验收款
+                                </div>
+                            </div>
+
+                            <div class="weui-tab__panel">
+
+                                <div class="weui-cells weui-cells_checkbox">
+                                    <label class="weui-cell weui-check__label" for="s16">
+                                        <div class="weui-cell__hd">
+                                            <input type="checkbox" class="weui-check" name="checkbox1" id="s16" checked="checked">
+                                            <i class="weui-icon-checked"></i>
+                                        </div>
+                                        <div class="weui-cell__bd">
+                                            <p>是否开具发票</p>
+                                        </div>
+                                    </label>
+                                    <div class="weui-cells">
+                                        <div class="weui-cell">
+                                            <div class="weui-cell__bd myinput">
+                                                <input id="backJe" class="weui-input mustInput" type="text" maxlength="200" placeholder="请填写发票金额"/>
+                                                <cite>元</cite>
+                                                <div class="errortip">此项必填</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weui-cells__title">回款时间</div>
+                                <div class="weui-cells">
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__hd"><label for="" class="weui-label">日期</label></div>
+                                        <div class="weui-cell__bd">
+                                            <input id="backTime" class="weui-input mustInput" type="date" value=""/>
+                                            <div class="errortip">此项必填</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weui-cells__title">回款金额</div>
+                                <div class="weui-cells">
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__bd myinput">
+                                            <input id="backJe" class="weui-input mustInput" type="text" maxlength="200" placeholder="请填写回款金额"/>
+                                            <cite>元</cite>
+                                            <div class="errortip">此项必填</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="weui-cell weui-cell_select">
+                                    <div class="weui-cell__bd">
+                                        <select class="weui-select" id="fqishu">
+                                            <option selected="true" value="0">==选择期数==</option>
+                                            <option value="1">一期</option>
+                                            <option value="2">二期</option>
+                                            <option value="3">三期</option>
+                                            <option value="4">四期</option>
+                                            <option value="5">五期</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="weui-cells">
+                                    <div class="weui-cell">
+                                        <div class="weui-cell__bd">
+                                            <div class="weui-uploader">
+                                                <div class="weui-uploader__hd">
+                                                    <p class="weui-uploader__title" style="font-size:12px;color:#666;">合同电子文档</p>
+                                                    <div class="weui-uploader__info imgNum"></div>
+                                                </div>
+                                                <div class="weui-uploader__bd">
+                                                    <ul class="weui-uploader__files" id="isrc">
+                                                        <!--<li class="weui-uploader__file" style="background-image:url(./images/pic_160.png)"></li>-->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -176,13 +310,42 @@
                         <em class="weui-form-preview__value normal-font">执行人：<span id="azExecutor"></span></em>
                     </div>
                 </div>
+                <div class="weui-cells weui-cells_checkbox">
+                    <label class="weui-cell weui-check__label" for="s16">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" class="weui-check" name="checkbox1" id="s16" checked="checked">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>是否完成安装</p>
+                        </div>
+                    </label>
+                    <label class="weui-cell weui-check__label" for="s17">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s17">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>是否完成现场联调</p>
+                        </div>
+                    </label>
+                    <label class="weui-cell weui-check__label" for="s17">
+                        <div class="weui-cell__hd">
+                            <input type="checkbox" name="checkbox1" class="weui-check" id="s17">
+                            <i class="weui-icon-checked"></i>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <p>是否完成验收</p>
+                        </div>
+                    </label>
+                </div>
                 <div class="weui-cells__title">验收单</div>
                 <div class="weui-cells">
                     <div class="weui-cell">
                         <div class="weui-cell__bd">
                             <div class="img-box full">
                                 <section class=" img-section">
-                                    <p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>
+                                    <!--<p class="up-p"><span class="up-span">最多可以上传5张图片</span></p>-->
                                     <div class="z_photo upimg-div clear">
                                         <section class="z_file fl">
                                             <img src="imgupload/a11.png" class="add-img">
@@ -195,11 +358,11 @@
                     </div>
                 </div>
 
-                <div class="weui-cells__title">客户要求</div>
+                <div class="weui-cells__title">备注</div>
                 <div class="weui-cells">
                     <div class="weui-cell">
                         <div class="weui-cell__bd">
-                            <textarea id="khyq" class="weui-textarea" rows="5" type="text" placeholder="请输入客户要求"></textarea>
+                            <textarea id="khyq" class="weui-textarea" rows="5" type="text" placeholder="请输入备注信息（客户要求、是否需要报价等）"></textarea>
                             <div class="errortip">此项必填</div>
                         </div>
                     </div>
@@ -208,15 +371,7 @@
 
         </div>
 
-        <div class="weui-cells__title">付款条件</div>
-        <div class="weui-cells">
-            <div class="weui-cell">
-                <div class="weui-cell__bd">
-                    <input id="fktj" class="weui-input mustInput" type="text" maxlength="200" placeholder="请填写付款条件"/>
-                    <div class="errortip">此项必填</div>
-                </div>
-            </div>
-        </div>
+
 
         <div class="weui-btn-area">
             <a class="weui-btn weui-btn_primary" href="javascript:" id="submit-btn">确定</a>
@@ -234,208 +389,277 @@
     <script type="text/javascript" src="common/js/jweixin-1.0.0.js"></script>
     <script src="common/js/weui.min.js"></script>
     <script src="imgupload/imgUp.js"></script>
+    <script src="common/js/clipboard.min.js"></script> <!--一键复制-->
     <script src="common/js/main.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            //页面跳转接收项目id值
-            function GetQueryString(name) {
-                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-                var r = window.location.search.substr(1).match(reg);
-                if (r != null) return (r[2]);
-                return null;
-            }
-            var uid = GetQueryString("uid");
-            var pid = GetQueryString("pid");
-            if(uid && pid){
-                // console.log(uid,pid);
+        if(localserId) {
+            $(function () {
+                //页面跳转接收项目id值
+                function GetQueryString(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) return (r[2]);
+                    return null;
+                }
 
-                $("#name,#phone,#address,#email,#fsrc,#isrc,#time,#info,#x11,#x12").attr('disabled', false);
+                var uid = GetQueryString("uid");
+                var pid = GetQueryString("pid");
+                if (uid && pid) {
+                    // console.log(uid,pid);
 
-                //获取默认表单详情数据并渲染
-                var getOldData = {
-                    "id" : pid,
-                    "sctype" : 1
-                };
-                $.ajax({
-                    type: "POST",  //提交方式
-                    url: "controller/shengchan.php",//路径
-                    data: getOldData,//数据，这里使用的是Json格式进行传输
-                    dataType: "json",
-                    beforeSend: function(xhr, settings){
-                        $(".loading").show();
-                    },
-                    success: function (data) {//返回数据根据结果进行相应的处理
-                        console.log(data);
-                        if (data && data.length > 0) {
-                            var newfileJsfj = guolv(data[0].fjsfj);
-                            var newfileHtfj = guolv(data[0].fhtfj);
-                            var newfileBjd = guolv(data[0].fbjd);
+                    $("#name,#phone,#address,#email,#fsrc,#isrc,#time,#info,#x11,#x12,#fktj").attr('disabled', false);
 
-                            $("#companyname").html(data[0].fcompanyname);
-                            $("#name").html(data[0].fname);
-                            $("#phone").html(data[0].fphone);
-                            $("#address").html(data[0].faddress);
-                            $("#email").html(data[0].femail);
-                            $("#ordernumber").html(data[0].fordernumber);
-                            $("#fileJsfj").attr("href",newfileJsfj);
-                            $("#fahuodz").html(data[0].ffahuodz);
-                            $("#time").html(data[0].ftime);
-                            if(data[0].fradio == 1 ){
-                                $("#x11").prop('checked',true);
-                                $("#x12").prop('checked',false);
-                                $("#x11").parents("label").addClass('myweui-togger');
-                            }else{
-                                $("#x11").prop('checked',false);
-                                $("#x12").prop('checked',true);
-                                $("#x12").parents("label").addClass('myweui-togger');
-                            }
-                            $("#fileHtfj").attr("href",newfileHtfj);
-                            //合同图片渲染 begin
-                            var str = data[0].fimgsht.substring(0, data[0].fimgsht.lastIndexOf(','));
-                            var imgsrcArr = str.split(/[,， \n]/);
-                            $(".imgNum").html(imgsrcArr.length + "张");
-                            for(var i=0;i<imgsrcArr.length;i++){
-                                imgsrcArr[i]=imgsrcArr[i].replace("../","");
-                                var imgsHtml = '<li class="weui-uploader__file" style="background-image:url('+imgsrcArr[i]+')"><a href="\'+imgsrcArr[i]+\'"></a></li>';
-                                $("#isrc").append(imgsHtml);
-                            }
-                            //合同图片渲染 end
-                            $("#fileBjd").attr("href",newfileBjd);
-                            $("#fktj").val(data[0].ffktj);
-                        }
-                    },
-                    error: function (xhr, type) {
-                        $('.tip').html("获取失败刷新重试").show();
-                        setTimeout(function() {
-                            $(".tip").hide(500);
-                        }, 1000);
-                    }
-                });
-
-                // 提交新数据
-                $("#submit-btn").click(function () {
-                    //图片地址处理
-                    // 讨论结果
-                    var imgtljg = $("#imgtljg");
-                    var imgtljgsrcData = '';
-                    $(imgtljg).parents(".img-box").find(".imgsrcs").each(function (e) {
-                        imgtljgsrcData += $(this).val()+',';
-                    });
-                    //验收单
-                    var imgysd = $("#imgysd");
-                    var imgysdimgsrcData = '';
-                    $(imgysd).parents(".img-box").find(".imgsrcs").each(function (e) {
-                        imgysdimgsrcData += $(this).val()+',';
-                    });
-
-
-                    var modal_radio = $("input[name='radio1']:checked").val();
-                    var modal_khyq = $("#khyq").val();
-
-                    var paramsSC = {
-                        id: pid,
-                        sctype: 3,
-                        fresultisrc: imgtljgsrcData,
-                        fradio: modal_radio,
+                    //获取默认表单详情数据并渲染
+                    var getOldData = {
+                        "id": pid,
+                        "sctype": 1
                     };
-
-                    var paramsAZ = {
-                        id: pid,
-                        sctype: 3,
-                        fresultisrc: imgysdimgsrcData,
-                        fradio: modal_khyq,
-                    };
-                    // console.log(paramsSC);
-                    // console.log(paramsAZ);
-
                     $.ajax({
                         type: "POST",  //提交方式
                         url: "controller/shengchan.php",//路径
-                        data: params,//数据，这里使用的是Json格式进行传输
+                        data: getOldData,//数据，这里使用的是Json格式进行传输
                         dataType: "json",
-                        beforeSend: function(xhr, settings){
+                        beforeSend: function (xhr, settings) {
                             $(".loading").show();
                         },
                         success: function (data) {//返回数据根据结果进行相应的处理
                             console.log(data);
-                            if (data.result == '1') {
-                                console.log('提交成功');
+                            if (data && data.length > 0) {
+                                var newfileJsfj = guolv(data[0].fjsfj);
+                                var newfileHtfj = guolv(data[0].fhtfj);
+                                var newfileBjd = guolv(data[0].fbjd);
+
+                                $("#companyname").html(data[0].fcompanyname);
+                                $("#name").html(data[0].fname);
+                                $("#phone").html(data[0].fphone);
+                                $("#address").html(data[0].faddress);
+                                $("#email").html(data[0].femail);
+                                $("#ordernumber").html(data[0].fordernumber);
+                                $("#fileJsfj").attr("href", newfileJsfj);
+                                $("#fahuodz").html(data[0].ffahuodz);
+                                $("#time").html(data[0].ftime);
+                                if (data[0].fradio == 1) {
+                                    $("#jiliang").html('需要计量');
+                                } else {
+                                    $("#jiliang").html('不需要计量');
+                                }
+                                /*if (data[0].fradio == 1) {
+                                    $("#x11").prop('checked', true);
+                                    $("#x12").prop('checked', false);
+                                    $("#x11").parents("label").addClass('myweui-togger');
+                                } else {
+                                    $("#x11").prop('checked', false);
+                                    $("#x12").prop('checked', true);
+                                    $("#x12").parents("label").addClass('myweui-togger');
+                                }*/
+
+
+                                $("#fileHtfj").attr("href", newfileHtfj);
+                                //合同图片渲染 begin
+                                var str = data[0].fimgsht.substring(0, data[0].fimgsht.lastIndexOf(','));
+                                var imgsrcArr = str.split(/[,， \n]/);
+                                $(".imgNum").html(imgsrcArr.length + "张");
+                                for (var i = 0; i < imgsrcArr.length; i++) {
+                                    imgsrcArr[i] = imgsrcArr[i].replace("../", "");
+                                    var imgsHtml = '<li class="weui-uploader__file" style="background-image:url(' + imgsrcArr[i] + ')"><a href="\'+imgsrcArr[i]+\'"></a></li>';
+                                    $("#isrc").append(imgsHtml);
+                                }
+                                //合同图片渲染 end
+                                $("#fileBjd").attr("href", newfileBjd);
+                                $("#fktj").html(data[0].ffktj);
+
+                                // console.log(data[0].fresultisrc);
+                                //讨论结果
+                                if(data[0].fresultisrc){
+                                    var str = data[0].fresultisrc.substring(0, data[0].fresultisrc.lastIndexOf(','));
+                                    console.log(data[0].fresultisrc);
+                                    var imgsrcArr = str.split(/[,， \n]/);
+                                    console.log(imgsrcArr);
+                                    $(".searchTljg .imgNum").html(imgsrcArr.length + "张");
+                                    for (var i = 0; i < imgsrcArr.length; i++) {
+                                        imgsrcArr[i] = imgsrcArr[i].replace("../", "");
+                                        console.log(imgsrcArr[i]);
+                                        var imgsHtml = "<li class='weui-uploader__file' style='background-image:url(imgsupload/20190513/WX20190511-122314@2x.png)'></li>";
+                                        $(".searchTljg .imgList").append(imgsHtml);
+                                    }
+                                }
+
                             }
-                            $('.tip').html(data.msg).show();
-                            setTimeout(function() {
-                                $(".tip").hide(500);
-                            }, 1000);
                         },
                         error: function (xhr, type) {
-                            $('.tip').html("提交失败稍后再试").show();
-                            setTimeout(function() {
+                            $('.tip').html("获取失败刷新重试").show();
+                            setTimeout(function () {
                                 $(".tip").hide(500);
                             }, 1000);
                         }
                     });
 
-                });
-            }
-        });
+                    // 提交新数据
+                    $("#submit-btn").click(function () {
+                        //图片地址处理
+                        // 讨论结果
+                        var imgtljg = $("#imgtljg");
+                        var imgtljgsrcData = '';
+                        $(imgtljg).parents(".img-box").find(".imgsrcs").each(function (e) {
+                            imgtljgsrcData += $(this).val() + ',';
+                        });
+                        //验收单
+                        var imgysd = $("#imgysd");
+                        var imgysdimgsrcData = '';
+                        $(imgysd).parents(".img-box").find(".imgsrcs").each(function (e) {
+                            imgysdimgsrcData += $(this).val() + ',';
+                        });
 
-        var dataList = [];
-        var anzhuangList = [];
-        var caiwuList = [];
-        //获取用户默认数据
-        $.ajax({
-            type: "POST",  //提交方式
-            url: "controller/changeuser.php",//路径
-            data: {sctype: 2},//数据，这里使用的是Json格式进行传输
-            dataType: "json",
-            beforeSend: function (xhr, settings) {
-                // $(".loading").show();
-            },
-            success: function (data) {//返回数据根据结果进行相应的处理
-                // console.log(data);
-                dataList = data;
-                if (data) {
-                    for (var j = 0; j < data.length; j++) {
-                        if (data[j].type == 5) {
-                            anzhuangList.push(data[j]);
+
+                        var modal_radio = $("input[name='radio1']:checked").val();
+                        var modal_khyq = $("#khyq").val();
+
+                        var paramsSC = {
+                            id: pid,
+                            sctype: 3,
+                            fresultisrc: imgtljgsrcData,
+                            fradio: modal_radio,
+                        };
+
+                        var paramsCW = {
+                            id: pid,
+                            sctype: 4,
+                            fbacktime: $("#backTime").val(),
+                            fbackje: $("#backJe").val(),
+                            fqishu: $("#fqishu").val(),
+                        };
+
+                        var paramsAZ = {
+                            id: pid,
+                            sctype: 5,
+                            fysd: imgysdimgsrcData,
+                            fkhyq: modal_khyq,
+                        };
+                        // console.log(paramsSC);
+                        // console.log(paramsAZ);
+                        var params = '';
+                        if(localserType == 3){
+                            params = paramsSC;
+                        }else if(localserType == 4){
+                            params = paramsCW;
+                        }else if(localserType == 5){
+                            params = paramsAZ;
+                        }
+                        console.log(params);
+                        $.ajax({
+                            type: "POST",  //提交方式
+                            url: "controller/shengchan.php",//路径
+                            data: params,//数据，这里使用的是Json格式进行传输
+                            dataType: "json",
+                            beforeSend: function (xhr, settings) {
+                                $(".loading").show();
+                            },
+                            success: function (data) {//返回数据根据结果进行相应的处理
+                                console.log(data);
+                                if (data.result == '1') {
+                                    console.log('提交成功');
+                                }
+                                $('.tip').html(data.msg).show();
+                                setTimeout(function () {
+                                    $(".tip").hide(500);
+                                }, 1000);
+                            },
+                            error: function (xhr, type) {
+                                $('.tip').html("提交失败稍后再试").show();
+                                setTimeout(function () {
+                                    $(".tip").hide(500);
+                                }, 1000);
+                            }
+                        });
+
+                    });
+                }
+            });
+
+            var dataList = [];
+            var anzhuangList = [];
+            var caiwuList = [];
+            //获取用户默认数据
+            $.ajax({
+                type: "POST",  //提交方式
+                url: "controller/changeuser.php",//路径
+                data: {sctype: 2},//数据，这里使用的是Json格式进行传输
+                dataType: "json",
+                beforeSend: function (xhr, settings) {
+                    // $(".loading").show();
+                },
+                success: function (data) {//返回数据根据结果进行相应的处理
+                    // console.log(data);
+                    dataList = data;
+                    if (data) {
+                        for (var j = 0; j < data.length; j++) {
+                            if (data[j].type == 5) {
+                                anzhuangList.push(data[j]);
+                            }
+                        }
+                        for (var i = 0; i < anzhuangList.length; i++) {
+                            $("#userselect").append("<option value='" + anzhuangList[i].id + "'>" + anzhuangList[i].username + "</option>");
                         }
                     }
-                    for (var i = 0; i < anzhuangList.length; i++) {
-                        $("#userselect").append("<option value='" + anzhuangList[i].id + "'>" + anzhuangList[i].username + "</option>");
-                    }
+                },
+                error: function (xhr, type) {
+                    $('.tip').html("网络故障").show();
+                    setTimeout(function () {
+                        $(".tip").fadeOut(500);
+                    }, 1000);
                 }
-            },
-            error: function (xhr, type) {
-                $('.tip').html("网络故障").show();
-                setTimeout(function () {
-                    $(".tip").hide(500);
+            });
+
+            function selectfunc() {
+                //获取被选中的option标签
+                var vs = $('#userselect').val();
+                var info = {};
+                if (vs && dataList.length > 0) {
+                    for (var i = 0; i < dataList.length; i++) {
+                        if (vs == dataList[i].id) {
+                            info = dataList[i];
+                        }
+                    }
+                    localStorage.setItem('key', JSON.stringify(info));
+                }
+                console.log(info);
+                if (info.type == 3) {
+                    window.location.href = "toshengchan.html";
+                } else if (info.type == 4) {
+                    window.location.href = "tokuaiji.html";
+                }
+            }
+
+            //去掉文件链接中的 ../
+            function guolv(str) {
+                return str.replace("../", "");
+            }
+
+            //一键复制
+            function copyBtn(){
+                var item = '公司名称：' + $("#companyname").text() + '\n' + "客户姓名：" + $("#name").text() + '\n' + "手机号：" + $("#phone").text() + '\n' + "客户地址：" + $("#address").text() + '\n' + "联系邮箱：" + $("#email").text() + '\n' + "项目序号：" + $("#ordernumber").text()
+                // console.log(item);
+                var clipboard = new Clipboard('.copyBtn', {
+                    text: function() {
+                        return item;
+                    }
+                });
+                clipboard.on('success', function(e) {
+                    // console.log(e);
+                });
+                clipboard.on('error', function(e) {
+                    // console.log(e);
+                });
+                $(".tip").html("链接复制成功").show(300);
+                setTimeout(function() {
+                    $(".tip").fadeOut(500);
                 }, 1000);
             }
-        });
 
-        function selectfunc(){
-            //获取被选中的option标签
-            var vs = $('#userselect').val();
-            var info = {};
-            if(vs && dataList.length > 0){
-                for (var i = 0; i < dataList.length; i++) {
-                    if(vs == dataList[i].id){
-                        info = dataList[i];
-                    }
-                }
-                localStorage.setItem('key', JSON.stringify(info));
-            }
-            console.log(info);
-            if(info.type == 3){
-                window.location.href = "toshengchan.html";
-            }else if(info.type == 4){
-                window.location.href = "tokuaiji.html";
-            }
-        }
-
-        //去掉文件链接中的 ../
-        function guolv(str) {
-            return str.replace("../","");
+            $('.weui-navbar__item').on('click', function () {
+                $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            });
         }
     </script>
 </body>

@@ -18,6 +18,9 @@ $fresultisrc = $_POST["fresultisrc"];
 $fanzhuang = $_POST["fanzhuang"];
 $fysd = $_POST["fysd"];
 $fkhyq = $_POST["fkhyq"];
+$fbacktime = $_POST["fbacktime"];
+$fbackje = $_POST["fbackje"];
+$fqishu = $_POST["fqishu"];
 
 $mysqli = mysqli_connect($mysql_server_name, $mysql_username, $mysql_password, $mysql_database);
 $mysqli->query("set names utf8");//**设置字符集***
@@ -53,7 +56,27 @@ if ($fsctype == '1') {
     };
 }else if ($fsctype == '3') {
 
-    $sql = "update web_formshengchan set ysd='{$fysd}',khyq='{$fkhyq}',step2=2 where id='{$vid}'";
+    $sql = "update web_formshengchan set fresultisrc='{$fresultisrc}',fradio='{$fradio}',step1=2 where id='{$vid}'";
+    $result = $mysqli->query($sql);
+
+    if ($result) {
+        echo json_encode(array("msg" => "提交成功", "result" => "1"));
+    } else {
+        echo json_encode(array("msg" => "操作未成功，请稍后再试", "result" => "2"));
+    };
+}else if ($fsctype == '4') {
+
+    $sql = "update web_formshengchan set fbacktime='{$fbacktime}',fbackje='{$fbackje}',fqishu='{$fqishu}',step1=4 where id='{$vid}'";
+    $result = $mysqli->query($sql);
+
+    if ($result) {
+        echo json_encode(array("msg" => "提交成功", "result" => "1"));
+    } else {
+        echo json_encode(array("msg" => "操作未成功，请稍后再试", "result" => "2"));
+    };
+}else if ($fsctype == '5') {
+
+    $sql = "update web_formshengchan set ysd='{$fysd}',khyq='{$fkhyq}',step1=3 where id='{$vid}'";
     $result = $mysqli->query($sql);
 
     if ($result) {

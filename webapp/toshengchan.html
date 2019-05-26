@@ -232,92 +232,90 @@
 
     <script type="text/javascript">
         $(function () {
-            var sessionData = JSON.parse(sessionStorage.getItem('usertype'));
             //非销售人员不可以进入此页面
-            console.log(sessionData);
-            if(sessionData && sessionData == 2){
-                // $(".workerName").html(localData.username);
-                // alert(typeof(localData.id));
+            if(localserId && localserType == 2){
+                console.log(localserId);
+                $(".camera-area").fileUpload({
+                    "url": "fileupload/savetofile.php",
+                    "file": "myFile"
+                });
+                // console.log(localData);
+                $("#submit-btn").click(function () {
+                    //图片地址处理
+                    var imgsrcHt = '';
+                    $(".imgsrcs0").each(function (e) {
+                        imgsrcHt += $(this).val()+',';
+                    });
+                    // console.log(imgsrcData);
+                    var modal_companyname = $("#companyname").val();
+                    var modal_name = $("#name").val();
+                    var modal_phone = $("#phone").val();
+                    var modal_address = $("#address").val();
+                    var modal_email = $("#email").val();
+                    var modal_ordernumber = $("#ordernumber").val();
+                    var modal_fileJsfj = $("#fileJsfj").val();
+                    var modal_fahuodz = $("#fahuodz").val();
+                    var modal_time = $("#time").val();
+                    var modal_radio = $("input[name='radio1']:checked").val();
+                    var modal_fileHtfj = $("#fileHtfj").val();
+                    var modal_fileBjd = $("#fileBjd").val();
+                    var modal_fktj = $("#fktj").val();
+
+                    // console.log(2);
+                    if (yanz_must(modal_companyname, $("#companyname")) && yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_fktj, $("#fktj"))) {
+                        var params = {
+                            aid: localserId,
+                            fcompanyname: modal_companyname,
+                            fname: modal_name,
+                            fphone: modal_phone,
+                            faddress: modal_address,
+                            femail: modal_email,
+                            fordernumber: modal_ordernumber,
+                            fjsfj: modal_fileJsfj,
+                            ffahuodz: modal_fahuodz,
+                            ftime: modal_time,
+                            fradio: modal_radio,
+                            fhtfj: modal_fileHtfj,
+                            fimgsht: imgsrcHt,
+                            fbjd: modal_fileBjd,
+                            ffktj: modal_fktj
+                        };
+                        console.log(params);
+                        $.ajax({
+                            type: "POST",  //提交方式
+                            url: "controller/formtoshengchan_add.php",//路径
+                            data: params,//数据，这里使用的是Json格式进行传输
+                            dataType: "json",
+                            beforeSend: function(xhr, settings){
+                                $(".loading").show();
+                            },
+                            success: function (data) {//返回数据根据结果进行相应的处理
+                                console.log(data);
+                                if (data.result == '1') {
+                                    console.log('提交成功');
+                                }
+                                $('.tip').html(data.msg).show();
+                                setTimeout(function() {
+                                    $(".tip").hide(500);
+                                }, 1000);
+                            },
+                            error: function (xhr, type) {
+                                $('.tip').html("提交失败稍后再试").show();
+                                setTimeout(function() {
+                                    $(".tip").hide(500);
+                                }, 1000);
+                            }
+                        });
+                    } else {
+                        // alert('请正确填写信息');
+                        return false;
+                    }
+                });
             }else{
                 alert("您需要先登录才可以进行操作");
                 window.location.href = "login.html";
             }
-            $(".camera-area").fileUpload({
-                "url": "fileupload/savetofile.php",
-                "file": "myFile"
-            });
-            // console.log(localData);
-            $("#submit-btn").click(function () {
-                //图片地址处理
-                var imgsrcHt = '';
-                $(".imgsrcs0").each(function (e) {
-                    imgsrcHt += $(this).val()+',';
-                });
-                // console.log(imgsrcData);
-                var modal_companyname = $("#companyname").val();
-                var modal_name = $("#name").val();
-                var modal_phone = $("#phone").val();
-                var modal_address = $("#address").val();
-                var modal_email = $("#email").val();
-                var modal_ordernumber = $("#ordernumber").val();
-                var modal_fileJsfj = $("#fileJsfj").val();
-                var modal_fahuodz = $("#fahuodz").val();
-                var modal_time = $("#time").val();
-                var modal_radio = $("input[name='radio1']:checked").val();
-                var modal_fileHtfj = $("#fileHtfj").val();
-                var modal_fileBjd = $("#fileBjd").val();
-                var modal_fktj = $("#fktj").val();
 
-                // console.log(2);
-                if (yanz_must(modal_companyname, $("#companyname")) && yanz_must(modal_name, $("#name")) && yanz_phone(modal_phone, $("#phone")) && yanz_must(modal_address, $("#address")) && yanz_email(modal_email, $("#email"))  && yanz_must(modal_time, $("#time")) && yanz_must(modal_fktj, $("#fktj"))) {
-                    var params = {
-                        aid: sessionData.userId,
-                        fcompanyname: modal_companyname,
-                        fname: modal_name,
-                        fphone: modal_phone,
-                        faddress: modal_address,
-                        femail: modal_email,
-                        fordernumber: modal_ordernumber,
-                        fjsfj: modal_fileJsfj,
-                        ffahuodz: modal_fahuodz,
-                        ftime: modal_time,
-                        fradio: modal_radio,
-                        fhtfj: modal_fileHtfj,
-                        fimgsht: imgsrcHt,
-                        fbjd: modal_fileBjd,
-                        ffktj: modal_fktj
-                    };
-                    // console.log(params);
-                    $.ajax({
-                        type: "POST",  //提交方式
-                        url: "controller/formtoshengchan_add.php",//路径
-                        data: params,//数据，这里使用的是Json格式进行传输
-                        dataType: "json",
-                        beforeSend: function(xhr, settings){
-                            $(".loading").show();
-                        },
-                        success: function (data) {//返回数据根据结果进行相应的处理
-                            console.log(data);
-                            if (data.result == '1') {
-                                console.log('提交成功');
-                            }
-                            $('.tip').html(data.msg).show();
-                            setTimeout(function() {
-                                $(".tip").hide(500);
-                            }, 1000);
-                        },
-                        error: function (xhr, type) {
-                            $('.tip').html("提交失败稍后再试").show();
-                            setTimeout(function() {
-                                $(".tip").hide(500);
-                            }, 1000);
-                        }
-                    });
-                } else {
-                    // alert('请正确填写信息');
-                    return false;
-                }
-            });
 
         });
     </script>
