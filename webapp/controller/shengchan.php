@@ -18,9 +18,18 @@ $fresultisrc = $_POST["fresultisrc"];
 $fanzhuang = $_POST["fanzhuang"];
 $fysd = $_POST["fysd"];
 $fkhyq = $_POST["fkhyq"];
-$fbacktime = $_POST["fbacktime"];
-$fbackje = $_POST["fbackje"];
-$fqishu = $_POST["fqishu"];
+$fbacktime1 = $_POST["fbacktime1"];
+$fbackje1 = $_POST["fbackje1"];
+$fqishu1 = $_POST["fqishu1"];
+$fbackfp1 = $_POST["fbackfp1"];
+$fbacktime2 = $_POST["fbacktime2"];
+$fbackje2 = $_POST["fbackje2"];
+$fqishu2 = $_POST["fqishu2"];
+$fbackfp2 = $_POST["fbackfp2"];
+$fbacktime3 = $_POST["fbacktime3"];
+$fbackje3 = $_POST["fbackje3"];
+$fqishu3 = $_POST["fqishu3"];
+$fbackfp3 = $_POST["fbackfp3"];
 
 $mysqli = mysqli_connect($mysql_server_name, $mysql_username, $mysql_password, $mysql_database);
 $mysqli->query("set names utf8");//**设置字符集***
@@ -46,7 +55,7 @@ if ($fsctype == '1') {
     };
 } else if ($fsctype == '2') {
 
-    $sql = "update web_formshengchan set fradio='{$fradio}',fresultisrc='{$fresultisrc}',step1=2,pid='{$fanzhuang}',step2=1 where id='{$vid}'";
+    $sql = "update web_formshengchan set fradio='{$fradio}',fresultisrc='{$fresultisrc}',pid='{$fanzhuang}' where id='{$vid}'";
     $result = $mysqli->query($sql);
 
     if ($result) {
@@ -56,7 +65,7 @@ if ($fsctype == '1') {
     };
 }else if ($fsctype == '3') {
 
-    $sql = "update web_formshengchan set fresultisrc='{$fresultisrc}',fradio='{$fradio}',step1=2 where id='{$vid}'";
+    $sql = "update web_formshengchan set fresultisrc='{$fresultisrc}' where id='{$vid}'";
     $result = $mysqli->query($sql);
 
     if ($result) {
@@ -66,7 +75,7 @@ if ($fsctype == '1') {
     };
 }else if ($fsctype == '4') {
 
-    $sql = "update web_formshengchan set fbacktime='{$fbacktime}',fbackje='{$fbackje}',fqishu='{$fqishu}',step1=4 where id='{$vid}'";
+    $sql = "update web_formshengchan set fbacktime1='{$fbacktime1}',fbackfp1='{$fbackfp1}',fbackje1='{$fbackje1}',fqishu1='{$fqishu1}',fbacktime2='{$fbacktime2}',fbackfp2='{$fbackfp2}',fbackje2='{$fbackje2}',fqishu2='{$fqishu2}',fbacktime3='{$fbacktime3}',fbackfp3='{$fbackfp3}',fbackje3='{$fbackje3}',fqishu3='{$fqishu3}' where id='{$vid}'";
     $result = $mysqli->query($sql);
 
     if ($result) {
@@ -76,7 +85,7 @@ if ($fsctype == '1') {
     };
 }else if ($fsctype == '5') {
 
-    $sql = "update web_formshengchan set ysd='{$fysd}',khyq='{$fkhyq}',step1=3 where id='{$vid}'";
+    $sql = "update web_formshengchan set ysd='{$fysd}',khyq='{$fkhyq}' where id='{$vid}'";
     $result = $mysqli->query($sql);
 
     if ($result) {

@@ -14,7 +14,7 @@
 <div class="page my-page">
     <div class="p-20">
         <h1 class="page__title">
-            <img src="../img/logo.png" alt="弗立兹" height="36px"/>
+            <img class="pagelogin" onclick="siginOut()" src="../img/logo.png" alt="弗立兹" height="36px"/>
         </h1>
         <h3 class="">发布流程单<a class="weui-btn weui-btn_mini weui-btn_primary right" href="task.html">正在进行的流程单</a></h3>
         <p class="sc-color"><small>此表单信息会提交给工作人员，您填写的越准确，生产效率越高！</small></p>
@@ -287,7 +287,7 @@
                             data: params,//数据，这里使用的是Json格式进行传输
                             dataType: "json",
                             beforeSend: function(xhr, settings){
-                                $(".loading").show();
+                                $(".loading").fadeIn();
                             },
                             success: function (data) {//返回数据根据结果进行相应的处理
                                 console.log(data);
@@ -296,13 +296,13 @@
                                 }
                                 $('.tip').html(data.msg).show();
                                 setTimeout(function() {
-                                    $(".tip").hide(500);
+                                    $(".tip").fadeOut(500);
                                 }, 1000);
                             },
                             error: function (xhr, type) {
                                 $('.tip').html("提交失败稍后再试").show();
                                 setTimeout(function() {
-                                    $(".tip").hide(500);
+                                    $(".tip").fadeOut(500);
                                 }, 1000);
                             }
                         });

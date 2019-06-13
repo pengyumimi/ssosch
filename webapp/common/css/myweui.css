@@ -79,16 +79,19 @@ input:disabled, textarea:disabled {
     margin-bottom: 10px;
 }
 .form-part-2{
+    display: none;
     background: rgba(113, 199, 142, 0.2);
     padding: 15px;
     margin-bottom: 10px;
 }
 .form-part-3{
+    display: none;
     background: rgba(199, 113, 122, 0.2);
     padding: 15px;
     margin-bottom: 10px;
 }
 .form-part-4{
+    display: none;
     background: rgba(134, 78, 219, 0.4);
     padding: 15px;
     margin-bottom: 10px;
@@ -119,4 +122,29 @@ input:disabled, textarea:disabled {
     right: 0px;
     top: 0px;
     font-weight: bold;
+}
+.pagelogin{
+    cursor: pointer;
+}
+.weui-progress__inner-txt{
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: #bbbaba;
+    font-size: 0;
+}
+.weui-progress__inner-txt li{
+    line-height: 20px;
+    font-size: 10px;
+    color: #fff;
+    display: inline-block;
+    height: 100%;
+    width: 12.5%;
+    text-align: center;
+}
+.tabc{
+    display: none;
+}
+.ysdshow,.htshow,.tljgshow{
+    display: none;
 }

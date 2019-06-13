@@ -72,9 +72,9 @@ function signin(url, pagedata, _this) {
                 data = data[0];
                 console.log(data);
                 $('.tip').html("登陆成功").stop(true, false).fadeIn(0).delay(1000).fadeOut("slow", function () {
-                    sessionStorage.setItem('userid', data.id);
-                    sessionStorage.setItem('username', data.username);
-                    sessionStorage.setItem('usertype', data.type);
+                    localStorage.setItem('userid', data.id);
+                    localStorage.setItem('username', data.username);
+                    localStorage.setItem('usertype', data.type);
                     if(data.type == 2){
                         window.location.href = "toshengchan.html";
                     }else{

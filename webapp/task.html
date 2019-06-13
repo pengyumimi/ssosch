@@ -13,7 +13,7 @@
 <div class="page my-page" id="listApp">
     <div class="p-20">
         <h1 class="page__title">
-            <img src="../img/logo.png" alt="弗立兹" height="36px"/>
+            <img class="pagelogin" onclick="siginOut()" src="../img/logo.png" alt="弗立兹" height="36px"/>
         </h1>
         <h3 class="">任务处理队列</h3>
         <p class="sc-color">此页面提供所有待处理的任务，请认真对待。</p>
@@ -31,10 +31,17 @@
                     <div class="weui-cell__ft">
                     </div>
                 </a>
-                <div class="weui-progress" style="width:100%">
-                    <div class="weui-progress__bar">
-                        <div class="weui-progress__inner-bar js_progress" :style="{width:item.pwidth}"></div>
-                    </div>
+                <div class="weui-progress__inner-txt weui-progress__inner-txt">
+                    <ul>
+                        <li :style="{'background':(item.step1==1)?'#09BB07':'#bbbaba'}">流程发布</li>
+                        <li :style="{'background':(item.step2==1)?'#09BB07':'#bbbaba'}">生产完成</li>
+                        <li :style="{'background':(item.step3==1)?'#09BB07':'#bbbaba'}">调试完成</li>
+                        <li :style="{'background':(item.step4==1)?'#09BB07':'#bbbaba'}">计量安装</li>
+                        <li :style="{'background':(item.step5==1)?'#09BB07':'#bbbaba'}">发货完成</li>
+                        <li :style="{'background':(item.step6==1)?'#09BB07':'#bbbaba'}">安装完成</li>
+                        <li :style="{'background':(item.step7==1)?'#09BB07':'#bbbaba'}">联调完成</li>
+                        <li :style="{'background':(item.step8==1)?'#09BB07':'#bbbaba'}">验收完成</li>
+                    </ul>
                 </div>
             </div>
         </div>

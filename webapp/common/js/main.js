@@ -1,6 +1,7 @@
 //获取用户信息，如果没有登录需要登录
-var localserId = JSON.parse(sessionStorage.getItem('userid'));
-var localserType = JSON.parse(sessionStorage.getItem('usertype'));
+var localserId = JSON.parse(localStorage.getItem('userid'));
+var localserType = JSON.parse(localStorage.getItem('usertype'));
+
 if(!localserId){
     window.location.href = "login.html";
 }
@@ -33,7 +34,7 @@ function yanz_email(_val, selecter) {
     if(_val.length == 0) {
         selecter.siblings(".errortip").html("邮箱不能为空").css("visibility", "visible").fadeIn(100);
         return false;
-    }else if(!_val.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)){
+    }else if(!_val.match(/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/)){
         selecter.siblings(".errortip").html("邮箱格式不正确").css("visibility", "visible").fadeIn(100);
         return false;
     }else{
@@ -90,3 +91,14 @@ $(".radio-label").click(function () {
     $(this).find(".weui-check").prop("checked",true);
     $(this).addClass("myweui-togger");
 })
+//退出
+function siginOut() {
+    localStorage.removeItem('userid');
+    localStorage.removeItem('username');
+    localStorage.removeItem('usertype');
+    $('.tip').html("您已经退出登录").show();
+    setTimeout(function () {
+        $(".tip").hide(500);
+        window.location.href = "login.html";
+    }, 1000);
+}
